@@ -1,0 +1,22 @@
+{
+  "name": "hotel_booking_system",
+  "version": "1.0.0",
+  "description": "Booking system with Node JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bruce619/hotel_booking_system.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bruce619/hotel_booking_system/issues"
+  },
+  "homepage": "https://github.com/bruce619/hotel_booking_system#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
