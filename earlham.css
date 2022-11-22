@@ -1,0 +1,184 @@
+* {
+    box-sizing: border-box;
+}
+
+
+img {
+    vertical-align: middle;
+}
+
+main {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+header {
+    background-color:rgb(250, 250, 250);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    font-family: 'Droid', sans-serif;
+}
+
+nav {
+    color:#222;
+}
+
+nav:visited {
+    color: rgb(2, 32, 71);
+}
+
+nav ul {
+    display: flex; 
+    margin-top: 1%;
+} 
+  nav ul li{ 
+    margin: 0 12px;
+}  
+  nav ul li a{
+    transition: 0.2s ease-in;
+}
+  
+  nav ul li a:hover {
+    color: rgb(80, 157, 219);  
+}
+
+.logo-img {
+    max-width: 300px;
+}
+
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+    font-size:xx-large;
+    font-family: 'Nanum Myeongjo', serif;
+}
+#hero_img {
+    width: 100%;
+}
+
+#hero_text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#dateQuery {
+    padding: 10px 20% 30px 20%;
+    text-align: center;
+    font-size: large;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(20, 65, 124);
+}
+
+.room-img,
+.room_demo,
+.fac_demo,
+.att_demo {
+    width: 100%;
+}
+
+.container {
+    text-align: center;
+    font-family: 'Oxygen', sans-serif;
+    position: relative;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+
+}
+
+.SecTitle {
+    margin-left: auto;
+    margin-right:auto;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    font-size: xx-large;
+}
+.room_slides,
+.fac_slides,
+.att_slides {
+    display: none;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select:none;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.roomtext,
+.factext,
+.atttext {
+    color: #f2f2f2;
+    font-size: 20px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+.caption-container {
+    text-align: center;
+    background-color: #222;
+    padding: 2px 16px;
+    color: white;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.column {
+    float: left;
+    width: 25%;
+}
+
+.room_demo,
+.fac_demo,
+.att_demo {
+    opacity: 0.6;
+}
+
+.active,
+.room_demo:hover,
+.fac_demo:hover,
+.att_demo:hover {
+    opacity: 1;
+}
+
+footer {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: aliceblue;
+}
