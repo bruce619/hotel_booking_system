@@ -1,0 +1,110 @@
+.footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 3rem;
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+}
+.footer__center-top {
+  font-size: 1rem;
+  text-align: center;
+}
+.footer__center-icons {
+  margin: 5rem auto;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.footer__center-icons > * {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+.footer__links {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem 0;
+  justify-content: center;
+  align-items: center;
+}
+.footer__link {
+  padding: 0 0.5rem;
+  cursor: pointer;
+}
+.footer__link:not(:last-child) {
+  border-right: 1px solid #000;
+}
+
+.footer__col {
+  padding: 2rem;
+}
+
+.footer__form input {
+  width: 50%;
+  border: 2px solid #000;
+  font-family: inherit;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+}
+
+.footer__form textarea {
+  border: 2px solid #000;
+  font-family: inherit;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  resize: none;
+  width: 100%;
+}
+.footer__form-details {
+  display: flex;
+  margin: 2rem auto;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+.footer .mapouter {
+  position: relative;
+  text-align: right;
+  height: 25rem;
+  width: 100%;
+  max-width: 40rem;
+  margin: auto;
+}
+.footer .gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  height: 25rem;
+  width: 100%;
+  max-width: 40rem;
+}
+
+/* Align footer vertically on smaller screens */
+@media (max-width: 960px) {
+  .footer {
+    display: block;
+  }
+  .footer__form {
+    width: 60%;
+    margin: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .footer__col {
+    padding: 1rem;
+  }
+  .footer__form {
+    width: 100%;
+  }
+  .footer__form input {
+    width: 100%;
+    display: block;
+  }
+  .footer__form input:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+  .footer__form-details {
+    display: block;
+  }
+}

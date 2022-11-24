@@ -1,0 +1,62 @@
+.payment .form {
+  margin: 3rem auto 0;
+  width: 80%;
+  max-width: 50rem;
+}
+.payment .form__group {
+  width: 90%;
+  margin: auto;
+}
+.payment .form__group:not(:last-child) {
+  margin-bottom: 4rem;
+}
+.payment .form__input {
+  width: 100%;
+  border: 1px solid blue;
+  padding: 1rem;
+  font-family: inherit;
+}
+.payment .form__label {
+  display: block;
+  font-size: 1rem;
+  margin-left: 1rem;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+/* hide label is input is empty */
+.payment .form__input:-moz-placeholder-shown ~ .form__label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-3rem);
+}
+.payment .form__input:-ms-input-placeholder ~ .form__label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-3rem);
+}
+.payment .form__input:placeholder-shown ~ .form__label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-3rem);
+}
+.form__buttons {
+  margin: 10rem auto 5rem;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+.form__buttons .btn {
+  width: 80%;
+  max-width: 15rem;
+  border-radius: 20rem;
+  padding: 1.5rem 3rem;
+  border: none;
+  color: #fff;
+}
+.form__buttons .btn__form-submit {
+  background-color: green;
+}
+.form__buttons .btn__form-back {
+  background-color: red;
+}

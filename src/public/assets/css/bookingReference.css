@@ -1,0 +1,25 @@
+.booking-reference p {
+  width: 80%;
+  margin: 3rem auto 0;
+  font-size: 1.5rem;
+}
+.booking-reference .form {
+  width: 80%;
+  margin: 3rem auto;
+}
+.booking-reference .form__input {
+  padding: 0.75rem;
+  width: 20rem;
+  border: 1px solid #4e95c7;
+}
+.btn__booking-submit {
+  padding: 0.75rem;
+  width: 6rem;
+  font-family: inherit;
+  background-color: #c4f16a;
+  color: #fff;
+  border: none;
+}
+.btn__booking-submit:hover {
+  background-color: #b8ec4f;
+}

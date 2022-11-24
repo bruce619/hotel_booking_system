@@ -1,0 +1,141 @@
+@import './navbar.css';
+@import './footer.css';
+
+@import './bookingReference.css';
+@import './confirmation.css';
+@import './payment.css';
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-weight: 200;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+}
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+a:link,
+a:visited {
+  text-decoration: none;
+  color: #000;
+}
+img {
+  max-width: 100%;
+}
+main {
+  min-height: 80vh;
+}
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+.content {
+  border: 1px solid #000;
+  padding-top: 2rem;
+  background-color: rgba(126, 115, 115, 0.1568627451);
+  height: auto;
+  min-height: 40rem;
+}
+
+/* Remove buttons from number input on Firefox and Safari */
+/* input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+} */
+/* Remove buttons from number input in chrome */
+/* input[type='number'] {
+  -moz-appearance: textfield;
+} */
+
+/* booking dates section */
+.check {
+  text-align: right;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+.check__details {
+  padding: 1rem 0;
+}
+.check__date {
+  border: 1px solid #000;
+  padding: 1rem;
+  display: inline-block;
+  border-radius: 0.5rem;
+}
+.check__date input {
+  width: 6rem;
+  border: none;
+  font-family: inherit;
+  background-color: rgba(0, 0, 0, 0);
+}
+.check__date input:focus {
+  border: none;
+  outline: none;
+}
+
+.title {
+  background-color: #ff0;
+  border-radius: 20rem;
+  padding: 0.75rem;
+  text-align: center;
+  width: 20rem;
+  margin: auto;
+}
+
+/* default button settings*/
+.btn {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn:hover {
+  transform: translateY(-4px);
+}
+.btn:active {
+  transform: translateY(-1px);
+}
+.btn__check-submit {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #6c87be;
+  border: none;
+  color: #fff;
+}
+
+.bold {
+  font-weight: 700;
+}
+.error {
+  color: red;
+}
+
+@media (max-width: 960px) {
+  html {
+    font-size: 60%;
+  }
+}
+@media (max-width: 720px) {
+  html {
+    font-size: 60%;
+  }
+}
+@media (min-width: 1200px) {
+  html {
+    font-size: 75%;
+  }
+}
