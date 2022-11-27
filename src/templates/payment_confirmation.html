@@ -13,6 +13,7 @@
   </head>
   <!-- header -->
 
+  <!-- body -->
   <body>
     <div class="navigation">
       <div class="container">
@@ -76,13 +77,17 @@
         </div>
       </div>
     </div>
+    <!-- main -->
     <main class="confirmation">
+      <!-- container -->
       <div class="container">
+        <!-- conatiner content -->
         <div class="content">
           <div class="title">
             <p><i class="fa-regular fa-square-check"></i> Confirmation</p>
           </div>
           <br />
+          <!-- form -->
           <form action="#" id="" class="confirmation__form form">
             <div class="selected__room">
               <p><i class="fa-solid fa-key"></i> Selected date and room</p>
@@ -100,19 +105,19 @@
               <div class="selected__room-details">
                 <div class="form__group">
                   <p>Standard Twin</p>
-                  <p><span class="rooms">2</span> Room(s)</p>
+                  <p><span id="standard-twin" class="rooms">2</span> Room(s)</p>
+                </div>
+                <div class="form__group">
+                  <p>Superior Double</p>
+                  <p><span id="standard-double" class="rooms">0</span> Room(s)</p>
+                </div>
+                <div class="form__group">
+                  <p>Superior Twin</p>
+                  <p><span id="superior-twin" class="rooms">0</span> Room(s)</p>
                 </div>
                 <div class="form__group">
                   <p>Standard Double</p>
-                  <p><span class="rooms">0</span> Room(s)</p>
-                </div>
-                <div class="form__group">
-                  <p>Standard Twin</p>
-                  <p><span class="rooms">0</span> Room(s)</p>
-                </div>
-                <div class="form__group">
-                  <p>Standard Double</p>
-                  <p><span class="rooms">0</span> Room(s)</p>
+                  <p><span id="superior-double" class="rooms">0</span> Room(s)</p>
                 </div>
               </div>
               <div class="form__header">
@@ -123,28 +128,13 @@
             <div class="payment__info">
               <p><i class="fa-solid fa-credit-card"></i> Payment information</p>
               <div class="form__group">
-                <input
-                  class="form__input"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Name" />
+                <input class="form__input" type="text" name="name" id="name" placeholder="Name" />
               </div>
               <div class="form__group">
-                <input
-                  class="form__input"
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Email" />
+                <input class="form__input" type="email" name="email" id="email" placeholder="Email" />
               </div>
               <div class="form__group">
-                <input
-                  class="form__input"
-                  type="text"
-                  name="address"
-                  id="address"
-                  placeholder="Address" />
+                <input class="form__input" type="text" name="address" id="address" placeholder="Address" />
               </div>
               <div class="form__group">
                 <select class="form__input" name="" id="">
@@ -153,26 +143,21 @@
                   </option>
                   <option value="V">Visa</option>
                   <option value="MC">Master Card</option>
-                  <option value="AM">American Express</option>
+                  <option value="A">American Express</option>
                 </select>
               </div>
               <div class="form__group">
-                <input
-                  class="form__input"
-                  type="number"
-                  name="card-number"
-                  id="card-number"
-                  placeholder="Card number" />
+                <input class="form__input" type="number" name="card-number" id="card-number" placeholder="XXXX XXXX XXXX XXXX"/>
               </div>
               <div class="form__group">
                 <input
                   class="form__input"
                   type="text"
-                  name="date"
-                  id="date"
+                  name="expiry"
+                  id="expiry"
                   onfocus="(this.type='month')"
                   onblur="(this.type='text')"
-                  placeholder="Card expiry date" />
+                  placeholder="MM/YYYY"/>
               </div>
             </div>
             <p class="note">
@@ -184,9 +169,14 @@
               <button type="submit" class="btn btn__form-submit">Book</button>
             </div>
           </form>
+          <!-- form -->
         </div>
+        <!-- content -->
       </div>
+      <!-- containers -->
     </main>
+    <!-- main -->
+
     <!-- footer -->
     <footer class="footer">
       <!-- footer left -->
@@ -244,4 +234,5 @@
     </footer>
     <!-- footer -->
   </body>
+    <!-- body -->
 </html>

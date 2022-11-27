@@ -5,12 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
-    <script
-      src="https://kit.fontawesome.com/62765ee528.js"
-      crossorigin="anonymous"></script>
-    <title>Document</title>
+    <script src="https://kit.fontawesome.com/62765ee528.js" crossorigin="anonymous"></script>
+    <title>Earlham Park Hotel - Payment Form</title>
   </head>
   <body>
+    <!-- nav -->
     <div class="navigation">
       <div class="container">
         <div class="navigation__logo"></div>
@@ -49,10 +48,13 @@
         </div>
       </div>
     </div>
+    <!-- nav -->
+    <!-- nav booking -->
     <div class="check">
       <div class="container">
         <p>Looking for a place to stay? Enter details to see available rooms</p>
         <div class="check__details">
+          <!-- nav search -->
           <form class="check__details-form">
             <div class="check__date">
               <i class="fa-solid fa-calendar-days"></i>
@@ -70,9 +72,11 @@
             </div>
             <button type="submit" class="btn__check-submit">Search</button>
           </form>
+          <!-- nav search -->
         </div>
       </div>
     </div>
+    <!-- nav booking -->
 
     <!-- main -->
     <main class="payment">
@@ -117,14 +121,14 @@
 
             <!-- card number -->
             <div class="form__group">
-              <input type="number" class="form__input" id="card-number" name="card-number" placeholder="Card number"/>
+              <input type="number" class="form__input" id="card-number" name="card-number" placeholder="XXXX XXXX XXXX XXXX"/>
               <label for="name" class="form__label">Card number</label>
             </div>
 
             <!-- cvc -->
             <div class="form__group">
-              <input type="text" class="form__input" id="cvc" name="cvc" placeholder="MM/YY" />
-              <label for="card-numbe" class="form__label">CVC</label>
+              <input type="date" class="form__input" id="expiry" name="expiry" onfocus="(this.type='month')" onblur="(this.type='text')" placeholder="MM/YYYY"/>
+              <label for="card-numbe" class="form__label">Expiry Date</label>
             </div>
 
             <!-- button -->
