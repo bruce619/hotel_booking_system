@@ -2,7 +2,7 @@ const config = {
 	development: {
 			  user: 'postgres', // env var: PGUSER YOUR UEA username
 			  database: 'postgres', // env var: PGDATABASE YOUR UEA username
-			  password: 'ganbaruzo', // env var: PGPASSWORD YOUR UEA password
+			  password: '', // env var: PGPASSWORD YOUR UEA password
 			  host: 'localhost', // Server hosting the postgres database
 			  port: 5432, // env var: PGPORT
 			  
