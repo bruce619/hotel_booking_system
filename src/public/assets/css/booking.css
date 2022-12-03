@@ -18,7 +18,6 @@ img{
 }
 
 /* for all pages - main */
-
 main{
     /* Fixed in the centre left and right */
     max-width: 1000px;
@@ -82,7 +81,7 @@ article h3 {
 }
 
 article img {
-    width: 60%;
+    width: 50%;
     max-height: 150px;
 }
 
@@ -175,20 +174,20 @@ input[type="submit"] {
     background-color: goldenrod;
 }
 
-/* for reception page */
-.recep h1, h2 {
+/* for reception page *//* for "my booking" page */
+.recep h1, .recep h2, .mybook h2 {
     text-align: center;
 }
 
-.recep-indication {
+.recep-indication, .mybook-indication {
     text-align: center;
 }
 
-.recep-form {
+.recep-form, .mybook-form {
     margin: 0 auto 20px auto;
 }
 
-.recep-form-p input{
+.recep-form-p input, .mybook-form-p input{
     padding: 5px;
     max-width: 200px;
     min-height: 30px;
@@ -196,14 +195,14 @@ input[type="submit"] {
     border: solid 1px cornflowerblue;
 }
 
-.recep-form-p-submit{
+.recep-form-p-submit, .mybook-form-p-submit{
     margin: auto;
     width: fit-content;
 }
 
-/* for reception-result page */
+/* for reception-result page */ /* for "mybookings"-details page */ 
     /* for search result table */
-.recep-contents {
+.recep-contents, .mybook-contents {
     width: fit-content;
     margin: 20px auto;
 }
@@ -278,4 +277,11 @@ text-align: center;
 }
 
 
-
+ /* for "mybookings" unavailable page */ 
+.mybook-unavailable {
+    border: none;
+    color: firebrick;
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+}

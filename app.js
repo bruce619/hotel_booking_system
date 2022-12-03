@@ -1,7 +1,20 @@
+// Configure Node to run in development mode
+const env = process.env.NODE_ENV ||'development';
+
+// Import database configurations
+const config = require('./config.js')[env];
+
 // Imports
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// load body parser library
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
+
+// load PG library
+const pg = require('pg');
 
 // use static files: css, js, img
 app.use(express.static('src/public/assets'))
@@ -14,9 +27,52 @@ app.use('/img', express.static(__dirname + 'src/public/assets/img'))
 
 
 // use html templates
+// app.get('/', (req, res) => {
+//     res.sendFile(__dirname + '/src/templates/index.html')
+// })
+
+
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/src/templates/index.html')
-})
+    res.sendFile(__dirname +'/src/templates/6-1reception.html', (err) => {
+        if (err){
+            console.log(err);
+        }
+    })
+});
+
+// POST for Reception query 
+app.post('/', jsonParser, async function (req, res) {
+        console.log("POSTrequest");
+        const body = req.body;
+        console.log(req.body);
+        const bookRef = body.bookRef;
+        // const name = body.name;
+        // const email = body.email;
+        // const roomNo = body.roomNo;
+        try {
+            let results;
+            const pool = new pg.Pool(config);
+            const client = await pool.connect();
+            const q = `select b.b_ref, cu.c_name, cu.c_email, rb.r_no from hotelbooking.booking b, hotelbooking.customer cu, hotelbooking.roombooking rb where b.c_no = cu.c_no and b.b_ref = rb.b_ref and b.b_ref = ${bookRef};`;
+            await client.query(q, (err, results) => {
+                if (err) {
+                    console.log(err.stack);
+                    errors = err.stack.split(" at ");
+                    res.json({ message: 'Sorry something went wrong. ' + errors[0] });
+                } else {
+                    client.release();
+                    console.log(results);
+                    data = results.rows;
+                    res.json({ results: data });
+                }
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }) ;
+
 
 // Listen to port 3000
 app.listen(port, () => console.info(`hotel booking app listening on port ${port}`))
+
+
