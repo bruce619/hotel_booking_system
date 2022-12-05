@@ -20,8 +20,8 @@
                 <h2>Search Results</h2>
                 <p class="recep-indication">Check the left side button and Check details.</p>
                 <article class="recep">
-                    <div class="recep-contents">
-                        <form action="">
+                    <div class="recep-contents" id = "recep-contents">
+                        <form action="" method="POST" name = 'resultForm' id="resultForm">
                             <table class="search-results">
                                 <tr>
                                     <th>Select box</th>
@@ -35,7 +35,8 @@
                                 
                                 <tr id="row1">
                                         <td>
-                                            <input type="radio" name="select-book" id="radio" value="row1">
+                                            <!-- value should be booking-ref of selected row -->
+                                            <input type="radio" name="selectBook" id="radio" value="">
                                         </td>
                                         <td id="booking-ref1">0</td>
                                         <!-- <td id="check-in1"></td>
@@ -46,7 +47,7 @@
                                 </tr>
                                 <tr id="row2">
                                     <td>
-                                        <input type="radio" name="select-book" id="radio" value="row2">
+                                        <input type="radio" name="selectBook" id="radio" value="row2">
                                     </td>
                                     <td id="booking-ref2"></td>
                                     <!-- <td id="check-in2"></td>

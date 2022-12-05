@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Earlham Park Hotel - Reception</title>
-    <link rel="stylesheet" href="/css/booking.css">
+    <link rel="stylesheet" href="../public/assets/css/booking.css">
 </head>
 <body>
     <!-- <p>This is the reception booking details page</p> -->
@@ -80,23 +80,26 @@
                             <p class="booking-notes"></p>
                         </div>
 
-                        <form action="">
-                            <div class="btn-grid">
-                                <label>
-                                    <a href="6-1reception.html" class="recep-btn">Back</a>
-                                </label>
-                                <label>
-                                    <p class="recep-form-p-submit">
-                                        <input type="submit" value="Check In">
-                                    </p>
-                                </label>
+
+                        <div class="btn-grid">
+                            <label>
+                                <a href="6-1reception.html" class="recep-btn">Back</a>
+                            </label>
+                            <form action="/checkin" method = "POST" name = "checkIn">
                                 <label>
                                     <p class="recep-form-p-submit">
-                                        <input type="submit" value="Payment & Check Out">
+                                        <button type="submit" value="">Check In</button>
                                     </p>
                                 </label>
-                            </div>
-                        </form>
+                            </form>
+                            <form action="/checkout" method = "POST" name = "checkOut">
+                                <label>
+                                    <p class="recep-form-p-submit">
+                                        <button type="submit" value="">Payment & Check Out</button>
+                                    </p>
+                                </label>
+                            </form>
+                        </div>
                     </div>
                 </article>
             </section>
