@@ -1,13 +1,21 @@
 
 function onTextReady(text) {
+    //remove old script for js file
     const oldScript = document.querySelector('script');
     oldScript.remove();
 
-    const script = document.createElement('script');
-    script.src ='/js/reception-checkin.js';
-    script.setAttribute('defer', true);
+    //add script of "reception-checkin.js"
+    const scriptCheckin = document.createElement('script');
+    scriptCheckin.src ='/js/reception-checkin.js';
+    scriptCheckin.setAttribute('defer', true);
     const head = document.querySelector('head');
-    head.appendChild(script);
+    head.appendChild(scriptCheckin);
+
+    //add script of "reception-checkout.js"
+    const scriptCheckout = document.createElement('script');
+    scriptCheckout.src ='/js/reception-checkout.js';
+    scriptCheckout.setAttribute('defer', true);
+    head.appendChild(scriptCheckout);
 
     const detailObject = JSON.parse(text);
     console.log(detailObject);

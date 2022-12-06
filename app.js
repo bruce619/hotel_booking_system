@@ -119,7 +119,7 @@ app.post('/reception/recep-details', jsonParser, async function (req, res) {
     }
 }) ;
 
-// POST for updating check in query
+// POST for Reception updating room status to 'O'(Occupied = check-in)
 app.post('/reception/reception-checkin', jsonParser, async function (req, res) {
     console.log("POSTrequest checkin");
     const body = req.body;
@@ -136,6 +136,35 @@ app.post('/reception/reception-checkin', jsonParser, async function (req, res) {
                 console.log(err.stack);
                 errors = err.stack.split(" at ");
                 res.json({ result: 'fail', message: 'Sorry something went wrong.checkin ' + errors[0] });
+            } else {
+                client.release();
+                console.log(results);
+                res.json({  result: 'success', message: 'successfully updated' });
+            }
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}) ;
+
+// POST for Reception updating room status to "C"(check-out) and outstanding value to "zero"
+app.post('/reception/reception-checkout', jsonParser, async function (req, res) {
+    console.log("POSTrequest checkout");
+    const body = req.body;
+    console.log(req.body);
+    const bookRef = body.bookRef;
+    try {
+        let results;
+        const pool = new pg.Pool(config);
+        const client = await pool.connect();
+        const q = `update hotelbooking.room set r_status = 'C' where r_no in (select r.r_no from hotelbooking.room r, hotelbooking.roombooking rb
+             where r.r_no = rb.r_no and rb.b_ref = ${bookRef});
+             update hotelbooking.booking set b_outstanding = 0 where b_ref = ${bookRef};`;
+        await client.query(q, (err, results) => {
+            if (err) {
+                console.log(err.stack);
+                errors = err.stack.split(" at ");
+                res.json({ result: 'fail', message: 'Sorry something went wrong.checkout ' + errors[0] });
             } else {
                 client.release();
                 console.log(results);
