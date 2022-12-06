@@ -7,7 +7,7 @@
     <title>Earlham Park Hotel - Home</title>
     <link rel="stylesheet" href="/css/booking.css">
     <link rel="stylesheet" href="/css/styles.css">
-    <script src="" defer></script>
+    <script src="/js/booking-query.js" defer></script>
 </head>
 <body>
     <!-- nav -->
@@ -115,7 +115,7 @@
         <!-- query results for each room type -->
         <!-- Standard Twin -->
             <article class="booking-flex-box">
-                <p class="available">Available Rooms: </p>
+                <p class="available" id="std_t">Available Rooms: </p>
                 <h2 class="roomtype">Standard Twin</h2>
                 <div class="contents">
                     <!-- img referenced to https://www.pexels.com/photo/blue-blanket-on-top-of-bed-172872/ -->
@@ -171,9 +171,10 @@
                     </div>
                 </div>
             </article>
+        <!-- /Standard Twin -->
         <!-- Standard Double -->
             <article class="booking-flex-box">
-                <p class="available">Available Rooms: </p>
+                <p class="available" id="std_d">Available Rooms: </p>
                 <h2 class="roomtype">Standard Double</h2>
                 <div class="contents">
                     <!-- img referenced to https://unsplash.com/photos/67-sOi7mVIk -->
@@ -229,9 +230,10 @@
                     </div>
                 </div>
             </article>
+        <!-- /Standard Double -->
         <!-- Superior Twin-->
             <article class="booking-flex-box">
-                <p class="available">Available Rooms: </p>
+                <p class="available" id="sup_t">Available Rooms: </p>
                 <h2 class="roomtype">Superior Twin</h2>
                 <div class="contents">
                     <!-- img referenced to https://unsplash.com/photos/wE7qDv11kio -->
@@ -288,9 +290,10 @@
                     </div>
                 </div>
             </article>
+        <!-- /Superior Twin-->
         <!-- Superior Double-->
             <article class="booking-flex-box">
-                <p class="available">Available Rooms: </p>
+                <p class="available" id="sup_d">Available Rooms: </p>
                 <h2 class="roomtype">Superior Double</h2>
                 <div class="contents">
                     <!-- img referenced to https://www.pexels.com/photo/bedroom-interior-setup-271624/-->
@@ -347,6 +350,7 @@
                     </div>
                 </div>
             </article>
+        <!-- /Superior Double-->
             <!-- please put link to the page of payment form -->
             <label>
                 <form action=" ">

@@ -36,7 +36,7 @@ app.get('/booking/form', (req, res)=>{
     res.sendFile(__dirname + '/src/templates/2-1booking-query-results.html')
 })
 
-
+// reception page
 app.get('/reception', (req, res) => {
     res.sendFile(__dirname +'/src/templates/6-1reception.html', (err) => {
         if (err){
@@ -46,6 +46,45 @@ app.get('/reception', (req, res) => {
 });
 
 
+// POST for booking query without room type requests
+app.post('/booking/form', jsonParser, async function (req, res) {
+    console.log("POSTrequest booking");
+    const body = req.body;
+    console.log(req.body);
+    const checkInDate = body.checkInDate;
+    const checkOutDate = body.checkOutDate;
+    try {
+        let results;
+        const pool = new pg.Pool(config);
+        const client = await pool.connect();
+        const q = `select r.r_class, count(*)
+                    from hotelbooking.room r left join
+                        (select rb.r_no, r.r_class, rb.checkin, rb.checkout
+                        from hotelbooking.roombooking rb, hotelbooking.room r
+                        where rb.r_no = r.r_no
+                            and('${checkInDate}' between rb.checkin and rb.checkout 
+                            or '${checkOutDate}' between rb.checkin and rb.checkout)
+                        )as rq
+                        on r.r_no = rq.r_no 
+                    where rq.checkin is null
+                    group by r.r_class
+                    order by r.r_class;`;
+        await client.query(q, (err, results) => {
+            if (err) {
+                console.log(err.stack);
+                errors = err.stack.split(" at ");
+                res.json({ result: 'fail', message: 'Sorry something went wrong.checkout ' + errors[0] });
+            } else {
+                client.release();
+                console.log(results);
+                data = results.rows;
+                res.json({  results: data });
+            }
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}) ;
 
 // POST for Reception query 
 app.post('/reception', jsonParser, async function (req, res) {
@@ -175,6 +214,9 @@ app.post('/reception/reception-checkout', jsonParser, async function (req, res) 
         console.log(e);
     }
 }) ;
+
+
+
 
 
 // Listen to port 3000
