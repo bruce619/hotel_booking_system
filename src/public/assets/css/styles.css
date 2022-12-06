@@ -52,17 +52,6 @@ main {
   min-height: 40rem;
 }
 
-/* Remove buttons from number input on Firefox and Safari */
-/* input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-} */
-/* Remove buttons from number input in chrome */
-/* input[type='number'] {
-  -moz-appearance: textfield;
-} */
-
 /* booking dates section */
 .check {
   text-align: right;

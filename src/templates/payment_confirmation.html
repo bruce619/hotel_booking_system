@@ -6,23 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
-    <script
-      src="https://kit.fontawesome.com/62765ee528.js"
-      crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/62765ee528.js" crossorigin="anonymous"></script>
     <title>Earlham Park Hotel - Payment Confirmation</title>
   </head>
   <!-- header -->
 
   <!-- body -->
   <body>
+
+    <!-- nav -->
     <div class="navigation">
+
+      <!-- nav container -->
       <div class="container">
+
+        <!-- nav logo -->
         <div class="navigation__logo"></div>
+        <!-- nav log -->
+
         <!-- colapssible navbar using checkbox hack -->
         <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
         <label for="navi-toggle" class="navigation__button">
           <span class="navigation__icon">&nbsp;</span>
         </label>
+        
+        <!-- nav links. collapses in mobile view when clicked -->
         <div class="navigation__collapse">
           <div class="navigation__brand">
             <h2>Earlharm Park Hotel</h2>
@@ -51,13 +59,28 @@
             </ul>
           </div>
         </div>
+        <!-- nav links. -->
+
       </div>
+      <!-- nav container -->
+
     </div>
+    <!-- nav -->
+
+    <!-- nav booking -->
     <div class="check">
+
+      <!-- nav booking container -->
       <div class="container">
         <p>Looking for a place to stay? Enter details to see available rooms</p>
+
+        <!-- check details -->
         <div class="check__details">
+
+          <!-- nav check details form -->
           <form class="check__details-form">
+
+            <!-- check date -->
             <div class="check__date">
               <i class="fa-solid fa-calendar-days"></i>
               <input
@@ -72,22 +95,38 @@
                 onfocus="(this.type='date')"
                 onblur="(this.type='text')" />
             </div>
+            <!-- check date -->
+
             <button type="submit" class="btn__check-submit">Search</button>
           </form>
+          <!-- nav check details form -->
+
         </div>
+        <!-- check details -->
+
       </div>
+      <!-- nav booking container -->
+
     </div>
+    <!-- nav booking -->
+    
     <!-- main -->
     <main class="confirmation">
+      
       <!-- container -->
       <div class="container">
+
         <!-- conatiner content -->
         <div class="content">
+          <!-- content title -->
           <div class="title">
             <p><i class="fa-regular fa-square-check"></i> Confirmation</p>
           </div>
+          <!-- content title -->
+
           <br />
-          <!-- form -->
+
+          <!-- booking form -->
           <form action="#" id="" class="confirmation__form form">
             <div class="selected__room">
               <p><i class="fa-solid fa-key"></i> Selected date and room</p>
@@ -169,11 +208,14 @@
               <button type="submit" class="btn btn__form-submit">Book</button>
             </div>
           </form>
-          <!-- form -->
+          <!-- booking form -->
+
         </div>
         <!-- content -->
+
       </div>
       <!-- containers -->
+
     </main>
     <!-- main -->
 
@@ -190,6 +232,8 @@
           <textarea class="footer__form-message" name="message" id="message" placeholder="Message" cols="30" rows="10"></textarea>
         </form>
       </div>
+      <!-- footer left -->
+
       <!-- footer center -->
       <div class="footer__center footer__col">
         <div class="footer__center-top">
@@ -211,6 +255,7 @@
           <i class="fa-brands fa-pinterest"></i>
         </div>
       </div>
+      <!-- footer center -->
 
       <!-- footer right -->
       <div class="footer__right footer__col">
@@ -231,6 +276,8 @@
           </div>
         </div>
       </div>
+      <!-- footer right -->
+
     </footer>
     <!-- footer -->
   </body>

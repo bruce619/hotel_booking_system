@@ -9,15 +9,24 @@
     <title>Earlham Park Hotel - Payment Form</title>
   </head>
   <body>
+
     <!-- nav -->
     <div class="navigation">
+
+      <!-- nav container -->
       <div class="container">
+
+        <!-- nav logo -->
         <div class="navigation__logo"></div>
+        <!-- nav log -->
+
         <!-- colapssible navbar using checkbox hack -->
         <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
         <label for="navi-toggle" class="navigation__button">
           <span class="navigation__icon">&nbsp;</span>
         </label>
+        
+        <!-- nav links. collapses in mobile view when clicked -->
         <div class="navigation__collapse">
           <div class="navigation__brand">
             <h2>Earlharm Park Hotel</h2>
@@ -46,16 +55,28 @@
             </ul>
           </div>
         </div>
+        <!-- nav links. -->
+
       </div>
+      <!-- nav container -->
+
     </div>
     <!-- nav -->
+
     <!-- nav booking -->
     <div class="check">
+
+      <!-- nav booking container -->
       <div class="container">
         <p>Looking for a place to stay? Enter details to see available rooms</p>
+
+        <!-- check details -->
         <div class="check__details">
-          <!-- nav search -->
+
+          <!-- nav check details form -->
           <form class="check__details-form">
+
+            <!-- check date -->
             <div class="check__date">
               <i class="fa-solid fa-calendar-days"></i>
               <input
@@ -70,23 +91,36 @@
                 onfocus="(this.type='date')"
                 onblur="(this.type='text')" />
             </div>
+            <!-- check date -->
+
             <button type="submit" class="btn__check-submit">Search</button>
           </form>
-          <!-- nav search -->
+          <!-- nav check details form -->
+
         </div>
+        <!-- check details -->
+
       </div>
+      <!-- nav booking container -->
+
     </div>
     <!-- nav booking -->
 
     <!-- main -->
     <main class="payment">
+
       <!-- container -->
       <div class="container">
+
         <!-- conatiner content -->
         <div class="content">
+
+          <!-- form title -->
           <div class="title">
             <p><i class="fa-solid fa-credit-card"></i> Payment form</p>
           </div>
+          <!-- form title -->
+
           <!-- payment form -->
           <form action="#" id="" class="payment__form form" method="">
 
@@ -100,13 +134,15 @@
                 placeholder="Name" />
               <label for="name" class="form__label">Name</label>
             </div>
+            <!-- name -->
 
             <!-- email -->
             <div class="form__group">
               <input type="email" class="form__input" id="email" name="email" placeholder="Email" />
               <label for="email" class="form__label">Email</label>
             </div>
-            
+            <!-- email -->
+
             <!-- card type -->
             <div class="form__group select-style">
               <select class="form__input" name="card-type" id="">
@@ -118,29 +154,37 @@
                 <option value="A">American Express</option>
               </select>
             </div>
+            <!-- card type -->
 
             <!-- card number -->
             <div class="form__group">
               <input type="number" class="form__input" id="card-number" name="card-number" placeholder="XXXX XXXX XXXX XXXX"/>
               <label for="name" class="form__label">Card number</label>
             </div>
+            <!-- card number -->
 
             <!-- cvc -->
             <div class="form__group">
               <input type="date" class="form__input" id="expiry" name="expiry" onfocus="(this.type='month')" onblur="(this.type='text')" placeholder="MM/YYYY"/>
               <label for="card-numbe" class="form__label">Expiry Date</label>
             </div>
+            <!-- cvc -->
 
             <!-- button -->
             <div class="form__buttons">
               <button type="submit" class="btn btn__form-submit">Next</button>
             </div>
+            <!-- button -->
+            
           </form>
           <!-- payment form -->
+
         </div>
         <!-- container content -->
+
       </div>
       <!-- container -->
+
     </main>
     <!-- main -->
 
@@ -157,6 +201,8 @@
           <textarea class="footer__form-message" name="message" id="message" placeholder="Message" cols="30" rows="10"></textarea>
         </form>
       </div>
+      <!-- footer left -->
+
       <!-- footer center -->
       <div class="footer__center footer__col">
         <div class="footer__center-top">
@@ -178,6 +224,7 @@
           <i class="fa-brands fa-pinterest"></i>
         </div>
       </div>
+      <!-- footer center -->
 
       <!-- footer right -->
       <div class="footer__right footer__col">
@@ -198,7 +245,10 @@
           </div>
         </div>
       </div>
+      <!-- footer right -->
+
     </footer>
     <!-- footer -->
+
   </body>
 </html>
