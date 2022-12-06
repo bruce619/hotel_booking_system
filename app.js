@@ -45,6 +45,30 @@ app.get('/reception', (req, res) => {
     })
 });
 
+// GET price data from database and reflect "booking-query-results.html" file
+app.get('/booking/form/price', jsonParser, async function (req, res) {
+    console.log("GET reauest");
+    try {
+        let results;
+        const pool = new pg.Pool(config);
+        const client = await pool.connect();
+        const q = `SELECT * FROM hotelbooking.rates ORDER BY r_class;`;
+        await client.query(q, (err, results) => {
+            if (err) {
+                console.log(err.stack);
+                errors = err.stack.split(" at ");
+                res.json({ result: 'fail', message: 'Sorry something went wrong. price ' + errors[0] });
+            } else {
+                client.release();
+                console.log(results);
+                data = results.rows;
+                res.json({  results: data });
+            }
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}) ;
 
 // POST for booking query without room type requests
 app.post('/booking/form', jsonParser, async function (req, res) {

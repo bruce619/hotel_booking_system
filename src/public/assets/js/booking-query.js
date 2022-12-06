@@ -1,6 +1,6 @@
 function onTextReady(text) {
     console.log(text);
-    // convert response JSON text to Object 
+    // convert response from JSON text to Object 
     const resultObject = JSON.parse(text);
     console.log(resultObject);
     // get number of available rooms for each room type
