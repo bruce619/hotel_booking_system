@@ -10,10 +10,10 @@ function onTextReady(text) {
     head.appendChild(script);
 
     // change reception page to reception-results page
-    document.querySelector('h2').textContent = "Search Results";
+    document.querySelector('.recep h2').textContent = "Search Results";
 
     // remove search form
-    const oldform = document.querySelector('form');
+    const oldform = document.getElementById('form');
     oldform.remove();
 
     // arrange response data
@@ -39,7 +39,7 @@ function onTextReady(text) {
         const label1 = document.createElement('label');
         article.appendChild(label1);
         const a = document.createElement('a');
-        a.href = "/";
+        a.href = "/reception";
         a.className = "recep-btn";
         a.textContent = "Back";
         label1.appendChild(a);
@@ -136,7 +136,7 @@ function onTextReady(text) {
         divButton.appendChild(label1);
 
         const a = document.createElement('a');
-        a.href = "/";
+        a.href = "/reception";
         a.className = "recep-btn";
         a.textContent = "Back";
         label1.appendChild(a);
@@ -146,7 +146,7 @@ function onTextReady(text) {
         divButton.appendChild(label2);
 
         const p = document.createElement('p');
-        p.className = "recep-form-p-submit";
+        p.className = "recep-form-p-submit-v2";
         label2.appendChild(p);
         
         const inputSubmit = document.createElement('input');
@@ -194,7 +194,7 @@ function processSubmit(e) {
     const fetchOptions = createOptions(data);
     console.log(fetchOptions);
 
-    fetch('/', fetchOptions)
+    fetch('/reception', fetchOptions)
     .then(onResponse)
     .then(onTextReady);
 }

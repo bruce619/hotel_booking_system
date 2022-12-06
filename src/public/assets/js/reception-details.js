@@ -18,7 +18,7 @@ function onTextReady(text) {
     console.log(results.length);
 
     // change reception page to reception-results page
-    document.querySelector('h2').textContent = "Booking details";
+    document.querySelector('.recep h2').textContent = "Booking details";
 
     // erase indication message
     document.querySelector('p.recep-indication').textContent = "";
@@ -218,50 +218,50 @@ function onTextReady(text) {
     divBtn.appendChild(labelBack);
 
     const a = document.createElement('a');
-    a.href = '/';
+    a.href = '/reception';
     a.className = 'recep-btn';
     a.textContent = 'Back';
     labelBack.appendChild(a);
 
     /// button to update checkin
     const formIn = document.createElement('form');
-    formIn.action = '/checkin';
+    formIn.action = '/reception-checkin';
     formIn.method = 'POST';
     formIn.name = 'checkIn';
+    formIn.id = 'checkIn';
     divBtn.appendChild(formIn);
 
     const labelCheckin = document.createElement('label');
     formIn.appendChild(labelCheckin);
 
-    const pCheckin = document.createElement('p');
-    pCheckin.className = 'recep-form-p-submit';
-    labelCheckin.appendChild(pCheckin);
-
     const btnCheckin = document.createElement('button');
     btnCheckin.type = 'submit';
+    btnCheckin.className = 'recep-btn detail-btn';
     btnCheckin.value = `${elements.b_ref}`;
     btnCheckin.textContent = 'Check In';
-    pCheckin.appendChild(btnCheckin);
+    btnCheckin.id= 'btnCheckin'
+    labelCheckin.appendChild(btnCheckin);
 
     /// button to update payment&checkout
     const formOut = document.createElement('form');
-    formOut.action = '/checkout';
+    formOut.action = '/reception-checkout';
     formOut.method = 'POST';
     formOut.name = 'checkOut';
+    formOut.id = 'checkOut';
     divBtn.appendChild(formOut);
 
     const labelPayOut = document.createElement('label');
     formOut.appendChild(labelPayOut);
 
-    const pPayOut = document.createElement('p');
-    pPayOut.className = 'recep-form-p-submit';
-    labelPayOut.appendChild(pPayOut);
-
     const btnPayOut = document.createElement('button');
     btnPayOut.type = 'submit';
+    btnPayOut.className = 'recep-btn detail-btn';
     btnPayOut.value = `${elements.b_ref}`;
+    btnPayOut.id= 'btnPayOut'
     btnPayOut.textContent = 'Payment & Check Out';
-    pPayOut.appendChild(btnPayOut);
+    labelPayOut.appendChild(btnPayOut);
+
+
 }
 
 function onResponse(response) {
@@ -298,7 +298,7 @@ function processSubmit(e) {
     const fetchOptions = createOptions(data);
     console.log(fetchOptions);
 
-    fetch('/recep-details', fetchOptions)
+    fetch('/reception/recep-details', fetchOptions)
     .then(onResponse)
     .then(onTextReady);
 }

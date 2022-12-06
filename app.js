@@ -27,12 +27,17 @@ app.use('/img', express.static(__dirname + 'src/public/assets/img'))
 
 
 // use html templates
-// app.get('/', (req, res) => {
-//     res.sendFile(__dirname + '/src/templates/index.html')
-// })
-
-
 app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/src/templates/index.html')
+})
+
+// booking page
+app.get('/booking/form', (req, res)=>{
+    res.sendFile(__dirname + '/src/templates/2-1booking-query-results.html')
+})
+
+
+app.get('/reception', (req, res) => {
     res.sendFile(__dirname +'/src/templates/6-1reception.html', (err) => {
         if (err){
             console.log(err);
@@ -43,7 +48,7 @@ app.get('/', (req, res) => {
 
 
 // POST for Reception query 
-app.post('/', jsonParser, async function (req, res) {
+app.post('/reception', jsonParser, async function (req, res) {
         console.log("POSTrequest");
         const body = req.body;
         console.log(req.body);
@@ -84,7 +89,7 @@ app.post('/', jsonParser, async function (req, res) {
     }) ;
 
 // POST for Reception-details query
-app.post('/recep-details', jsonParser, async function (req, res) {
+app.post('/reception/recep-details', jsonParser, async function (req, res) {
     console.log("POSTrequest detail");
     const body = req.body;
     console.log(req.body);
@@ -115,7 +120,7 @@ app.post('/recep-details', jsonParser, async function (req, res) {
 }) ;
 
 // POST for updating check in query
-app.post('/recep-checkin', jsonParser, async function (req, res) {
+app.post('/reception/reception-checkin', jsonParser, async function (req, res) {
     console.log("POSTrequest checkin");
     const body = req.body;
     console.log(req.body);
@@ -124,26 +129,23 @@ app.post('/recep-checkin', jsonParser, async function (req, res) {
         let results;
         const pool = new pg.Pool(config);
         const client = await pool.connect();
-        const q = `update room set r_status = 'A' where r_no in (select r.r_no from room r, roombooking rb
-             where r.r_no = rb.r_no and rb.b_ref = ${bookRef}`;
+        const q = `update hotelbooking.room set r_status = 'O' where r_no in (select r.r_no from hotelbooking.room r, hotelbooking.roombooking rb
+             where r.r_no = rb.r_no and rb.b_ref = ${bookRef});`;
         await client.query(q, (err, results) => {
             if (err) {
                 console.log(err.stack);
                 errors = err.stack.split(" at ");
-                res.json({ message: 'Sorry something went wrong. ' + errors[0] });
+                res.json({ result: 'fail', message: 'Sorry something went wrong.checkin ' + errors[0] });
             } else {
                 client.release();
                 console.log(results);
-                // data = results.rows;
-                // res.json({ results: data });
+                res.json({  result: 'success', message: 'successfully updated' });
             }
         });
     } catch (e) {
         console.log(e);
     }
 }) ;
-
-
 
 
 // Listen to port 3000

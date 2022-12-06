@@ -9,99 +9,250 @@
     <script src="" defer></script>
 </head>
 <body>
+        <!-- nav -->
+        <div class="navigation">
+
+            <!-- nav container -->
+            <div class="container">
+    
+            <!-- nav logo -->
+            <div class="navigation__logo">
+                <img src="/img/Earlham_logo2-nav.png" alt="earlham-logo">
+            </div>
+            <!-- nav log -->
+    
+            <!-- colapssible navbar using checkbox hack -->
+            <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+            <label for="navi-toggle" class="navigation__button">
+                <span class="navigation__icon">&nbsp;</span>
+            </label>
+            
+            <!-- nav links. collapses in mobile view when clicked -->
+            <div class="navigation__collapse">
+                <div class="navigation__brand">
+                <h2>Earlharm Park Hotel</h2>
+                <span class="address"
+                    ><i class="fa-solid fa-location-dot"></i> Earlham Park, Norwich,
+                    NR47TQ</span
+                >
+                <span class="contact">
+                    <i class="fa-solid fa-phone"></i> + 44 74 0477 3175
+                </span>
+                </div>
+                <div class="navigation__links">
+                <ul>
+                    <li class="navigation__item">
+                    <a href="#" class="navigation__link">Home</a>
+                    </li>
+                    <li class="navigation__item">
+                    <a href="#" class="navigation__link">Booking Ref</a>
+                    </li>
+                    <li class="navigation__item">
+                    <a href="#" class="navigation__link">Facilities</a>
+                    </li>
+                    <li class="navigation__item">
+                    <a href="#" class="navigation__link">Attractions</a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+            <!-- nav links. -->
+    
+            </div>
+            <!-- nav container -->
+    
+        </div>
+        <!-- nav -->
+    
+        <!-- nav booking -->
+        <div class="check">
+    
+            <!-- nav booking container -->
+            <div class="container">
+            <p>Looking for a place to stay? Enter details to see available rooms</p>
+    
+            <!-- check details -->
+            <div class="check__details">
+    
+                <!-- nav check details form -->
+                <form class="check__details-form">
+    
+                <!-- check date -->
+                <div class="check__date">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <input
+                    type="text"
+                    placeholder="Check in"
+                    onfocus="(this.type='date')"
+                    onblur="(this.type='text')" />
+                    -
+                    <input
+                    type="text"
+                    placeholder="Check out"
+                    onfocus="(this.type='date')"
+                    onblur="(this.type='text')" />
+                </div>
+                <!-- check date -->
+    
+                <button type="submit" class="btn__check-submit">Search</button>
+                </form>
+                <!-- nav check details form -->
+    
+            </div>
+            <!-- check details -->
+    
+            </div>
+            <!-- nav booking container -->
+    
+        </div>
+        <!-- nav booking -->
+    
     <!-- <p>This is "my booking" page for customers</p> -->
-    <div>
-        <header>
-           <!--please copy from index.html -->
-        </header>
-        <main>
-            <section class="mybook">
-                <h1></h1>
-                <h2>Booking details</h2>
-                <p class="mybook-indication"></p>
-                <article class="mybook">
-                    <div class="mybook-contents details">
-                        <table class="search-results">
-                            <p>Basic information</p>
-                            <tr>
-                                <th>Booking ref no</th>
-                                <th>Check In date</th>
-                                <th>Check Out date</th>
+    <main>
+        <section class="mybook">
+            <h1></h1>
+            <h2>Booking details</h2>
+            <p class="mybook-indication"></p>
+            <article class="mybook">
+                <div class="mybook-contents details">
+                    <table class="search-results">
+                        <p>Basic information</p>
+                        <tr>
+                            <th>Booking ref no</th>
+                            <th>Check In date</th>
+                            <th>Check Out date</th>
 
-                            </tr>
-                            <tr>
-                                <td id="booking-ref"></td>
-                                <td id="check-in"></td>
-                                <td id="check-out"></td>
-                            </tr>
-                        </table>
-                        <table class="search-results">
-                            <p>Room information</p>
-                            <tr>
-                                <th>Room no</th>
-                                <th>Room type</th>
-                                <!-- <th>Room status</th> -->
-                                <th>Notes</th>
-                            </tr>
-                            <tr>
-                                <td id="room-no"></td>
-                                <td id="room-type"></td>
-                                <!-- <td id="room-status"></td> -->
-                                <td id="room-notes"></td>
-                            </tr>
-                        </table>
-                        <table class="search-results">
-                            <p>Customer information</p>
-                            <tr>
-                                <th>Customer no</th>
-                                <th>Customer name</th>
-                                <!-- <th>Email address</th>
-                                <th>Address</th> -->
-                            </tr>
-                            <tr>
-                                <td id="customer-no"></td>
-                                <td id="customer-name"></td>
-                                <!-- <td id="email-address"></td>
-                                <td id="address"></td> -->
-                            </tr>
-                        </table>
-                        <table class="search-results">
-                            <p>Payment information</p>
-                            <tr>
-                                <th>Cost</th>
-                                <th>Outstanding</th>
-                            </tr>
-                            <tr>
-                                <td id="cost"></td>
-                                <td id="outstanding"></td>
-                            </tr>
-                        </table>
-                        <div>
-                            <p id="booking-notes">Notes</p>
-                            <p class="booking-notes"></p>
-                        </div>
-
-                        <form action="">
-                            <div class="btn-grid">
-                                <label>
-                                    <a href="5-1my-bookings.html" class="recep-btn">Back</a>
-                                </label>
-                                <label>
-                                    <p class="recep-form-p-submit">
-                                        <input type="submit" value="Change Booking">
-                                    </p>
-                                </label>
-                                <!-- <label>
-                                    <p class="recep-form-p-submit">
-                                        <input type="submit" value="Payment & Check Out">
-                                    </p>
-                                </label> -->
-                            </div>
-                        </form>
+                        </tr>
+                        <tr>
+                            <td id="booking-ref"></td>
+                            <td id="check-in"></td>
+                            <td id="check-out"></td>
+                        </tr>
+                    </table>
+                    <table class="search-results">
+                        <p>Room information</p>
+                        <tr>
+                            <th>Room no</th>
+                            <th>Room type</th>
+                            <!-- <th>Room status</th> -->
+                            <th>Notes</th>
+                        </tr>
+                        <tr>
+                            <td id="room-no"></td>
+                            <td id="room-type"></td>
+                            <!-- <td id="room-status"></td> -->
+                            <td id="room-notes"></td>
+                        </tr>
+                    </table>
+                    <table class="search-results">
+                        <p>Customer information</p>
+                        <tr>
+                            <th>Customer no</th>
+                            <th>Customer name</th>
+                            <!-- <th>Email address</th>
+                            <th>Address</th> -->
+                        </tr>
+                        <tr>
+                            <td id="customer-no"></td>
+                            <td id="customer-name"></td>
+                            <!-- <td id="email-address"></td>
+                            <td id="address"></td> -->
+                        </tr>
+                    </table>
+                    <table class="search-results">
+                        <p>Payment information</p>
+                        <tr>
+                            <th>Cost</th>
+                            <th>Outstanding</th>
+                        </tr>
+                        <tr>
+                            <td id="cost"></td>
+                            <td id="outstanding"></td>
+                        </tr>
+                    </table>
+                    <div>
+                        <p id="booking-notes">Notes</p>
+                        <p class="booking-notes"></p>
                     </div>
-                </article>
-            </section>
-        </main>
-    </div>
+
+                    <form action="">
+                        <div class="btn-grid">
+                            <label>
+                                <a href="5-1my-bookings.html" class="recep-btn">Back</a>
+                            </label>
+                            <label>
+                                <p class="recep-form-p-submit">
+                                    <input type="submit" value="Change Booking">
+                                </p>
+                            </label>
+                            <!-- <label>
+                                <p class="recep-form-p-submit">
+                                    <input type="submit" value="Payment & Check Out">
+                                </p>
+                            </label> -->
+                        </div>
+                    </form>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="footer">
+        <!-- footer left -->
+        <div class="footer__left footer__col">
+            <form action="#" id="contactus" class="footer__form">
+            <h4>Contact Us</h4>
+            <div class="footer__form-details">
+                <input type="text" name="name" id="" placeholder="Name" />
+                <input type="email" name="" id="" placeholder="Email" />
+            </div>
+            <textarea class="footer__form-message" name="message" id="message" placeholder="Message" cols="30" rows="10"></textarea>
+            </form>
+        </div>
+        <!-- footer left -->
+    
+        <!-- footer center -->
+        <div class="footer__center footer__col">
+            <div class="footer__center-top">
+            <p class="copyright">
+                &copy; 2022 Earlharm Park Hotel All Rights Reserved
+            </p>
+            <ul class="footer__links">
+                <li class="footer__link">About</li>
+                <li class="footer__link">Privacy</li>
+                <li class="footer__link">Cookies</li>
+                <li class="footer__link">Terms</li>
+                <li class="footer__link">Accessibility</li>
+            </ul>
+            </div>
+            <div class="footer__center-icons">
+            <i class="fa-brands fa-square-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-square-twitter"></i>
+            <i class="fa-brands fa-pinterest"></i>
+            </div>
+        </div>
+        <!-- footer center -->
+    
+        <!-- footer right -->
+        <div class="footer__right footer__col">
+            <div class="mapouter">
+            <div class="gmap_canvas">
+                <iframe
+                width="600"
+                height="500"
+                id="gmap_canvas"
+                src="https://maps.google.com/maps?q=Earlham%20Park,%20Norwich&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0">
+                </iframe>
+                <a href="#">divi discount</a>
+                <br/>
+            </div>
+            </div>
+        </div>
+        <!-- footer right -->
+    </footer>
 </body>
 </html>
