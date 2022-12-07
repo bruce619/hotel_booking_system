@@ -11,7 +11,21 @@
     flex-direction: row;
     align-items: center;
     gap: 1rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    font-family: 'Oxygen', sans-serif;
   }
+/* 
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+  } */
   /* hide checkbox by default */
   .navigation__checkbox {
     display: none;

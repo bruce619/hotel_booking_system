@@ -14,10 +14,10 @@ const modalButton1 = document.getElementById("room1");
 const modalButton2 = document.getElementById("room2");
 const modalButton3 = document.getElementById("room3");
 const modalButton4 = document.getElementById("room4");
-// const modalButton5 = document.getElementById("btn5");
-// const modalButton6 = document.getElementById("btn6");
-// const modalButton7 = document.getElementById("btn7");
-// const modalButton8 = document.getElementById("btn8");
+const modalButton5 = document.getElementById("fac1");
+const modalButton6 = document.getElementById("fac2");
+const modalButton7 = document.getElementById("fac3");
+const modalButton8 = document.getElementById("fac4");
 
 const modals = document.querySelectorAll(".modal");
 const modalCloseButtons = document.querySelectorAll(".modal-close");
@@ -27,10 +27,10 @@ modalButton1.addEventListener("click", event => toggleModal("modal1"));
 modalButton2.addEventListener("click", event => toggleModal("modal2"));
 modalButton3.addEventListener("click", event => toggleModal("modal3"));
 modalButton4.addEventListener("click", event => toggleModal("modal4"));
-// modalButton5.addEventListener("click", event => toggleModal("modal5"));
-// modalButton6.addEventListener("click", event => toggleModal("modal6"));
-// modalButton7.addEventListener("click", event => toggleModal("modal7"));
-// modalButton8.addEventListener("click", event => toggleModal("modal8"));
+modalButton5.addEventListener("click", event => toggleModal("modal5"));
+modalButton6.addEventListener("click", event => toggleModal("modal7"));
+modalButton7.addEventListener("click", event => toggleModal("modal6"));
+modalButton8.addEventListener("click", event => toggleModal("modal8"));
 
 
 

@@ -5,13 +5,13 @@
   padding: 0;
   box-sizing: border-box;
 }
-body {
+body .modal {
   font-family: 'Montserrat', sans-serif;
   background-color: #eee;
   color: #111;
   height: 200vh;
 }
-button {
+.modalbutton {
   margin: 0.75rem;
   padding: 0.25rem;
   cursor: pointer;
@@ -90,6 +90,9 @@ button {
   color: rgba(0,0,0,0.5);
 }
 
+.modal {
+  font-family: 'Oxygen', sans-serif;
+}
 
 @keyframes fadeIn {
   0% {
