@@ -4,9 +4,8 @@
 <html lang="en-GB">
   <head>
     <!-- <title>Earlham Park Hotel</title> -->
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/navbar.css">
-    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <script src="/js/today.js" defer></script> -->
     <script src="/js/slideshow.js" defer></script>
@@ -18,107 +17,109 @@
     <script src="https://kit.fontawesome.com/62765ee528.js" crossorigin="anonymous"></script>
   </head>
   <body>
-         <!-- nav -->
-    <div class="navigation">
+<!-- nav -->
+<div class="navigation">
 
-      <!-- nav container -->
-      <div class="container">
+  <!-- nav container -->
+  <div class="container">
 
-        <!-- nav logo -->
-        <div class="navigation__logo">
-          <img src="img/EP_logo.png">
-        </div>
-        <!-- nav log -->
+    <!-- nav logo -->
+    <div class="navigation__logo"></div>
+    <!-- <img src="img/EP_logo.png" -->
+    <!-- nav log -->
 
-        <!-- colapssible navbar using checkbox hack -->
-        <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
-        <label for="navi-toggle" class="navigation__button">
-          <span class="navigation__icon">&nbsp;</span>
-        </label>
-        
-        <!-- nav links. collapses in mobile view when clicked -->
-        <div class="navigation__collapse">
-          <div class="navigation__brand">
-            <h2>Earlharm Park Hotel</h2>
-            <span class="address"
-              ><i class="fa-solid fa-location-dot"></i> Earlham Park, Norwich,
-              NR47TQ</span
-            >
-            <span class="contact">
-              <i class="fa-solid fa-phone"></i> + 44 74 0477 3175
-            </span>
-          </div>
-          <div class="navigation__links">
-            <ul>
-              <li class="navigation__item">
-                <a id="homenav" href="#" class="navigation__link">Home</a>
-              </li>
-              <li class="navigation__item">
-                <a href="#" class="navigation__link">Booking Ref</a>
-              </li>
-              <li class="navigation__item">
-                <a href="#" class="navigation__link">Facilities</a>
-              </li>
-              <li class="navigation__item">
-                <a href="#" class="navigation__link">Attractions</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- nav links. -->
-
+    <!-- colapssible navbar using checkbox hack -->
+    <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+    <label for="navi-toggle" class="navigation__button">
+      <span class="navigation__icon">&nbsp;</span>
+    </label>
+    
+    <!-- nav links. collapses in mobile view when clicked -->
+    <div class="navigation__collapse">
+      <div class="navigation__brand">
+        <h2>Earlharm Park Hotel</h2>
+        <span class="address"
+          ><i class="fa-solid fa-location-dot"></i> Earlham Park, Norwich,
+          NR47TQ</span
+        >
+        <span class="contact">
+          <i class="fa-solid fa-phone"></i> + 44 74 0477 3175
+        </span>
       </div>
-      <!-- nav container -->
+      <div class="navigation__links">
+        <ul>
+          <li class="navigation__item">
+            <a href="#" class="navigation__link">Home</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#" class="navigation__link">Booking Ref</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#" class="navigation__link">Facilities</a>
+          </li>
+          <li class="navigation__item">
+            <a href="#" class="navigation__link">Attractions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- nav links. -->
+
+  </div>
+  <!-- nav container -->
+
+</div>
+<!-- nav -->
+
+<!-- nav booking -->
+<div class="check">
+
+  <!-- nav booking container -->
+  <div class="datepicker">
+    <p id="datepicker__text">Looking for a place to stay? Enter details to see available rooms</p>
+
+    <!-- check details -->
+    <div class="check__details">
+
+      <!-- nav check details form -->
+      <form class="check__details-form">
+
+        <!-- check date -->
+        <div class="check__date">
+          <i class="fa-solid fa-calendar-days"></i>
+          <input
+            type="text"
+            placeholder="Check in"
+            onfocus="(this.type='date')"
+            onblur="(this.type='text')" />
+          -
+          <input
+            type="text"
+            placeholder="Check out"
+            onfocus="(this.type='date')"
+            onblur="(this.type='text')" />
+        </div>
+        <!-- check date -->
+
+        <button type="submit" class="btn__check-submit">Search</button>
+      </form>
+      <!-- nav check details form -->
 
     </div>
-    <!-- nav -->
+    <!-- check details -->
 
-    <!-- nav booking -->
-    <div class="check">
+  </div>
+  <!-- nav booking container -->
 
-      <!-- nav booking container -->
-      <div class="container">
-        <p>Looking for a place to stay? Enter details to see available rooms</p>
+</div>
+<!-- nav booking -->
 
-        <!-- check details -->
-        <div class="check__details">
-
-          <!-- nav check details form -->
-          <form class="check__details-form">
-
-            <!-- check date -->
-            <div class="check__date">
-              <i class="fa-solid fa-calendar-days"></i>
-              <input
-                type="text"
-                placeholder="Check in"
-                onfocus="(this.type='date')"
-                onblur="(this.type='text')" />
-              -
-              <input
-                type="text"
-                placeholder="Check out"
-                onfocus="(this.type='date')"
-                onblur="(this.type='text')" />
-            </div>
-            <!-- check date -->
-
-            <button type="submit" class="btn__check-submit">Search</button>
-          </form>
-          <!-- nav check details form -->
-
-        </div>
-        <!-- check details -->
-
-      </div>
-      <!-- nav booking container -->
-
-    </div>
+      
+    <main>
       <div class="hero">
         <h2 id="hero_text">At Earlham Park Hotel every stay is an experience</h2>
       <img id="hero_img" src="img/index_hero.jpg">
       </div>
-    <main>
       <!-- Section for Room Types Slideshow -->
       <section> 
       <h3 class="SecTitle">Room Types</h3>

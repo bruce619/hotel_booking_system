@@ -1,7 +1,7 @@
 @import './navbar.css';
 @import './footer.css';
 
-@import './bookingReference.css';
+@import './bookingreference.css';
 @import './confirmation.css';
 @import './payment.css';
 
@@ -110,6 +110,10 @@ main {
   font-weight: 700;
 }
 .error {
+  color: red;
+}
+
+#error {
   color: red;
 }
 
