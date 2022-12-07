@@ -4,7 +4,7 @@ function onTextReady(text) {
     oldScript.remove();
 
     const script = document.createElement('script');
-    script.src ='/js/reception-details.js';
+    script.src ='/js/reception_details.js';
     script.setAttribute('defer', true);
     const head = document.querySelector('head');
     head.appendChild(script);
@@ -57,7 +57,7 @@ function onTextReady(text) {
         article.appendChild(div);
 
         const newform = document.createElement('form');
-        newform.action = '/recep-details'
+        newform.action = '/recep_details'
         newform.method = 'POST';
         newform.name = 'resultForm'
         newform.id = 'resultForm';

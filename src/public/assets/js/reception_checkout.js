@@ -61,7 +61,7 @@ function createOptions(data) {
 
 function processSubmit(e) {
     e.preventDefault();
-    const bookRef = document.getElementById('btnPayOut').value;
+    const bookRef = document.querySelector('#btnPayOut').value;
     // const bookRef = form.value;
     console.log(bookRef);
     const data = createData(bookRef);
@@ -69,10 +69,10 @@ function processSubmit(e) {
     const fetchOptions = createOptions(data);
     console.log(fetchOptions);
 
-    fetch('/reception/reception-checkout', fetchOptions)
+    fetch('/reception/checkout', fetchOptions)
     .then(onResponse)
     .then(onTextReady);
 }
 
-const formCheckOut = document.getElementById('checkOut');
+const formCheckOut = document.querySelector('#checkOut');
 formCheckOut.addEventListener('submit', processSubmit);

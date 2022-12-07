@@ -25,25 +25,29 @@ app.use('/js', express.static(__dirname + 'src/public/assets/js'))
 // img
 app.use('/img', express.static(__dirname + 'src/public/assets/img'))
 
-
 // use html templates
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/src/templates/index.html')
-})
-
-// booking page
-app.get('/booking/form', (req, res)=>{
-    res.sendFile(__dirname + '/src/templates/2-1booking-query-results.html')
-})
-
-// reception page
-app.get('/reception', (req, res) => {
-    res.sendFile(__dirname +'/src/templates/6-1reception.html', (err) => {
-        if (err){
-            console.log(err);
-        }
-    })
+app.get('/payment/form', (req, res) => {
+    res.sendFile(__dirname + '/src/templates/payment_form.html')
 });
+
+app.get('/payment/confirmation', (req, res) => {
+    res.sendFile(__dirname + '/src/templates/payment_confirmation.html')
+});
+
+app.get('/payment/confirmed', (req, res) => {
+    res.sendFile(__dirname + '/src/templates/payment_confirmed.html')
+});
+
+
+// my booking reference page
+app.get('/booking/reference', (req, res)=>{
+    res.sendFile(__dirname + '/src/templates/my_booking_ref.html')
+});
+
+// page shows the available rooms users can book from search
+app.get('/available/rooms', (req, res)=>{
+    res.sendFile(__dirname + '/src/templates/search_query_results.html')
+})
 
 // GET price data from database and reflect "booking-query-results.html" file
 app.get('/booking/form/price', jsonParser, async function (req, res) {
@@ -70,8 +74,8 @@ app.get('/booking/form/price', jsonParser, async function (req, res) {
     }
 }) ;
 
-// POST for booking query without room type requests
-app.post('/booking/form', jsonParser, async function (req, res) {
+// POST for search available room booking query without room type requests
+app.post('/available/rooms', jsonParser, async function (req, res) {
     console.log("POSTrequest booking");
     const body = req.body;
     console.log(req.body);
@@ -81,23 +85,20 @@ app.post('/booking/form', jsonParser, async function (req, res) {
         let results;
         const pool = new pg.Pool(config);
         const client = await pool.connect();
+            //--modified
         const q = `select r.r_class, count(*)
-                    from hotelbooking.room r left join
-                        (select rb.r_no, r.r_class, rb.checkin, rb.checkout
-                        from hotelbooking.roombooking rb, hotelbooking.room r
-                        where rb.r_no = r.r_no
-                            and('${checkInDate}' between rb.checkin and rb.checkout 
-                            or '${checkOutDate}' between rb.checkin and rb.checkout)
-                        )as rq
-                        on r.r_no = rq.r_no 
-                    where rq.checkin is null
-                    group by r.r_class
-                    order by r.r_class;`;
+                    from hotelbooking.room r
+                    where r.r_no in(
+                        select DISTINCT(rb.r_no)
+                        from hotelbooking.roombooking rb
+                        where('${checkInDate}' < rb.checkout and '${checkOutDate}' < rb.checkin) )
+                    group by r.r_class`;
+            //modified--
         await client.query(q, (err, results) => {
             if (err) {
                 console.log(err.stack);
                 errors = err.stack.split(" at ");
-                res.json({ result: 'fail', message: 'Sorry something went wrong.checkout ' + errors[0] });
+                res.json({ result: 'fail', message: 'Sorry something went wrong.search ' + errors[0] });
             } else {
                 client.release();
                 console.log(results);
@@ -110,7 +111,16 @@ app.post('/booking/form', jsonParser, async function (req, res) {
     }
 }) ;
 
-// POST for Reception query 
+// reception page--
+app.get('/reception', (req, res) => {
+    res.sendFile(__dirname +'/src/templates/reception.html', (err) => {
+        if (err){
+            console.log(err);
+        }
+    })
+});
+
+// POST for Reception query--
 app.post('/reception', jsonParser, async function (req, res) {
         console.log("POSTrequest");
         const body = req.body;
@@ -151,8 +161,8 @@ app.post('/reception', jsonParser, async function (req, res) {
         }
     }) ;
 
-// POST for Reception-details query
-app.post('/reception/recep-details', jsonParser, async function (req, res) {
+// POST for Reception-details query--
+app.post('/reception/details', jsonParser, async function (req, res) {
     console.log("POSTrequest detail");
     const body = req.body;
     console.log(req.body);
@@ -182,8 +192,8 @@ app.post('/reception/recep-details', jsonParser, async function (req, res) {
     }
 }) ;
 
-// POST for Reception updating room status to 'O'(Occupied = check-in)
-app.post('/reception/reception-checkin', jsonParser, async function (req, res) {
+// POST for Reception updating room status to 'O'(Occupied = check-in)--
+app.post('/reception/checkin', jsonParser, async function (req, res) {
     console.log("POSTrequest checkin");
     const body = req.body;
     console.log(req.body);
@@ -210,8 +220,8 @@ app.post('/reception/reception-checkin', jsonParser, async function (req, res) {
     }
 }) ;
 
-// POST for Reception updating room status to "C"(check-out) and outstanding value to "zero"
-app.post('/reception/reception-checkout', jsonParser, async function (req, res) {
+// POST for Reception updating room status to "C"(check-out) and outstanding value to "zero"--
+app.post('/reception/checkout', jsonParser, async function (req, res) {
     console.log("POSTrequest checkout");
     const body = req.body;
     console.log(req.body);
@@ -239,9 +249,38 @@ app.post('/reception/reception-checkout', jsonParser, async function (req, res) 
     }
 }) ;
 
-
-
-
+// POST for my booking reference query--
+app.post('/booking/reference', jsonParser, async function (req, res) {
+    console.log("POSTrequest my booking reference");
+    const body = req.body;
+    console.log(req.body);
+    const bookRef = body.bookRef;
+    try {
+        let results;
+        const pool = new pg.Pool(config);
+        const client = await pool.connect();
+        let q;
+        console.log(bookRef)
+        q = `select b.b_ref, rb.checkin, rb.checkout, rb.r_no, r.r_class, r.r_status, r.r_notes, 
+             cu.c_no, cu.c_name, cu.c_email, cu.c_address,  b.b_cost, b.b_outstanding, b.b_notes
+             from hotelbooking.booking b, hotelbooking.customer cu, hotelbooking.roombooking rb, hotelbooking.room r
+             where b.c_no = cu.c_no and b.b_ref = rb.b_ref and rb.r_no = r.r_no and b.b_ref = ${bookRef};`;
+        await client.query(q, (err, results) => {
+            if (err) {
+                console.log(err.stack);
+                errors = err.stack.split(" at ");
+                res.json({ message: 'Sorry something went wrong. ' + errors[0] });
+            } else {
+                client.release();
+                console.log(results);
+                data = results.rows;
+                res.json({ results: data });
+            }
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}) ;
 
 // Listen to port 3000
 app.listen(port, () => console.info(`hotel booking app listening on port ${port}`))

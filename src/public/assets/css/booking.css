@@ -1,9 +1,4 @@
 /* for all pages */
-html{
-    font-size: 14px;
-    font-family: sans-serif;
-    background-color: oldlace;
-}
 
 *{
     box-sizing: border-box;
@@ -64,6 +59,16 @@ article h3 {
     border: none;
     border-radius: 30px;
     background-color: #339933;
+}
+
+.notavailable {
+    text-align: center;
+    margin: 5px 10px;
+    padding: 5px 10px;
+    width: fit-content;
+    border: none;
+    border-radius: 30px;
+    background-color: indianred;
 }
 
 /* font-family referenced to https://www.cssfontstack.com/Lucida-Sans-Typewriter */
@@ -184,7 +189,7 @@ input[type="submit"] {
 }
 
 .recep-form, .mybook-form {
-    margin: 0 auto 20px auto;
+    margin: 20px auto;
 }
 
 .recep-form-p input, .mybook-form-p input{
@@ -196,7 +201,7 @@ input[type="submit"] {
 }
 
 .recep-form-p-submit, .mybook-form-p-submit{
-    margin: auto;
+    margin: 20px auto;
     width: fit-content;
 }
 
@@ -209,6 +214,12 @@ input[type="submit"] {
 
 .search-results {
     border-collapse: collapse;
+    margin-top: 5px;
+}
+
+.recep-form-p-submit-v2 {
+    margin: 0 auto 20px auto;
+    width: fit-content;
 }
 
 .search-results th, .search-results td {
@@ -223,7 +234,7 @@ text-align: center;
     margin: 20px 0 0 0;
 }
 
-.recep-btn {
+.recep-btn, .mybooking-btn{
     display: block;
     text-align: center;
     padding: 10px;
@@ -260,6 +271,12 @@ text-align: center;
     margin-top: 0;
 }
 
+.recep-btn-submit {
+    border: none;
+    border-radius: 30px;
+    background-color: goldenrod;
+}
+
 /* for reception-update-success page */
 .update p, .update a{
     margin: 20px auto 0 auto;
@@ -270,6 +287,11 @@ text-align: center;
     font-size: larger;
     font-weight: bold;
 }
+
+.detail-btn {
+    background-color: goldenrod;
+}
+
 
 /* for reception-update-fail page */
 .fail p {
@@ -285,3 +307,5 @@ text-align: center;
     font-weight: bold;
     text-align: center;
 }
+
+

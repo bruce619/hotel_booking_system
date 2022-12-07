@@ -61,7 +61,7 @@ function createOptions(data) {
 
 function processSubmit(e) {
     e.preventDefault();
-    const bookRef = document.getElementById('btnCheckin').value;
+    const bookRef = document.querySelector('#btnCheckin').value;
     // const bookRef = form.value;
     console.log(bookRef);
     const data = createData(bookRef);
@@ -69,10 +69,10 @@ function processSubmit(e) {
     const fetchOptions = createOptions(data);
     console.log(fetchOptions);
 
-    fetch('/reception/reception-checkin', fetchOptions)
+    fetch('/reception/checkin', fetchOptions)
     .then(onResponse)
     .then(onTextReady);
 }
 
-const formCheckIn = document.getElementById('checkIn');
+const formCheckIn = document.querySelector('#checkIn');
 formCheckIn.addEventListener('submit', processSubmit);

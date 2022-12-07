@@ -4,19 +4,20 @@ function onTextReady(text) {
     const oldScript = document.querySelector('script');
     oldScript.remove();
 
-    //add script of "reception-checkin.js"
+    //add script of "reception_checkin.js"
     const scriptCheckin = document.createElement('script');
-    scriptCheckin.src ='/js/reception-checkin.js';
+    scriptCheckin.src ='/js/reception_checkin.js';
     scriptCheckin.setAttribute('defer', true);
     const head = document.querySelector('head');
     head.appendChild(scriptCheckin);
 
-    //add script of "reception-checkout.js"
+    //add script of "reception_checkout.js"
     const scriptCheckout = document.createElement('script');
-    scriptCheckout.src ='/js/reception-checkout.js';
+    scriptCheckout.src ='/js/reception_checkout.js';
     scriptCheckout.setAttribute('defer', true);
     head.appendChild(scriptCheckout);
 
+    //arrange response data
     const detailObject = JSON.parse(text);
     console.log(detailObject);
     const results = detailObject.results;
@@ -233,7 +234,7 @@ function onTextReady(text) {
 
     /// button to update checkin
     const formIn = document.createElement('form');
-    formIn.action = '/reception-checkin';
+    formIn.action = '/checkin';
     formIn.method = 'POST';
     formIn.name = 'checkIn';
     formIn.id = 'checkIn';
@@ -252,7 +253,7 @@ function onTextReady(text) {
 
     /// button to update payment&checkout
     const formOut = document.createElement('form');
-    formOut.action = '/reception-checkout';
+    formOut.action = '/checkout';
     formOut.method = 'POST';
     formOut.name = 'checkOut';
     formOut.id = 'checkOut';
@@ -306,7 +307,7 @@ function processSubmit(e) {
     const fetchOptions = createOptions(data);
     console.log(fetchOptions);
 
-    fetch('/reception/recep-details', fetchOptions)
+    fetch('/reception/details', fetchOptions)
     .then(onResponse)
     .then(onTextReady);
 }

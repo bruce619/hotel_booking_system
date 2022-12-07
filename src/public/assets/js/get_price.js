@@ -1,7 +1,16 @@
-// get price data from database and reflect "booking-query-results.html" file
+// get price data from database and reflect "search_query_results.html" file
 
 function onTextReady(text) {
     console.log(text);
+
+    const oldScript = document.querySelector('script');
+    oldScript.remove();
+
+    const script = document.createElement('script');
+    script.src ='/js/booking_query.js';
+    script.setAttribute('defer', true);
+    const head = document.querySelector('head');
+    head.appendChild(script);
 
     // convert response from JSON text to Object 
     const priceObject = JSON.parse(text);
