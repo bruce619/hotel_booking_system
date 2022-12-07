@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Earlham Park Hotel - Payment Form</title>
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <script src="https://kit.fontawesome.com/62765ee528.js" crossorigin="anonymous"></script>
-    <title>Earlham Park Hotel - Payment Form</title>
+    <script src="/js/get_price.js" defer></script>
+    <script src="/js/payment_form.js" defer></script>
   </head>
   <body>
 
@@ -17,7 +19,9 @@
       <div class="container">
 
         <!-- nav logo -->
-        <div class="navigation__logo"></div>
+        <div class="navigation__logo">
+          <img src="/img/Earlham_logo2-nav.png" alt="earlham-logo">
+        </div>
         <!-- nav log -->
 
         <!-- colapssible navbar using checkbox hack -->
@@ -35,7 +39,7 @@
               NR47TQ</span
             >
             <span class="contact">
-              <i class="fa-solid fa-phone"></i> + 44 74 0477 3175
+              <i class="fa-solid fa-phone"></i> + 44 74 0477 3200
             </span>
           </div>
           <div class="navigation__links">
@@ -80,16 +84,16 @@
             <div class="check__date">
               <i class="fa-solid fa-calendar-days"></i>
               <input
-                type="text"
-                placeholder="Check in"
-                onfocus="(this.type='date')"
-                onblur="(this.type='text')" />
+              type="text"
+              placeholder="Check in"
+              onfocus="(this.type='date')"
+              onblur="(this.type='text')" />
               -
               <input
-                type="text"
-                placeholder="Check out"
-                onfocus="(this.type='date')"
-                onblur="(this.type='text')" />
+              type="text"
+              placeholder="Check out"
+              onfocus="(this.type='date')"
+              onblur="(this.type='text')" />
             </div>
             <!-- check date -->
 
@@ -117,7 +121,7 @@
 
           <!-- form title -->
           <div class="title">
-            <p><i class="fa-solid fa-credit-card"></i> Payment form</p>
+            <p><i class="fa-solid fa-credit-card"></i>Payment form</p>
           </div>
           <!-- form title -->
 
@@ -126,26 +130,21 @@
 
             <!-- name -->
             <div class="form__group">
-              <input
-                type="text"
-                class="form__input"
-                id="name"
-                name="name"
-                placeholder="Name" />
+              <input type="text" class="form__input" id="name" name="name" placeholder="Name" required/>
               <label for="name" class="form__label">Name</label>
             </div>
             <!-- name -->
 
             <!-- email -->
             <div class="form__group">
-              <input type="email" class="form__input" id="email" name="email" placeholder="Email" />
+              <input type="email" class="form__input" id="email" name="email" placeholder="Email" required/>
               <label for="email" class="form__label">Email</label>
             </div>
             <!-- email -->
 
             <!-- card type -->
             <div class="form__group select-style">
-              <select class="form__input" name="card-type" id="">
+              <select class="form__input" name="card-type" id="card-type" required>
                 <option class="" value="" disabled selected>
                   Select your card type
                 </option>
@@ -158,21 +157,29 @@
 
             <!-- card number -->
             <div class="form__group">
-              <input type="number" class="form__input" id="card-number" name="card-number" placeholder="XXXX XXXX XXXX XXXX"/>
-              <label for="name" class="form__label">Card number</label>
+              <input 
+              type="text" 
+              class="form__input" 
+              maxlength="19"
+              pattern="[0-9]+"
+              id="card-number" 
+              name="card-number" 
+              placeholder="XXXX XXXX XXXX XXXX"
+              required/>
+              <label for="card-number" class="form__label">Card number</label>
             </div>
             <!-- card number -->
 
-            <!-- cvc -->
+            <!-- expiry -->
             <div class="form__group">
-              <input type="date" class="form__input" id="expiry" name="expiry" onfocus="(this.type='month')" onblur="(this.type='text')" placeholder="MM/YYYY"/>
-              <label for="card-numbe" class="form__label">Expiry Date</label>
+              <input type="text" class="form__input" maxlength="5" id="expiry" name="expiry" placeholder="MM/YY" required/>
+              <label for="expiry" class="form__label">Card Exp</label>
             </div>
-            <!-- cvc -->
+            <!-- expiry -->
 
             <!-- button -->
             <div class="form__buttons">
-              <button type="submit" class="btn btn__form-submit">Next</button>
+              <button type="submit" id="next" class="btn btn__form-submit">Next</button>
             </div>
             <!-- button -->
             

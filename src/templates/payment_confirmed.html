@@ -5,9 +5,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Earlham Park Hotel - Payment Confirmed</title>
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <script src="https://kit.fontawesome.com/62765ee528.js" crossorigin="anonymous"></script>
-    <title>Earlham Park Hotel - Payment Confirmed</title>
+    <script src="/js/get_price.js" defer></script>
   </head>
   <!-- header -->
 
@@ -21,7 +22,9 @@
       <div class="container">
 
         <!-- nav logo -->
-        <div class="navigation__logo"></div>
+        <div class="navigation__logo">
+          <img src="/img/Earlham_logo2-nav.png" alt="earlham-logo">
+        </div>
         <!-- nav log -->
 
         <!-- colapssible navbar using checkbox hack -->
@@ -39,7 +42,7 @@
               NR47TQ</span
             >
             <span class="contact">
-              <i class="fa-solid fa-phone"></i> + 44 74 0477 3175
+              <i class="fa-solid fa-phone"></i> + 44 74 0477 3200
             </span>
           </div>
           <div class="navigation__links">
@@ -178,31 +181,16 @@
             <div class="payment__info">
               <p><i class="fa-solid fa-credit-card"></i> Payment information</p>
               <div class="form__group">
-                <input
-                  class="form__input"
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Name" />
+                <input class="form__input" type="text" name="name" id="name" placeholder="Name" />
               </div>
               <div class="form__group">
-                <input
-                  class="form__input"
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Email" />
+                <input class="form__input" type="email" name="email" id="email" placeholder="Email" />
               </div>
               <div class="form__group">
-                <input
-                  class="form__input"
-                  type="text"
-                  name="address"
-                  id="address"
-                  placeholder="Address" />
+                <input class="form__input" type="text" name="address" id="address" placeholder="Address" />
               </div>
               <div class="form__group">
-                <select class="form__input" name="" id="">
+                <select class="form__input" name="card-type" id="card-type">
                   <option class="" value="" disabled selected>
                     Select your card type
                   </option>
@@ -212,27 +200,21 @@
                 </select>
               </div>
               <div class="form__group">
-                <input
-                  class="form__input"
-                  type="number"
-                  name="card-number"
-                  id="card-number"
-                  placeholder="Card number" />
+                <input 
+                class="form__input"
+                maxlength="19" 
+                type="number" 
+                name="card-number" 
+                id="card-number" 
+                placeholder="Card number" 
+                />
               </div>
               <div class="form__group">
-                <input
-                  class="form__input"
-                  type="text"
-                  name="date"
-                  id="date"
-                  onfocus="(this.type='month')"
-                  onblur="(this.type='text')"
-                  placeholder="MM/YYYY" />
+                <input class="form__input" type="text" name="date" id="date" placeholder="MM/YYYY" />
               </div>
             </div>
             <p class="note">
-              <i class="fa-solid fa-circle-info"></i> Note: Payment will be
-              taken when you check out
+              <i class="fa-solid fa-circle-info"></i> Note: Payment will be taken when you check out
             </p>
 
           </form>

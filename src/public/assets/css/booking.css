@@ -1,0 +1,301 @@
+/* for all pages */
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0 0 0 0;
+}
+
+img{
+    max-width: 100%;
+}
+
+/* for all pages - main */
+main{
+    /* Fixed in the centre left and right */
+    max-width: 1000px;
+    margin: 0 auto 0 auto;
+}
+
+/* for indivisual page */
+    /* for booking-query-results page */
+section{
+    margin: 10px;
+    padding: 2%;
+    background-color: linen; 
+    border: 1.5px solid gray;
+}
+
+article {
+    margin: 10px;
+    padding:5px;
+    background-color: PapayaWhip;
+    border: 1.5px solid grey;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+article h3 {
+    margin: 2px 0 0 0;
+    text-decoration: underline;
+}
+
+.unavailable {
+    background-color: linen;
+    border: none;
+    color: firebrick;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.available {
+    text-align: center;
+    margin: 5px 10px;
+    padding: 5px 10px;
+    width: fit-content;
+    border: none;
+    border-radius: 30px;
+    background-color: #339933;
+}
+
+/* font-family referenced to https://www.cssfontstack.com/Lucida-Sans-Typewriter */
+.roomtype {
+    margin: 5px 10px;
+    font-family: Lucida Sans Typewriter
+}
+
+.contents{
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+article img {
+    width: 50%;
+    max-height: 150px;
+}
+
+/* referenced to https://developer.mozilla.org/ja/docs/Web/CSS/object-fit */
+.cover {
+    object-fit: cover;
+}
+
+/* >>grid layout */
+.room-detail-child{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-left: 20px;
+    font-size: smaller;
+}
+
+.capacity{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.price{
+    grid-column: 2 / 3;
+    grid-row:  1 / 2;
+}
+
+.facility1{
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+}
+
+.facility2{
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+
+.facility3{
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+/* grid layout << */
+
+.room-detail ul{
+    margin: 8px;
+    padding: 0;
+    list-style-type: none;
+}
+.facility{
+    margin: 0 auto;
+}
+
+.room-number-flexbox {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.room-number-1 {
+    text-align: center;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 3px;
+} 
+
+.room-number-2 {
+    text-align: center;
+    padding: 3px;
+    width: fit-content;
+    border:solid 1px deepskyblue;
+    border-radius: 30px;
+    background-color: lightgray;
+}
+
+.room-number-3 {
+    text-align: center;
+    width: 40px;
+    border: none;
+    background-color: lightgray;
+}
+
+.submit {
+    text-align: center;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    width: fit-content;
+    border: none;
+    border-radius: 30px;
+    background-color: goldenrod;
+}
+
+/* for reception page *//* for "my booking" page */
+.recep h1, .recep h2, .mybook h2 {
+    text-align: center;
+}
+
+.recep-indication, .mybook-indication {
+    text-align: center;
+}
+
+.recep-form, .mybook-form {
+    margin: 20px auto;
+}
+
+.recep-form-p input, .mybook-form-p input{
+    padding: 5px;
+    max-width: 200px;
+    min-height: 30px;
+    border-radius: 5px;
+    border: solid 1px cornflowerblue;
+}
+
+.recep-form-p-submit, .mybook-form-p-submit{
+    margin: 20px auto;
+    width: fit-content;
+}
+
+/* for reception-result page */ /* for "mybookings"-details page */ 
+    /* for search result table */
+.recep-contents, .mybook-contents {
+    width: fit-content;
+    margin: 20px auto;
+}
+
+.search-results {
+    border-collapse: collapse;
+    margin-top: 5px;
+}
+
+.recep-form-p-submit-v2 {
+    margin: 0 auto 20px auto;
+    width: fit-content;
+}
+
+.search-results th, .search-results td {
+border: 1.5px solid grey;
+padding: 5px;
+text-align: center;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 20px 0 0 0;
+}
+
+.recep-btn {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    width: fit-content;
+    border: none;
+    border-radius: 30px;
+    background-color: lightgray;
+}
+
+/* for reception-result page - nodata */
+.recep-nodata p, .recep-nodata a{
+    margin: 20px auto 0 auto;
+}
+
+.recep-nodata p {
+    color: firebrick;
+    font-size: larger;
+    font-weight: bold;
+}
+
+/* for reception-details page */
+.details p {
+    margin-bottom: 5px;
+}
+
+.details th, .details td {
+    width: 130px;
+    height: 30px;
+}
+
+.booking-notes {
+    border: solid 1.5px gray;
+    min-height: 30px;
+    margin-top: 0;
+}
+
+.recep-btn-submit {
+    border: none;
+    border-radius: 30px;
+    background-color: goldenrod;
+}
+
+/* for reception-update-success page */
+.update p, .update a{
+    margin: 20px auto 0 auto;
+
+}
+
+.update p {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.detail-btn {
+    background-color: goldenrod;
+}
+
+
+/* for reception-update-fail page */
+.fail p {
+    color: firebrick;
+}
+
+
+ /* for "mybookings" unavailable page */ 
+.mybook-unavailable {
+    border: none;
+    color: firebrick;
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+}
+
+

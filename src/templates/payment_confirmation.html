@@ -5,9 +5,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Earlham Park Hotel - Payment Confirmation</title>
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <script src="https://kit.fontawesome.com/62765ee528.js" crossorigin="anonymous"></script>
-    <title>Earlham Park Hotel - Payment Confirmation</title>
+    <script src="/js/get_price.js" defer></script>
   </head>
   <!-- header -->
 
@@ -21,7 +22,9 @@
       <div class="container">
 
         <!-- nav logo -->
-        <div class="navigation__logo"></div>
+        <div class="navigation__logo">
+          <img src="/img/Earlham_logo2-nav.png" alt="earlham-logo">
+        </div>
         <!-- nav log -->
 
         <!-- colapssible navbar using checkbox hack -->
@@ -39,7 +42,7 @@
               NR47TQ</span
             >
             <span class="contact">
-              <i class="fa-solid fa-phone"></i> + 44 74 0477 3175
+              <i class="fa-solid fa-phone"></i> + 44 74 0477 3200
             </span>
           </div>
           <div class="navigation__links">
@@ -87,7 +90,7 @@
                 type="text"
                 placeholder="Check in"
                 onfocus="(this.type='date')"
-                onblur="(this.type='text')" />
+                onblur="(this.type='text')"/>
               -
               <input
                 type="text"
@@ -176,7 +179,7 @@
                 <input class="form__input" type="text" name="address" id="address" placeholder="Address" />
               </div>
               <div class="form__group">
-                <select class="form__input" name="" id="">
+                <select class="form__input" name="card-type" id="card-type">
                   <option class="" value="" disabled selected>
                     Select your card type
                   </option>
@@ -186,27 +189,30 @@
                 </select>
               </div>
               <div class="form__group">
-                <input class="form__input" type="number" name="card-number" id="card-number" placeholder="XXXX XXXX XXXX XXXX"/>
+                <input 
+                class="form__input" 
+                maxlength="19"
+                type="number" 
+                name="card-number" 
+                id="card-number" 
+                placeholder="XXXX XXXX XXXX XXXX"
+                />
               </div>
               <div class="form__group">
-                <input
-                  class="form__input"
-                  type="text"
-                  name="expiry"
-                  id="expiry"
-                  onfocus="(this.type='month')"
-                  onblur="(this.type='text')"
-                  placeholder="MM/YYYY"/>
+                <input class="form__input" type="text" name="expiry" id="expiry" placeholder="MM/YYYY"/>
               </div>
             </div>
             <p class="note">
-              <i class="fa-solid fa-circle-info"></i> Note: Payment will be
-              taken when you check out
+              <i class="fa-solid fa-circle-info"></i> Note: Payment will be taken when you check out
             </p>
+
+            <!-- book or go back -->
             <div class="form__buttons">
               <button type="reset" class="btn btn__form-back">Back</button>
               <button type="submit" class="btn btn__form-submit">Book</button>
             </div>
+            <!-- book or go back -->
+
           </form>
           <!-- booking form -->
 
