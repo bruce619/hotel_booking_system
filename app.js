@@ -18,5 +18,9 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/src/templates/index.html')
 })
 
+app.get('/modal', (req, res) => {
+    res.sendFile(__dirname + '/src/templates/modal.html')
+})
+
 // Listen to port 3000
 app.listen(port, () => console.info(`hotel booking app listening on port ${port}`))
