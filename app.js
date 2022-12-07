@@ -22,5 +22,17 @@ app.get('/modal', (req, res) => {
     res.sendFile(__dirname + '/src/templates/modal.html')
 })
 
+app.get('/payment/form', (req, res) => {
+    res.sendFile(__dirname + '/src/templates/payment_form.html')
+})
+
+app.get('/payment/confirmation', (req, res) => {
+    res.sendFile(__dirname + '/src/templates/payment_confirmation.html')
+})
+
+app.get('/payment/confirmed', (req, res) => {
+    res.sendFile(__dirname + '/src/templates/payment_confirmed.html')
+})
+
 // Listen to port 3000
 app.listen(port, () => console.info(`hotel booking app listening on port ${port}`))

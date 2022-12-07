@@ -1,0 +1,79 @@
+.confirmation .booking__reference {
+  width: 80%;
+  margin: 3rem auto;
+}
+.confirmation .booking__reference p {
+  margin: 1rem 0;
+}
+.confirmation .booking__reference .icon {
+  margin-right: 1rem;
+}
+.confirmation .ref__number {
+  font-weight: 400;
+}
+.confirmation .form {
+  width: 80%;
+  margin: auto;
+}
+
+.confirmation .form__input {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  font-family: inherit;
+}
+.confirmation .form__input:focus {
+  border: none;
+  outline: none;
+}
+.confirmation .form__input:first-child {
+  width: 100%;
+}
+.confirmation .form__header {
+  margin: 1rem 0 1rem 5rem;
+  width: 15rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #000;
+  padding-bottom: 0.75rem;
+}
+
+.confirmation .form__group {
+  margin: 1rem 0 1rem 5rem;
+  width: 100%;
+  max-width: 40rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3rem;
+  border-bottom: 1px solid #000;
+  padding-bottom: 0.75rem;
+}
+
+.confirmation .form .selected__room-details {
+  margin-left: 5rem;
+}
+
+.confirmation .form .rooms {
+  margin-right: 3rem;
+}
+.confirmation .form .note {
+  margin: 1rem auto;
+  text-align: center;
+  color: #d19f08;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 480px) {
+  .confirmation .form {
+    width: 90%;
+  }
+  .confirmation .form__header {
+    margin: 1rem 0;
+  }
+  .confirmation .form__group {
+    margin: 1rem 0;
+  }
+  .confirmation .form .selected__room-details {
+    margin-left: 1rem;
+  }
+}
