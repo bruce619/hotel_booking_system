@@ -1,6 +1,6 @@
-* {
+/* * {
     box-sizing: border-box;
-}
+} */
 
 
 img {
@@ -55,7 +55,7 @@ main {
     background-color: rgba(201, 16, 16, 0.8);
 }
 
-.container {
+main .container {
     text-align: center;
     font-family: 'Oxygen', sans-serif;
     position: relative;
