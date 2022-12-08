@@ -8,23 +8,14 @@ function onTextReady(text) {
     let elements = results[i];
     // console.log(results);
     console.log(results.length);
-    /// convert roomtype data to appropriate name
-    let roomType;
-    if (`${elements.r_class}` === 'std_t') {
-        roomType = 'Standard Twin'
-    } else if (`${elements.r_class}` === 'std_d') {
-        roomType = 'Standard Double'
-    } else if (`${elements.r_class}` === 'sup_t') {
-        roomType = 'Superior Twin'
-    } else {
-        roomType = 'Superior Double'
-    }
 
     // change search page to results page
     document.querySelector('.mybook h2').textContent = "Booking details";
 
     // erase indication message
     document.querySelector('p.mybook-indication').textContent = "";
+
+
 
     // page for the case there is no matched data
     if(results.length === 0){
@@ -37,6 +28,18 @@ function onTextReady(text) {
         article.insertBefore(p, formMybookings);
         
     } else {
+
+    /// convert roomtype data to appropriate name
+    let roomType;
+    if (`${elements.r_class}` === 'std_t') {
+        roomType = 'Standard Twin'
+    } else if (`${elements.r_class}` === 'std_d') {
+        roomType = 'Standard Double'
+    } else if (`${elements.r_class}` === 'sup_t') {
+        roomType = 'Superior Twin'
+    } else {
+        roomType = 'Superior Double'
+    } 
 
     // remove search form
     const oldform = formMybookings;
@@ -107,6 +110,8 @@ function onTextReady(text) {
     const thRoomHead3 = document.createElement('th');
     trRoom1.appendChild(thRoomHead3);
     thRoomHead3.textContent = 'Notes';
+
+
 
     /// contents row
     for (let i = 0; i < results.length; i++){

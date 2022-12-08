@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/booking.css">
     <link rel="stylesheet" href="/css/styles.css">
     <script src="/js/mybookings.js" defer></script>
+    <!-- <script src="/js/booking_query.js" defer></script> -->
 </head>
 <body>
     <!-- nav -->
@@ -118,7 +119,7 @@
                 <form action="" method="POST" class="mybook-form" id="form">
                     <p class="mybook-form-p">
                         Booking Reference No. <br>
-                        <input type="text" inputmode="numeric" pattern="[0-9]{5}" placeholder="Reference number" name="booking-ref" id="booking-ref">
+                        <input type="text" inputmode="numeric" pattern="[0-9]{5}" placeholder="Reference number" name="booking-ref" id="booking-ref" required>
                     </p>
                     <label>
                         <p class="mybook-form-p-submit">
