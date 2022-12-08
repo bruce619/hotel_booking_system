@@ -28,9 +28,15 @@ app.use('/img', express.static(__dirname + '/src/public/assets/img'));
 
 
 // use html templates
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/src/templates/index.html')
+});
+
+
 app.get('/payment/form', (req, res) => {
     res.sendFile(__dirname + '/src/templates/payment_form.html')
 });
+
 
 app.get('/payment/confirmation', (req, res) => {
     res.sendFile(__dirname + '/src/templates/payment_confirmation.html')
@@ -51,9 +57,9 @@ app.get('/available/rooms', (req, res)=>{
     res.sendFile(__dirname + '/src/templates/search_query_results.html')
 })
 
-// GET price data from database and reflect "search_query_results.html" file
+// GET price data from database and reflect "booking-query-results.html" file
 app.get('/available/rooms/price', jsonParser, async function (req, res) {
-    console.log("GET request");
+    console.log("GET reauest");
     try {
         let results;
         const pool = new pg.Pool(config);
@@ -74,12 +80,11 @@ app.get('/available/rooms/price', jsonParser, async function (req, res) {
     } catch (e) {
         console.log(e);
     }
-});
-
+}) ;
 
 // POST for search available room booking query without room type requests
 app.post('/available/rooms', jsonParser, async function (req, res) {
-    console.log("POST request booking");
+    console.log("POSTrequest booking");
     const body = req.body;
     console.log(req.body);
     const checkInDate = body.checkInDate;
@@ -88,23 +93,20 @@ app.post('/available/rooms', jsonParser, async function (req, res) {
         let results;
         const pool = new pg.Pool(config);
         const client = await pool.connect();
+            //--modified
         const q = `select r.r_class, count(*)
-                    from hotelbooking.room r left join
-                        (select rb.r_no, r.r_class, rb.checkin, rb.checkout
-                        from hotelbooking.roombooking rb, hotelbooking.room r
-                        where rb.r_no = r.r_no
-                            and('${checkInDate}' between rb.checkin and rb.checkout 
-                            or '${checkOutDate}' between rb.checkin and rb.checkout)
-                        )as rq
-                        on r.r_no = rq.r_no 
-                    where rq.checkin is null
-                    group by r.r_class
-                    order by r.r_class;`;
+                    from hotelbooking.room r
+                    where r.r_no in(
+                        select DISTINCT(rb.r_no)
+                        from hotelbooking.roombooking rb
+                        where('${checkInDate}' < rb.checkout and '${checkOutDate}' < rb.checkin) )
+                    group by r.r_class`;
+            //modified--
         await client.query(q, (err, results) => {
             if (err) {
                 console.log(err.stack);
                 errors = err.stack.split(" at ");
-                res.json({ result: 'fail', message: 'Sorry something went wrong.checkout ' + errors[0] });
+                res.json({ result: 'fail', message: 'Sorry something went wrong.search ' + errors[0] });
             } else {
                 client.release();
                 console.log(results);
@@ -115,7 +117,7 @@ app.post('/available/rooms', jsonParser, async function (req, res) {
     } catch (e) {
         console.log(e);
     }
-});
+}) ;
 
 // reception page
 app.get('/reception', (req, res) => {

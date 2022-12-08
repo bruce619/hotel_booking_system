@@ -7,6 +7,7 @@
     <title>Earlham Park Hotel</title>
     <link rel="stylesheet" href="/css/booking.css">
     <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/get_price.js" defer></script>
 </head>
 <body>
     <!-- nav -->
@@ -75,7 +76,7 @@
         <div class="check__details">
 
             <!-- nav check details form -->
-            <form class="check__details-form">
+            <form action="/available/rooms" class="check__details-form" post="POST">
 
             <!-- check date -->
             <div class="check__date">

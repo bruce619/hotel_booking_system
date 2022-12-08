@@ -46,7 +46,7 @@
                   <a href="#" class="navigation__link">Home</a>
                 </li>
                 <li class="navigation__item">
-                  <a href="#" class="navigation__link">Booking Ref</a>
+                  <a href="/booking/reference" class="navigation__link">Booking Ref</a>
                 </li>
                 <li class="navigation__item">
                   <a href="#" class="navigation__link">Facilities</a>
@@ -76,7 +76,7 @@
           <div class="check__details">
   
             <!-- nav check details form -->
-            <form class="check__details-form">
+            <form action="/available/rooms" class="check__details-form">
   
               <!-- check date -->
               <div class="check__date">
@@ -94,7 +94,6 @@
                   onblur="(this.type='text')" />
               </div>
               <!-- check date -->
-  
               <button type="submit" class="btn__check-submit">Search</button>
             </form>
             <!-- nav check details form -->
@@ -115,7 +114,7 @@
         <!-- query results for each room type -->
         <!-- Standard Twin -->
             <article class="booking-flex-box">
-                <p class="available" id="std_t">Available Rooms: </p>
+                <p class="notavailable" id="std_t">Available Rooms: 0</p>
                 <h2 class="roomtype">Standard Twin</h2>
                 <div class="contents">
                     <!-- img referenced to https://www.pexels.com/photo/blue-blanket-on-top-of-bed-172872/ -->
@@ -163,7 +162,7 @@
                                 <p class="room-number-1">number of rooms you want</p>
                                 <form action=" " class="room-number-2">
                                         <!-- please put query results to "()" -->
-                                        <input type="number" name="number-of-rooms" value="0" min="0" class="room-number-3">
+                                        <input type="number" name="number_of_rooms" value="0" min="0" class="room-number-3" id="std_t_no"  disabled>
                                         rooms
                                 </form>
                             </div>
@@ -174,7 +173,7 @@
         <!-- /Standard Twin -->
         <!-- Standard Double -->
             <article class="booking-flex-box">
-                <p class="available" id="std_d">Available Rooms: </p>
+                <p class="notavailable" id="std_d">Available Rooms: 0</p>
                 <h2 class="roomtype">Standard Double</h2>
                 <div class="contents">
                     <!-- img referenced to https://unsplash.com/photos/67-sOi7mVIk -->
@@ -222,7 +221,7 @@
                                 <p class="room-number-1">number of rooms you want</p>
                                 <form action=" " class="room-number-2">
                                         <!-- please put query results to "()" -->
-                                        <input type="number" name="number-of-rooms" value="0" min="0" class="room-number-3">
+                                        <input type="number" name="number_of_rooms" value="0" min="0" class="room-number-3" id="std_d_no" disabled>
                                         rooms
                                 </form>
                             </div>
@@ -233,7 +232,7 @@
         <!-- /Standard Double -->
         <!-- Superior Twin-->
             <article class="booking-flex-box">
-                <p class="available" id="sup_t">Available Rooms: </p>
+                <p class="notavailable" id="sup_t">Available Rooms: 0</p>
                 <h2 class="roomtype">Superior Twin</h2>
                 <div class="contents">
                     <!-- img referenced to https://unsplash.com/photos/wE7qDv11kio -->
@@ -282,7 +281,7 @@
                                 <p class="room-number-1">number of rooms you want</p>
                                 <form action=" " class="room-number-2">
                                         <!-- please put query results to "()" -->
-                                        <input type="number" name="number-of-rooms" value="0" min="0" class="room-number-3">
+                                        <input type="number" name="number_of_rooms" value="0" min="0" class="room-number-3" id="sup_t_no"disabled>
                                         rooms
                                 </form>
                             </div>
@@ -293,7 +292,7 @@
         <!-- /Superior Twin-->
         <!-- Superior Double-->
             <article class="booking-flex-box">
-                <p class="available" id="sup_d">Available Rooms: </p>
+                <p class="notavailable" id="sup_d">Available Rooms: 0</p>
                 <h2 class="roomtype">Superior Double</h2>
                 <div class="contents">
                     <!-- img referenced to https://www.pexels.com/photo/bedroom-interior-setup-271624/-->
@@ -342,7 +341,7 @@
                                 <p class="room-number-1">number of rooms you want</p>
                                 <form action=" " class="room-number-2">
                                         <!-- please put query results to "()" -->
-                                        <input type="number" name="number-of-rooms" value="0" min="0" class="room-number-3">
+                                        <input type="number" name="number_of_rooms" value="0" min="0" class="room-number-3" id="sup_d_no" disabled>
                                         rooms
                                 </form>
                             </div>
@@ -361,8 +360,6 @@
             </label>
         </section>
      </main>
-
-     <!-- footer -->
      <footer class="footer">
         <!-- footer left -->
         <div class="footer__left footer__col">
@@ -421,6 +418,6 @@
         </div>
         <!-- footer right -->
       </footer>
-    <!-- footer -->
+    
 </body>
 </html>

@@ -10,6 +10,8 @@
     <script src="/js/get_price.js" defer></script>
     <script src="/js/payment_form.js" defer></script>
   </head>
+
+  
   <body>
 
     <!-- nav -->
@@ -126,7 +128,7 @@
           <!-- form title -->
 
           <!-- payment form -->
-          <form action="#" id="" class="payment__form form" method="">
+          <form action="/payment/confirmation" id="payment_form" class="payment__form form" method="GET">
 
             <!-- name -->
             <div class="form__group">
@@ -142,9 +144,16 @@
             </div>
             <!-- email -->
 
+            <!-- address -->
+            <div class="form__group">
+              <input type="text" class="form__input" id="address" name="address" placeholder="Address" required/>
+              <label for="address" class="form__label">Address</label>
+            </div>
+            <!-- address -->
+
             <!-- card type -->
             <div class="form__group select-style">
-              <select class="form__input" name="card-type" id="card-type" required>
+              <select class="form__input" name="card_type" id="card_type" required>
                 <option class="" value="" disabled selected>
                   Select your card type
                 </option>
@@ -159,27 +168,37 @@
             <div class="form__group">
               <input 
               type="text" 
-              class="form__input" 
+              class="form__input"
+              minlength="19" 
               maxlength="19"
-              pattern="[0-9]+"
-              id="card-number" 
-              name="card-number" 
+              id="card_number" 
+              name="card_number" 
               placeholder="XXXX XXXX XXXX XXXX"
               required/>
-              <label for="card-number" class="form__label">Card number</label>
+              <label for="card_number" class="form__label">Card number</label>
             </div>
             <!-- card number -->
 
             <!-- expiry -->
             <div class="form__group">
-              <input type="text" class="form__input" maxlength="5" id="expiry" name="expiry" placeholder="MM/YY" required/>
+              <input 
+              type="text" 
+              class="form__input"
+              minlength="5" 
+              maxlength="5" 
+              id="expiry" 
+              name="expiry" 
+              placeholder="MM/YY" 
+              required/>
               <label for="expiry" class="form__label">Card Exp</label>
             </div>
             <!-- expiry -->
 
+            <div id="error"></div>
+
             <!-- button -->
             <div class="form__buttons">
-              <button type="submit" id="next" class="btn btn__form-submit">Next</button>
+              <button type="submit" class="btn btn__form-submit">Next</button>
             </div>
             <!-- button -->
             

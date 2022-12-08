@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <script src="https://kit.fontawesome.com/62765ee528.js" crossorigin="anonymous"></script>
     <script src="/js/get_price.js" defer></script>
+    <script src="/js/payment_form.js" defer></script>
+    <script src="/js/payment_confirmation.js" defer></script>
   </head>
   <!-- header -->
 
@@ -130,7 +132,7 @@
           <br />
 
           <!-- booking form -->
-          <form action="#" id="" class="confirmation__form form">
+          <form action="/payment/confirmed" id="confirmation_form" class="confirmation__form form" method="POST">
             <div class="selected__room">
               <p><i class="fa-solid fa-key"></i> Selected date and room</p>
               <div class="form__group">
@@ -179,7 +181,7 @@
                 <input class="form__input" type="text" name="address" id="address" placeholder="Address" />
               </div>
               <div class="form__group">
-                <select class="form__input" name="card-type" id="card-type">
+                <select class="form__input" name="card_type" id="card_type">
                   <option class="" value="" disabled selected>
                     Select your card type
                   </option>
@@ -190,26 +192,30 @@
               </div>
               <div class="form__group">
                 <input 
-                class="form__input" 
+                class="form__input"
+                type="text"  
                 maxlength="19"
-                type="number" 
-                name="card-number" 
-                id="card-number" 
+                pattern="[0-9]+"
+                id="card_number" 
+                name="card_number" 
                 placeholder="XXXX XXXX XXXX XXXX"
                 />
               </div>
               <div class="form__group">
-                <input class="form__input" type="text" name="expiry" id="expiry" placeholder="MM/YYYY"/>
+                <input class="form__input" type="text" name="expiry" id="expiry" placeholder="MM/YY"/>
               </div>
             </div>
+
+            <div id="error"></div>
+
             <p class="note">
               <i class="fa-solid fa-circle-info"></i> Note: Payment will be taken when you check out
             </p>
 
             <!-- book or go back -->
             <div class="form__buttons">
-              <button type="reset" class="btn btn__form-back">Back</button>
-              <button type="submit" class="btn btn__form-submit">Book</button>
+              <button type="reset" id="reset" class="btn btn__form-back">Back</button>
+              <button type="submit" id="submit" class="btn btn__form-submit">Book</button>
             </div>
             <!-- book or go back -->
 

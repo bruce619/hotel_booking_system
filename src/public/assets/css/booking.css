@@ -61,6 +61,16 @@ article h3 {
     background-color: #339933;
 }
 
+.notavailable {
+    text-align: center;
+    margin: 5px 10px;
+    padding: 5px 10px;
+    width: fit-content;
+    border: none;
+    border-radius: 30px;
+    background-color: indianred;
+}
+
 /* font-family referenced to https://www.cssfontstack.com/Lucida-Sans-Typewriter */
 .roomtype {
     margin: 5px 10px;
@@ -224,7 +234,7 @@ text-align: center;
     margin: 20px 0 0 0;
 }
 
-.recep-btn {
+.recep-btn, .mybooking-btn{
     display: block;
     text-align: center;
     padding: 10px;
@@ -297,5 +307,4 @@ text-align: center;
     font-weight: bold;
     text-align: center;
 }
-
 
