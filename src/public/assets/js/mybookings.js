@@ -15,11 +15,13 @@ function onTextReady(text) {
     // erase indication message
     document.querySelector('p.mybook-indication').textContent = "";
 
+    let p = document.querySelector('p.mybook-unavailable');
+    p.textContent = '';
+
     // page for the case there is no matched data
     if(results.length === 0){
 
         /// create error message
-        const p = document.querySelector('p.mybook-unavailable');
         p.textContent = 'Sorry...Booking reference number does not exist.';
 
     } else {
