@@ -34,5 +34,9 @@ app.get('/payment/confirmed', (req, res) => {
     res.sendFile(__dirname + '/src/templates/payment_confirmed.html')
 })
 
+app.get('/housekeeping', (req, res) => {
+    res.sendFile(__dirname + '/src/templates/housekeeping.html')
+})
+
 // Listen to port 3000
 app.listen(port, () => console.info(`hotel booking app listening on port ${port}`))

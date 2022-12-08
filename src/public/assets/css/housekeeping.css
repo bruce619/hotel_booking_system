@@ -1,0 +1,56 @@
+.table {
+  font-family: 'Oxygen', serif;
+  text-align: center;
+  border: solid rgb(235,233,233);
+}
+.roster {
+    margin: auto;
+    width: 50%;
+    
+  }
+
+@media (max-width:960px) {
+  .roster {
+    width: 95%;
+  }
+}
+
+th {
+  padding: 10px;
+  font-size: 120%;
+  color: aliceblue;
+  background-color: rgba(115, 185, 252, 0.938);
+  
+}
+
+td {
+  padding:10px;
+  background-color: white;
+}
+
+.roomID {
+  width: 100px;
+}
+
+.buttonUpdate {
+  width: 100px;
+}
+
+.tableButton {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Oxygen',sans-serif;
+  border-radius: 30px;
+}
+
+.tableButton:hover {
+  background-color: #70e274;
+  cursor:pointer;
+}
+
