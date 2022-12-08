@@ -15,6 +15,7 @@ function onTextReady(text) {
     // erase indication message
     document.querySelector('p.mybook-indication').textContent = "";
 
+    // for error message
     let p = document.querySelector('p.mybook-unavailable');
     p.textContent = '';
 

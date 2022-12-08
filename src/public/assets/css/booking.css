@@ -307,8 +307,8 @@ text-align: center;
 }
 
 
- /* for "mybookings" unavailable page */ 
-.mybook-unavailable {
+ /* for "mybookings" unavailable page */ /* for "available rooms" unavailable case"*/
+.mybook-unavailable, .search_unavailable {
     border: none;
     color: firebrick;
     font-size: larger;

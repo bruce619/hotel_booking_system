@@ -8,6 +8,7 @@ function onTextReady(text) {
     // get number of available rooms for each room type
     const results = resultObject.results;
     console.log(results);
+    console.log(results.length);
 
     let std_d_available_type;
     let std_t_available_type;
@@ -31,71 +32,84 @@ function onTextReady(text) {
     const pSup_t = document.querySelector('#sup_t');
     const inputSup_t = document.querySelector('#sup_t_no');
 
-    /// input each number of available rooms by each room type 
-    for (let i = 0; i < results.length; i++){
-        if (results[i].r_class === 'std_d'){
-            std_d_available_type = 'std_d';
+    // for error message
+    let p = document.querySelector('.search_unavailable');
+    p.innerHTML = '';
 
-            std_d_available = results[i].count;
-            pStd_d.textContent = `Available Rooms: ${std_d_available}`;
-            pStd_d.className = 'available';
-            inputStd_d.disabled = false;
+    if (results.length === 0){
 
-        } else if(results[i].r_class === 'std_t'){
-            std_t_available_type = 'std_t';
+        // error message when all rooms unavailable
+          p.innerHTML = 'Sorry...we do not currently have any available rooms.<br>Change the dates and search again.'
+    
+    } else {
 
-            std_t_available = results[i].count;
-            pStd_t.textContent = `Available Rooms: ${std_t_available}`;
-            pStd_t.className = 'available'
-            inputStd_t.disabled = false;
-   
-        } else if(results[i].r_class === 'sup_d'){
-            sup_d_available_type = 'sup_d'
 
-            sup_d_available = results[i].count;
-            pSup_d.textContent = `Available Rooms: ${sup_d_available}`;
-            pSup_d.className = 'available'
-            inputSup_d.disabled = false;
+        /// input each number of available rooms by each room type 
+        for (let i = 0; i < results.length; i++){
+            if (results[i].r_class === 'std_d'){
+                std_d_available_type = 'std_d';
 
-        } else {
-            sup_t_available_type = 'sup_t'
+                std_d_available = results[i].count;
+                pStd_d.textContent = `Available Rooms: ${std_d_available}`;
+                pStd_d.className = 'available';
+                inputStd_d.disabled = false;
 
-            sup_t_available = results[i].count;
-            pSup_t.textContent = `Available Rooms: ${sup_t_available}`;
-            pSup_t.className = 'available'      
-            inputSup_t.disabled = false;
-     }
-     }
+            } else if(results[i].r_class === 'std_t'){
+                std_t_available_type = 'std_t';
 
-    /// the case for there are not available rooms
-    if ( std_d_available_type === undefined ) {
-        pStd_d.textContent = 'Available Rooms: 0';
-        pStd_d.className = 'notavailable'
-        inputStd_d.value = '0';
-        inputStd_d.disabled = true;
+                std_t_available = results[i].count;
+                pStd_t.textContent = `Available Rooms: ${std_t_available}`;
+                pStd_t.className = 'available'
+                inputStd_t.disabled = false;
+    
+            } else if(results[i].r_class === 'sup_d'){
+                sup_d_available_type = 'sup_d'
+
+                sup_d_available = results[i].count;
+                pSup_d.textContent = `Available Rooms: ${sup_d_available}`;
+                pSup_d.className = 'available'
+                inputSup_d.disabled = false;
+
+            } else {
+                sup_t_available_type = 'sup_t'
+
+                sup_t_available = results[i].count;
+                pSup_t.textContent = `Available Rooms: ${sup_t_available}`;
+                pSup_t.className = 'available'      
+                inputSup_t.disabled = false;
+            }
+        }
+
+        /// the case for there are not available rooms
+        if ( std_d_available_type === undefined ) {
+            pStd_d.textContent = 'Available Rooms: 0';
+            pStd_d.className = 'notavailable'
+            inputStd_d.value = '0';
+            inputStd_d.disabled = true;
+        }
+
+        if ( std_t_available_type === undefined ) {
+            pStd_t.textContent = 'Available Rooms: 0';
+            pStd_t.className = 'notavailable';
+            inputStd_t.value = '0';
+            inputStd_t.disabled = true;
+        }
+
+        if ( sup_d_available_type === undefined ) {
+            pSup_d.textContent = 'Available Rooms: 0';
+            pSup_d.className = 'notavailable';
+            inputSup_d.value = '0';
+            inputSup_d.disabled = true;
+        }
+
+        if ( sup_t_available_type === undefined ) {
+            pSup_t.textContent = 'Available Rooms: 0';
+            pSup_t.className = 'notavailable';
+            inputSup_t.value = '0';
+            inputSup_t.disabled = true;
+        }
+
     }
-
-    if ( std_t_available_type === undefined ) {
-        pStd_t.textContent = 'Available Rooms: 0';
-        pStd_t.className = 'notavailable';
-        inputStd_t.value = '0';
-        inputStd_t.disabled = true;
-    }
-
-    if ( sup_d_available_type === undefined ) {
-        pSup_d.textContent = 'Available Rooms: 0';
-        pSup_d.className = 'notavailable';
-        inputSup_d.value = '0';
-        inputSup_d.disabled = true;
-    }
-
-    if ( sup_t_available_type === undefined ) {
-        pSup_t.textContent = 'Available Rooms: 0';
-        pSup_t.className = 'notavailable';
-        inputSup_t.value = '0';
-        inputSup_t.disabled = true;
-    }
-
 }
 
 

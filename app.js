@@ -25,10 +25,19 @@ app.use('/js', express.static(__dirname + 'src/public/assets/js'))
 // img
 app.use('/img', express.static(__dirname + 'src/public/assets/img'))
 
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/src/templates/index.html')
+})
+
 // use html templates
 app.get('/payment/form', (req, res) => {
     res.sendFile(__dirname + '/src/templates/payment_form.html')
 });
+
+// index
+app.get('/modal', (req, res) => {
+    res.sendFile(__dirname + '/src/templates/modal.html')
+})
 
 app.get('/payment/confirmation', (req, res) => {
     res.sendFile(__dirname + '/src/templates/payment_confirmation.html')
@@ -37,7 +46,6 @@ app.get('/payment/confirmation', (req, res) => {
 app.get('/payment/confirmed', (req, res) => {
     res.sendFile(__dirname + '/src/templates/payment_confirmed.html')
 });
-
 
 // my booking reference page
 app.get('/booking/reference', (req, res)=>{
@@ -49,8 +57,14 @@ app.get('/available/rooms', (req, res)=>{
     res.sendFile(__dirname + '/src/templates/search_query_results.html')
 })
 
+// page for housekeeping
+app.get('/housekeeping', (req, res) => {
+    res.sendFile(__dirname + '/src/templates/housekeeping.html')
+})
+
+
 // GET price data from database and reflect "booking-query-results.html" file
-app.get('/booking/form/price', jsonParser, async function (req, res) {
+app.get('/available/rooms/price', jsonParser, async function (req, res) {
     console.log("GET reauest");
     try {
         let results;
@@ -74,7 +88,7 @@ app.get('/booking/form/price', jsonParser, async function (req, res) {
     }
 }) ;
 
-// POST for search available room booking query without room type requests
+// POST for search available room booking query without room type requests]
 app.post('/available/rooms', jsonParser, async function (req, res) {
     console.log("POSTrequest booking");
     const body = req.body;
@@ -88,11 +102,16 @@ app.post('/available/rooms', jsonParser, async function (req, res) {
             //--modified
         const q = `select r.r_class, count(*)
                     from hotelbooking.room r
-                    where r.r_no in(
-                        select DISTINCT(rb.r_no)
+                    where r.r_no
+                    not in (
+                        select rb.r_no
                         from hotelbooking.roombooking rb
-                        where('${checkInDate}' < rb.checkout and '${checkOutDate}' < rb.checkin) )
-                    group by r.r_class`;
+                        where 
+                        rb.b_ref not in (select rb.b_ref
+                            from hotelbooking.roombooking
+                            where '${checkInDate}' <= rb.checkout and '${checkOutDate}' <= rb.checkin))
+                    group by r.r_class
+                    order by r.r_class;`
             //modified--
         await client.query(q, (err, results) => {
             if (err) {
@@ -281,6 +300,32 @@ app.post('/booking/reference', jsonParser, async function (req, res) {
         console.log(e);
     }
 }) ;
+
+// GET room infomation data for cleaners
+app.get('/housekeeping/search', jsonParser, async function (req, res) {
+    console.log("GET rquest housekeeping");
+    try {
+        let results;
+        const pool = new pg.Pool(config);
+        const client = await pool.connect();
+        const q = `SELECT r_no, r_status FROM hotelbooking.room WHERE r_status = 'C' ORDER BY r_no;`;
+        await client.query(q, (err, results) => {
+            if (err) {
+                console.log(err.stack);
+                errors = err.stack.split(" at ");
+                res.json({ result: 'fail', message: 'Sorry something went wrong. housekeeping ' + errors[0] });
+            } else {
+                client.release();
+                console.log(results);
+                data = results.rows;
+                res.json({  results: data });
+            }
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}) ;
+
 
 // Listen to port 3000
 app.listen(port, () => console.info(`hotel booking app listening on port ${port}`))
