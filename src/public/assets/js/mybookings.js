@@ -15,8 +15,6 @@ function onTextReady(text) {
     // erase indication message
     document.querySelector('p.mybook-indication').textContent = "";
 
-
-
     // page for the case there is no matched data
     if(results.length === 0){
 
@@ -29,6 +27,7 @@ function onTextReady(text) {
         
     } else {
 
+    // page for the case there is  matched data
     /// convert roomtype data to appropriate name
     let roomType;
     if (`${elements.r_class}` === 'std_t') {
@@ -40,6 +39,19 @@ function onTextReady(text) {
     } else {
         roomType = 'Superior Double'
     } 
+
+    /// format date string
+    let checkinDateSt = new Date(`${elements.checkin}`) ;
+    let checkinDateCv = checkinDateSt.toUTCString();
+    let checkin = checkinDateCv.split(' ');
+    let checkinDate = checkin[1]+' '+checkin[2]+' '+checkin[3];
+    console.log(checkinDate);
+
+    let checkoutDateSt = new Date(`${elements.checkout}`) ;
+    let checkoutDateCv = checkoutDateSt.toUTCString();
+    let checkout = checkoutDateCv.split(' ');
+    let checkoutDate = checkout[1]+' '+checkout[2]+' '+checkout[3];
+    console.log(checkoutDate);
 
     // remove search form
     const oldform = formMybookings;
@@ -82,11 +94,11 @@ function onTextReady(text) {
     tr2.appendChild(tdBasic1);
     const tdBasic2 = document.createElement('td');
     tdBasic2.id = 'check-in';
-    tdBasic2.textContent = `${elements.checkin}`;
+    tdBasic2.textContent = checkinDate;
     tr2.appendChild(tdBasic2);
     const tdBasic3 = document.createElement('td');
     tdBasic3.id = 'check-out';
-    tdBasic3.textContent = `${elements.checkout}`;
+    tdBasic3.textContent = checkoutDate;
     tr2.appendChild(tdBasic3);
 
     // create Room information table
