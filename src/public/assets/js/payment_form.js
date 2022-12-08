@@ -22,6 +22,8 @@ const error_msg = document.querySelector("#error");
 // payment form
 const payment_form = document.querySelector('#payment_form');
 
+const payment_button = document.querySelector('#submit')
+
 
 // using JS input event to give spaces inbetween each 4 digit of debit card number
 card_number.addEventListener("input", () => card_number.value = spaceNumber(card_number.value.replaceAll(" ", "")));
@@ -56,38 +58,55 @@ const formatDate = (val) => val.split("").reduce((seed, next, index) => {
 card_expiry.addEventListener('keypress', inputNumberOnly);
 
 
-payment_form.addEventListener("submit", (event) => {
 
-  console.log(card_number.value)
-  console.log(card_expiry.value)
+function processPaymentForm(e){
 
-  let messages = []
+    e.preventDefault();
 
-  if (card_number.value.length !== 19){
-    messages.push("card must be 16 digits");
-  }
+    let messages = []
 
-  if (card_expiry.value.length !== 5){
-    messages.push("invalid expiry date. must be in the format mm/yy e.g 02/22")
-  }
-
-  if (messages.length > 0){
-    event.preventDefault();
-    error_msg.innerHTML = messages.join(', ')
-  }
-
-  if (typeof(localStorage) != "undefined") {
-
-    data = {
-      "user_name": user_name.value,
-      "email": email.value,
-      "address": address.value,
-      "card_type": card_type.value,
-      "card_number": card_number.value.replace(/\s/g, ''),
-      "card_expiry": card_expiry.value
+    if (card_number.value.length !== 19){
+      messages.push("card must be 16 digits");
     }
 
-    localStorage.setItem("form_data", JSON.stringify(data));
-  }
+    if (card_expiry.value.length !== 5){
+      messages.push("invalid expiry date. must be in the format mm/yy e.g 02/22")
+    }
 
-});
+    if (messages.length > 0){
+      e.preventDefault();
+      error_msg.innerHTML = messages.join(', ')
+    }
+
+    data = {
+      "c_name": user_name.value,
+      "c_email": email.value,
+      "c_address": address.value,
+      "c_cardtype": card_type.value,
+      "c_cardno": card_number.value.replace(/\s/g, ''),
+      "c_cardexp": card_expiry.value
+    }
+
+  
+  const serializedData = JSON.stringify(data) 
+
+  fetch('/payment/confirmation', {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: serializedData
+})
+.then((response) => response.json())
+.then((data) => {
+  console.log('Success:', data);
+  localStorage.setItem("data", serializedData);
+  window.location = '/payment/confirmation' // redirect
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+}
+
+payment_form.addEventListener("submit", processPaymentForm);

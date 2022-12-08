@@ -7,7 +7,7 @@
     <title>Earlham Park Hotel</title>
     <link rel="stylesheet" href="/css/booking.css">
     <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/get_price.js" defer></script>
+    <script src="/js/mybookings.js" defer></script>
 </head>
 <body>
     <!-- nav -->
@@ -46,7 +46,7 @@
                 <a href="/" class="navigation__link">Home</a>
                 </li>
                 <li class="navigation__item">
-                <a href="#" class="navigation__link">Booking Ref</a>
+                <a href="/booking/reference" class="navigation__link">Booking Ref</a>
                 </li>
                 <li class="navigation__item">
                 <a href="#" class="navigation__link">Facilities</a>
@@ -76,7 +76,7 @@
         <div class="check__details">
 
             <!-- nav check details form -->
-            <form action="/available/rooms" class="check__details-form" post="POST">
+            <form class="check__details-form">
 
             <!-- check date -->
             <div class="check__date">
@@ -118,7 +118,7 @@
                 <form action="" method="POST" class="mybook-form" id="form">
                     <p class="mybook-form-p">
                         Booking Reference No. <br>
-                        <input type="text" inputmode="numeric" pattern="[0-9]{5}" placeholder="Reference number" name="booking-ref" id="booking-ref">
+                        <input type="text" inputmode="numeric" pattern="[0-9]{5}" placeholder="Reference number" name="booking-ref" id="booking-ref" required>
                     </p>
                     <label>
                         <p class="mybook-form-p-submit">
@@ -129,8 +129,6 @@
             </article>
         </section>
     </main>
-
-    <!-- footer -->
     <footer class="footer">
         <!-- footer left -->
         <div class="footer__left footer__col">
@@ -189,6 +187,5 @@
         </div>
         <!-- footer right -->
     </footer>
-    <!-- footer -->
 </body>
 </html>

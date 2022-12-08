@@ -7,7 +7,6 @@
     <title>Earlham Park Hotel - Payment Form</title>
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <script src="https://kit.fontawesome.com/62765ee528.js" crossorigin="anonymous"></script>
-    <script src="/js/get_price.js" defer></script>
     <script src="/js/payment_form.js" defer></script>
   </head>
 
@@ -22,7 +21,7 @@
 
         <!-- nav logo -->
         <div class="navigation__logo">
-          <img src="/img/Earlham_logo2-nav.png" alt="earlham-logo">
+          <a href="/"><img src="/img/Earlham_logo2-nav.png" alt="earlham-logo"></a>
         </div>
         <!-- nav log -->
 
@@ -47,7 +46,7 @@
           <div class="navigation__links">
             <ul>
               <li class="navigation__item">
-                <a href="#" class="navigation__link">Home</a>
+                <a href="/" class="navigation__link">Home</a>
               </li>
               <li class="navigation__item">
                 <a href="#" class="navigation__link">Booking Ref</a>
@@ -128,7 +127,7 @@
           <!-- form title -->
 
           <!-- payment form -->
-          <form action="/payment/confirmation" id="payment_form" class="payment__form form" method="GET">
+          <form action="/payment/confirmation" id="payment_form" class="payment__form form" method="POST">
 
             <!-- name -->
             <div class="form__group">
@@ -198,7 +197,7 @@
 
             <!-- button -->
             <div class="form__buttons">
-              <button type="submit" class="btn btn__form-submit">Next</button>
+              <button type="submit" id="submit" class="btn btn__form-submit">Next</button>
             </div>
             <!-- button -->
             

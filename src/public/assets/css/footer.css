@@ -70,6 +70,7 @@
   width: 100%;
   max-width: 40rem;
   margin: auto;
+  overflow: hidden;
 }
 .footer .gmap_canvas {
   overflow: hidden;
@@ -77,6 +78,7 @@
   height: 25rem;
   width: 100%;
   max-width: 40rem;
+  overflow: hidden;
 }
 
 /* Align footer vertically on smaller screens */

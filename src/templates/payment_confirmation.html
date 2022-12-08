@@ -8,8 +8,6 @@
     <title>Earlham Park Hotel - Payment Confirmation</title>
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <script src="https://kit.fontawesome.com/62765ee528.js" crossorigin="anonymous"></script>
-    <script src="/js/get_price.js" defer></script>
-    <script src="/js/payment_form.js" defer></script>
     <script src="/js/payment_confirmation.js" defer></script>
   </head>
   <!-- header -->
@@ -25,7 +23,7 @@
 
         <!-- nav logo -->
         <div class="navigation__logo">
-          <img src="/img/Earlham_logo2-nav.png" alt="earlham-logo">
+          <a href="/"><img src="/img/Earlham_logo2-nav.png" alt="earlham-logo"></a>
         </div>
         <!-- nav log -->
 
@@ -149,7 +147,7 @@
               <div class="selected__room-details">
                 <div class="form__group">
                   <p>Standard Twin</p>
-                  <p><span id="standard-twin" class="rooms">2</span> Room(s)</p>
+                  <p><span id="standard-twin" class="rooms">0</span> Room(s)</p>
                 </div>
                 <div class="form__group">
                   <p>Superior Double</p>
@@ -166,22 +164,22 @@
               </div>
               <div class="form__header">
                 <p>Total Price:</p>
-                <p>£<span id="price">124</span></p>
+                <p>£<span id="price">0</span></p>
               </div>
             </div>
             <div class="payment__info">
               <p><i class="fa-solid fa-credit-card"></i> Payment information</p>
               <div class="form__group">
-                <input class="form__input" type="text" name="name" id="name" placeholder="Name" />
+                <input class="form__input" type="text" name="name" id="name" placeholder="Name" required/>
               </div>
               <div class="form__group">
-                <input class="form__input" type="email" name="email" id="email" placeholder="Email" />
+                <input class="form__input" type="email" name="email" id="email" placeholder="Email" required/>
               </div>
               <div class="form__group">
-                <input class="form__input" type="text" name="address" id="address" placeholder="Address" />
+                <input class="form__input" type="text" name="address" id="address" placeholder="Address" required/>
               </div>
               <div class="form__group">
-                <select class="form__input" name="card_type" id="card_type">
+                <select class="form__input" name="card_type" id="card_type" required>
                   <option class="" value="" disabled selected>
                     Select your card type
                   </option>
@@ -193,16 +191,24 @@
               <div class="form__group">
                 <input 
                 class="form__input"
-                type="text"  
-                maxlength="19"
-                pattern="[0-9]+"
+                type="text"
+                minlength="16"  
+                maxlength="16"
                 id="card_number" 
                 name="card_number" 
                 placeholder="XXXX XXXX XXXX XXXX"
-                />
+                required/>
               </div>
               <div class="form__group">
-                <input class="form__input" type="text" name="expiry" id="expiry" placeholder="MM/YY"/>
+                <input 
+                class="form__input"
+                type="text"
+                minlength="5"
+                maxlength="5" 
+                name="expiry" 
+                id="expiry" 
+                placeholder="MM/YY"
+                required/>
               </div>
             </div>
 
