@@ -3,7 +3,7 @@
 function onTextReady(text) {
     console.log(text);
 
-    const oldScript = document.querySelector('script');
+    const oldScript = document.querySelector('#price');
     oldScript.remove();
 
     const script = document.createElement('script');
@@ -42,7 +42,7 @@ function onResponse(response) {
 }
 
 function priceShow(e) {
-    fetch('/booking/form/price')
+    fetch('/available/rooms/price')
     .then(onResponse)
     .then(onTextReady);
 }

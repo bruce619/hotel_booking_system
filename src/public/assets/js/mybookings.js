@@ -237,7 +237,7 @@ function onTextReady(text) {
     pNotesContent.textContent = `${elements.b_notes}`;
     divNotes.appendChild(pNotesContent);
 
-    // create button to back to top and to update checkin and payment&Checkout
+    // create button to back to top and to available/rooms page
     const divBtn = document.createElement('div');
     divBtn.className = 'btn-grid';
     div.appendChild(divBtn);
@@ -254,23 +254,35 @@ function onTextReady(text) {
     labelBack.appendChild(a);
 
     /// button to change booking
-    const formChange = document.createElement('form');
-    formChange.action = '';
-    formChange.method = 'POST';
-    formChange.name = '';
-    formChange.id = '';
-    divBtn.appendChild(formChange);
+    // const formChange = document.createElement('form');
+    // formChange.action = '';
+    // formChange.method = '';
+    // formChange.name = '';
+    // formChange.id = '';
+    // divBtn.appendChild(formChange);
 
-    const labelChange = document.createElement('label');
-    formChange.appendChild(labelChange);
+    // const labelChange = document.createElement('label');
+    // formChange.appendChild(labelChange);
 
-    const btnChange = document.createElement('button');
-    btnChange.type = 'submit';
-    btnChange.className = 'recep-btn detail-btn';
-    btnChange.value = `${elements.b_ref}`;
-    btnChange.textContent = 'Change Booking';
-    btnChange.id= ''
-    labelChange.appendChild(btnChange);
+    // const btnChange = document.createElement('button');
+    // btnChange.type = 'submit';
+    // btnChange.className = 'recep-btn detail-btn';
+    // btnChange.value = `${elements.b_ref}`;
+    // btnChange.textContent = 'Make another booking';
+    // btnChange.id= ''
+    // labelChange.appendChild(btnChange);
+
+    // create button to back to top and to update checkin and payment&Checkout
+  
+    /// button to available/rooms page
+    const labelJump = document.createElement('label');
+    labelJump.className = 'recep-btn detail-btn';
+    divBtn.appendChild(labelJump);
+
+    const aJump = document.createElement('a');
+    aJump.href = '/available/rooms';
+    aJump.textContent = 'Make another booking';
+    labelJump.appendChild(aJump);
 
 }
 

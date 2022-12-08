@@ -31,8 +31,8 @@ function onTextReady(text) {
     const pSup_t = document.querySelector('#sup_t');
     const inputSup_t = document.querySelector('#sup_t_no');
 
+    /// input each number of available rooms by each room type 
     for (let i = 0; i < results.length; i++){
-
         if (results[i].r_class === 'std_d'){
             std_d_available_type = 'std_d';
 
@@ -67,7 +67,7 @@ function onTextReady(text) {
      }
      }
 
-    /// the case for there're not available rooms
+    /// the case for there are not available rooms
     if ( std_d_available_type === undefined ) {
         pStd_d.textContent = 'Available Rooms: 0';
         pStd_d.className = 'notavailable'

@@ -244,6 +244,14 @@ text-align: center;
     background-color: lightgray;
 }
 
+.recep_jump {
+    padding: 10px;
+    /* width: fit-content; */
+    border: none;
+    border-radius: 30px;
+    background-color: goldenrod;
+}
+
 /* for reception-result page - nodata */
 .recep-nodata p, .recep-nodata a{
     margin: 20px auto 0 auto;
