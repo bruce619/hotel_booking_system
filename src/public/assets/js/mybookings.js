@@ -19,12 +19,9 @@ function onTextReady(text) {
     if(results.length === 0){
 
         /// create error message
-        const article = document.querySelector('article.mybook');
-        const p = document.createElement('p');
-        p.className = 'mybook-unavailable';
+        const p = document.querySelector('p.mybook-unavailable');
         p.textContent = 'Sorry...Booking reference number does not exist.';
-        article.insertBefore(p, formMybookings);
-        
+
     } else {
 
     // page for the case there is  matched data
@@ -162,12 +159,6 @@ function onTextReady(text) {
     const thCustomerHead2 = document.createElement('th');
     trCustomer.appendChild(thCustomerHead2);
     thCustomerHead2.textContent = 'Customer name';
-    // const thCustomerHead3 = document.createElement('th');
-    // trCustomer.appendChild(thCustomerHead3);
-    // thCustomerHead3.textContent = 'Email address';
-    // const thCustomerHead4 = document.createElement('th');
-    // trCustomer.appendChild(thCustomerHead4);
-    // thCustomerHead4.textContent = 'Address';
 
     /// contents row
     const trCustomer2 = document.createElement('tr');
@@ -181,36 +172,53 @@ function onTextReady(text) {
     tdCustomer2.textContent = `${elements.c_name}`;
     trCustomer2.appendChild(tdCustomer2);
 
-    // create Payment information table
-    const tablePayment = document.createElement('table');
-    tablePayment.className = 'search-results';
-    div.appendChild(tablePayment);
+    // create Cost information table
+    const tableCost = document.createElement('table');
+    tableCost.className = 'search-results';
+    div.appendChild(tableCost);
 
-    const pPayment = document.createElement('p');
-    pPayment.textContent = 'Payment information';
-    tablePayment.appendChild(pPayment);
+    const pCost = document.createElement('p');
+    pCost.textContent = 'Cost information';
+    tableCost.appendChild(pCost);
 
     /// title row
-    const trPayment = document.createElement('tr');
-    tablePayment.appendChild(trPayment);
-    const thPaymentHead1 = document.createElement('th');
-    trPayment.appendChild(thPaymentHead1);
-    thPaymentHead1.textContent = 'Cost';
-    const thPaymentHead2 = document.createElement('th');
-    trPayment.appendChild(thPaymentHead2);
-    thPaymentHead2.textContent = 'Outstanding';
+    const trCost = document.createElement('tr');
+    tableCost.appendChild(trCost);
+    const thCostHead1 = document.createElement('th');
+    trCost.appendChild(thCostHead1);
+    thCostHead1.textContent = 'Cost';
 
     /// contents row
-    const trPayment2 = document.createElement('tr');
-    tablePayment.appendChild(trPayment2);
-    const tdPayment1 = document.createElement('td');
-    tdPayment1.id = 'cost'
-    tdPayment1.textContent = `${elements.b_cost}`;
-    trPayment2.appendChild(tdPayment1);
-    const tdPayment2 = document.createElement('td');
-    tdPayment2.id = 'outstanding';
-    tdPayment2.textContent = `${elements.b_outstanding}`;
-    trPayment2.appendChild(tdPayment2);
+    const trCost2 = document.createElement('tr');
+    tableCost.appendChild(trCost2);
+    const tdCost1 = document.createElement('td');
+    tdCost1.id = 'cost'
+    tdCost1.textContent = `${elements.b_cost}`;
+    trCost2.appendChild(tdCost1);
+
+    // create Outstanding information table
+    const tableOutst = document.createElement('table');
+    tableOutst.className = 'search-results';
+    div.appendChild(tableOutst);
+
+    const pOutst = document.createElement('p');
+    pOutst.textContent = 'Outstanding information';
+    tableOutst.appendChild(pOutst);
+
+    /// title row
+    const trOutst = document.createElement('tr');
+    tableOutst.appendChild(trOutst);
+    const thOutstHead1 = document.createElement('th');
+    trOutst.appendChild(thOutstHead1);
+    thOutstHead1.textContent = 'Outstanding';
+
+    /// contents row
+    const trOutst2 = document.createElement('tr');
+    tableOutst.appendChild(trOutst2);
+    const tdOutst1 = document.createElement('td');
+    tdOutst1.id = 'outstanding'
+    tdOutst1.textContent = `${elements.b_outstanding}`;
+    trOutst2.appendChild(tdOutst1);
 
     // create Note div
     const divNotes = document.createElement('div');
