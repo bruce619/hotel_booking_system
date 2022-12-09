@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/booking.css">
     <link rel="stylesheet" href="/css/styles.css">
     <script src="/js/get_price.js" defer id="price"></script>
+    
 </head>
 <body>
     <!-- nav -->
@@ -162,7 +163,7 @@
                         <label>
                             <div class="room-number-flexbox">
                                 <p class="room-number-1">number of rooms you want</p>
-                                <form action=" " class="room-number-2">
+                                <form action=" " class="room-number-2" id="form_std_t">
                                         <!-- please put query results to "()" -->
                                         <input type="number" name="number_of_rooms" value="0" min="0" class="room-number-3" id="std_t_no"  disabled>
                                         rooms
@@ -221,7 +222,7 @@
                         <label>
                             <div class="room-number-flexbox">
                                 <p class="room-number-1">number of rooms you want</p>
-                                <form action=" " class="room-number-2">
+                                <form action=" " class="room-number-2" id="form_std_d">
                                         <!-- please put query results to "()" -->
                                         <input type="number" name="number_of_rooms" value="0" min="0" class="room-number-3" id="std_d_no" disabled>
                                         rooms
@@ -282,7 +283,7 @@
                         <label>
                             <div class="room-number-flexbox">
                                 <p class="room-number-1">number of rooms you want</p>
-                                <form action=" " class="room-number-2">
+                                <form action=" " class="room-number-2" id="form_sup_t">
                                         <!-- please put query results to "()" -->
                                         <input type="number" name="number_of_rooms" value="0" min="0" class="room-number-3" id="sup_t_no"disabled>
                                         rooms
@@ -342,7 +343,7 @@
                         <label>
                             <div class="room-number-flexbox">
                                 <p class="room-number-1">number of rooms you want</p>
-                                <form action=" " class="room-number-2">
+                                <form action=" " class="room-number-2" id="form_sup_d">
                                         <!-- please put query results to "()" -->
                                         <input type="number" name="number_of_rooms" value="0" min="0" class="room-number-3" id="sup_d_no" disabled>
                                         rooms
@@ -355,9 +356,10 @@
         <!-- /Superior Double-->
             <!-- please put link to the page of payment form -->
             <label>
-                <form action=" ">
+                <form action = "/payment/form" method = "post" id="form_available">
                     <p class="submit">
-                        <input type="submit" value= "Payment Form">
+                        <input type="submit" value="Payment form">
+                        <!-- <a href="/payment/form">Payment Form</a> -->
                     </p>
                 </form>
             </label>

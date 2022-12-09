@@ -1,6 +1,16 @@
 function onTextReady(text) {
     console.log(text);
 
+    // change js script
+    const oldScript = document.querySelector('script');
+    oldScript.remove();
+
+    const script = document.createElement('script');
+    script.src ='/js/for_payment_form.js';
+    script.setAttribute('defer', true);
+    const head = document.querySelector('head');
+    head.appendChild(script);
+
     // convert response from JSON text to Object 
     const resultObject = JSON.parse(text);
     console.log(resultObject);
