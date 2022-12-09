@@ -112,9 +112,10 @@ function processPaymentForm(e){
 
 
     function onTextReady(text){
+      console.log('I am here in onTextReady')
       console.log(text);
-      console.log(typeof(text));
-      // pass data to payment/confirmation
+      console.log(`here is the new response ${typeof(text)}`);
+      //pass data to payment/confirmation
       localStorage.setItem("data", text)
       window.location.href = '/payment/confirmation';
     }

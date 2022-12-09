@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const book_ref = document.querySelector('.ref__number');
 
     // check in
-    const check_in = document.querySelector('#checkin');
+    const check_in = document.querySelector('#checkIN');
 
     // check out
-    const check_out = document.querySelector('#checkout');
+    const check_out = document.querySelector('#checkOut');
 
 
     // total price

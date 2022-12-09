@@ -13,12 +13,16 @@ function processSubmit(e) {
     console.log(sup_d_no);
 
     // inputed check in & check out date
-    const divCheckDate = document.querySelector('.check__date'); 
-    const checkInDate = divCheckDate.children[1];
-    const checkindate = checkInDate.value;
+    // const divCheckDate = document.querySelector('.check__date'); 
+    // const checkInDate = divCheckDate.children[1];
+    // const checkindate = checkInDate.value;
 
-    const checkOutDate = divCheckDate.children[2];
-    const checkoutdate = checkOutDate.value;
+    // const checkOutDate = divCheckDate.children[2];
+    // const checkoutdate = checkOutDate.value;
+
+
+    const checkindate = document.querySelector('#checkin').value
+    const checkoutdate = document.querySelector('#checkout').value
 
     console.log(checkindate);
     console.log(checkoutdate);
@@ -58,6 +62,13 @@ function processSubmit(e) {
     .catch((error) => {
     console.error('Error:', error);
     });
+
+
+    // fetch('payment/form', {
+    //     method: 'POST'
+    // })
+
+
 }
 
 const form_available = document.querySelector('#form_available');
