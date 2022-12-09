@@ -65,14 +65,15 @@ document.addEventListener("DOMContentLoaded", ()=>{
         const data = JSON.parse(localStorage.getItem("data"));
         
         console.log(data);
+        console.log(`here is the check in data ${data.checkin.replace(/-/g, "/")}`);
         
-        check_in.value = '2022-12-03' // replace
-        check_out.value = '2022-12-09' // replace
-        total_price.textContent = '248' // replace
-        std_t.textContent = '2' // replace
-        std_d.textContent = '0' // replace
-        sup_t.textContent = '0' // replace
-        sup_d.textContent = '2' // replace
+        check_in.value = data.checkin
+        check_out.value = data.checkout 
+        total_price.textContent = data.b_cost 
+        std_t.textContent = data.std_t
+        std_d.textContent = data.std_d
+        sup_t.textContent = data.sup_t
+        sup_d.textContent = data.sup_d 
         c_name.value = data.c_name
         c_email.value = data.c_email
         c_address.value = data.c_address
@@ -89,6 +90,7 @@ function processPaymentConfirmation(e){
     e.preventDefault();
     
     let messages = []
+
     
     if (c_cardno.value.length !== 16){
         messages.push("card must be 16 digits");
@@ -104,6 +106,12 @@ function processPaymentConfirmation(e){
     };
 
 
+    if (total_price.value == 0){
+        messages.push('You must select a room to be able to make a payment');
+        window.location.href = '/payment/form';
+      }
+
+
     function randomGeneratedNumber(min, max){
         return Math.floor(Math.random() * (max - min + 1) + min)
     }
@@ -116,16 +124,16 @@ function processPaymentConfirmation(e){
         "c_cardtype": c_cardtype.value,
         "c_cardexp": c_cardexp.value,
         "c_cardno": c_cardno.value,
-        "b_cost": '248', // replace
-        "b_outstanding": '0',
+        "b_cost": total_cost.textContent,
+        "b_outstanding": 0,
         "b_notes": "",
         "b_ref": randomGeneratedNumber(14000, 30000),
-        "checkin": "2022-12-03", // replace
-        "checkout": "2022-12-09", // replace
-        "std_t": '2', // replace
-        "std_d": '0', // replace
-        "sup_t": '0', // replace
-        "sup_d": '2' // replace
+        "checkin": check_in.value, 
+        "checkout": check_out.value,
+        "std_t": std_t.textContent, 
+        "std_d": std_d.textContent,
+        "sup_t": sup_t.textContent,
+        "sup_d": sup_d.textContent
     }
 
     function onTextReady(text){
@@ -163,3 +171,6 @@ function processPaymentConfirmation(e){
 
 
 conformation_form.addEventListener("submit", processPaymentConfirmation)
+
+
+// code referenced from : https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage

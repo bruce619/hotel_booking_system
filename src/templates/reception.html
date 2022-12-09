@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/booking.css">
     <link rel="stylesheet" href="/css/styles.css">
     <script src="/js/reception.js" defer></script>
+    <script src="/js/for_book_query.js" defer></script>
 </head>
 <body>
     <!-- nav -->
@@ -16,11 +17,11 @@
         <!-- nav container -->
         <div class="container">
   
-        <!-- nav logo -->
-        <div class="navigation__logo">
-          <a href="/"><img src="/img/Earlham_logo2-nav.png" alt="earlham-logo"></a>
-        </div>
-        <!-- nav log -->
+          <!-- nav logo -->
+          <div class="navigation__logo">
+            <a href="/"><img src="/img/Earlham_logo2-nav.png" alt="earlham-logo"></a>
+          </div>
+          <!-- nav log -->
   
           <!-- colapssible navbar using checkbox hack -->
           <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
@@ -43,7 +44,7 @@
             <div class="navigation__links">
               <ul>
                 <li class="navigation__item">
-                  <a href="/" class="navigation__link">Home</a>
+                  <a href="#" class="navigation__link">Home</a>
                 </li>
                 <li class="navigation__item">
                   <a href="/booking/reference" class="navigation__link">Booking Ref</a>
@@ -83,12 +84,14 @@
                 <i class="fa-solid fa-calendar-days"></i>
                 <input
                   type="text"
+                  id="checkin"
                   placeholder="Check in"
                   onfocus="(this.type='date')"
                   onblur="(this.type='text')" />
                 -
                 <input
                   type="text"
+                  id="checkout"
                   placeholder="Check out"
                   onfocus="(this.type='date')"
                   onblur="(this.type='text')" />

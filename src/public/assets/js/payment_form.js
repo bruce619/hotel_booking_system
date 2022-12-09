@@ -44,6 +44,30 @@ function inputNumberOnly(event){
   
 };
 
+
+document.addEventListener('DOMContentLoaded', (e)=>{
+
+
+  console.log(`This is my final data: ${localStorage.getItem("final")}`)
+  console.log(`This is my final data type ${typeof(localStorage.getItem("final"))}`)
+
+  const final = JSON.parse(localStorage.getItem("final"))
+
+  console.log(`This is my final data: ${final}`)
+  console.log(`This is my final data: ${typeof(final)}`)
+
+  if (final.total_cost === 0){
+    e.preventDefault()
+
+    error_msg.textContent = 'You must select a room to be able to make a payment'
+
+  }
+
+  localStorage.setItem("final", JSON.stringify(final))
+
+})
+
+
 card_number.addEventListener('keypress', inputNumberOnly);
 
 
@@ -65,12 +89,20 @@ function processPaymentForm(e){
 
     let messages = []
 
+    const final = JSON.parse(localStorage.getItem("final"))
+
+    console.log(`This is final data total cost in processpaymentform ${final.total_cost}`)
+
     if (card_number.value.length !== 19){
       messages.push("card must be 16 digits");
     }
 
     if (card_expiry.value.length !== 5){
       messages.push("invalid expiry date. must be in the format mm/yy e.g 02/22")
+    }
+
+    if (final.total_cost === 0){
+      messages.push('You must select a room to be able to make a payment');
     }
 
     if (messages.length > 0){
@@ -97,8 +129,18 @@ function processPaymentForm(e){
       "c_address": address.value,
       "c_cardtype": card_type.value,
       "c_cardno": card_number.value.replace(/\s/g, ''),
-      "c_cardexp": card_expiry.value
+      "c_cardexp": card_expiry.value,
+      "checkin": final.checkin,
+      "checkout": final.checkout,
+      "std_t": final.data.std_t,
+      "std_d": final.data.std_d,
+      "sup_t": final.data.sup_t,
+      "sup_d": final.data.sup_d,
+      "b_cost": final.total_cost
     }
+
+
+  console.log(`Here is data in payment form ${data}`)
 
   // serialize the data
   const serializedData = JSON.stringify(data) 
@@ -124,3 +166,10 @@ function processPaymentForm(e){
 }
 
 payment_form.addEventListener("submit", processPaymentForm);
+
+
+
+
+
+
+// code referenced from : https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage

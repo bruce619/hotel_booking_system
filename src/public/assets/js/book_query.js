@@ -1,34 +1,46 @@
-function onTextReady(text) {
-    console.log(text);
+/// for onload of available rooms
+document.addEventListener("DOMContentLoaded", ()=>{
+    // begining of event
 
-    // change js script
-    const oldScript = document.querySelector('script');
-    oldScript.remove();
+        console.log('I am here')
+        
+        console.log(localStorage.getItem("results"))
+        console.log(typeof(localStorage.getItem("results")));
 
-    const script = document.createElement('script');
-    script.src ='/js/for_payment_form.js';
-    script.setAttribute('defer', true);
-    const head = document.querySelector('head');
-    head.appendChild(script);
 
-    // convert response from JSON text to Object 
-    const resultObject = JSON.parse(text);
-    console.log(resultObject);
+        console.log('I am here 2')
 
-    // get number of available rooms for each room type
-    const results = resultObject.results;
-    console.log(results);
-    console.log(results.length);
 
-    let std_d_available_type;
-    let std_t_available_type;
-    let sup_d_available_type;
-    let sup_t_available_type;
+        text = localStorage.getItem("results")
 
-    let std_d_available;
-    let std_t_available;
-    let sup_d_available;
-    let sup_t_available;
+        const resultsObject = JSON.parse(text);
+
+        console.log('I am here 3')
+
+        console.log(`Here is the result object ${resultsObject}`)
+
+        const checkin = document.querySelector('#checkin')
+        const checkout = document.querySelector('#checkout')
+
+
+        checkin.value = resultsObject.date.checkin
+        checkout.value = resultsObject.date.checkout
+        
+
+        // get number of available rooms for each room type
+        const results = resultsObject.results;
+        console.log(results);
+        console.log(results.length);
+    
+        let std_d_available_type;
+        let std_t_available_type;
+        let sup_d_available_type;
+        let sup_t_available_type;
+    
+        let std_d_available;
+        let std_t_available;
+        let sup_d_available;
+        let sup_t_available;
 
     const pStd_d = document.querySelector('#std_d');
     const inputStd_d = document.querySelector('#std_d_no');
@@ -41,6 +53,11 @@ function onTextReady(text) {
 
     const pSup_t = document.querySelector('#sup_t');
     const inputSup_t = document.querySelector('#sup_t_no');
+
+    // const arr = JSON.parse(text)
+    // console.log(`This is my arr data class ${arr.results[0].r_class}`)
+    // console.log(`This is my arr data count ${arr.results[0].count}`)
+
 
     // for error message
     let p = document.querySelector('.search_unavailable');
@@ -120,49 +137,5 @@ function onTextReady(text) {
         }
 
     }
-}
 
-
-function onResponse(response) {
-    return response.text();
-}
-
-function createData(checkInDate, checkOutDate) {
-    const data = {
-        checkInDate: checkInDate,
-        checkOutDate: checkOutDate
-    };
-    return JSON.stringify(data);
-}
-
-function createOptions(data) {
-    const fetchOptions = {
-        method: 'POST',
-        headers: {
-            'Accept':'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: data
-    };
-    return fetchOptions;
-}
-
-function processSubmit(e) {
-    e.preventDefault();
-    const divCheckDate = document.querySelector('.check__date'); 
-    const checkInDate = divCheckDate.children[1];
-    console.log(checkInDate.value);
-    const checkOutDate = divCheckDate.children[2];
-    console.log(checkOutDate.value);
-    const data = createData(checkInDate.value.trim(), checkOutDate.value.trim());
-    console.log(data);
-    const fetchOptions = createOptions(data);
-    console.log(fetchOptions);
-
-    fetch('/available/rooms', fetchOptions)
-    .then(onResponse)
-    .then(onTextReady);
-}
-
-const formBook = document.querySelector('.check__details-form');
-formBook.addEventListener('submit', processSubmit);
+})

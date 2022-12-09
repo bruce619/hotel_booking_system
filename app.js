@@ -58,6 +58,11 @@ app.get('/payment/form', (req, res) => {
 });
 
 
+app.post('/payment/form', (req, res)=>{
+    res.send()
+})
+
+
 app.get('/payment/confirmation', (req, res) => {
        res.sendFile(__dirname + '/src/templates/payment_confirmation.html', (err)=>{
         if (err){
@@ -76,7 +81,14 @@ app.post('/payment/confirmation', jsonParser, (req, res) => {
         "c_address": body.c_address,
         "c_cardtype": body.c_cardtype,
         "c_cardno": body.c_cardno,
-        "c_cardexp": body.c_cardexp
+        "c_cardexp": body.c_cardexp,
+        "checkin": body.checkin,
+        "checkout": body.checkout,
+        "std_t": body.std_t,
+        "std_d": body.std_d,
+        "sup_t": body.sup_t,
+        "sup_d": body.sup_d,
+        "b_cost": body.b_cost
     }
     res.send(JSON.stringify(req_data));
 });
@@ -91,17 +103,18 @@ app.get('/payment/confirmed', jsonParser, (req, res) => {
 });
 
 
-app.post('/payment/confirmed', jsonParser, (req, res) => {
+app.post('/payment/confirmed', jsonParser, async function (req, res) {
     console.log(`Confirmation POST ${req.body.c_name}`);
     console.log(`Confirmation POST Typeof ${typeof(req.body)}`);
     const body = req.body;
     req_data = {
+        "c_no": body.c_no,
         "c_name": body.c_name,
         "c_email": body.c_email,
         "c_address": body.c_address,
         "c_cardtype": body.c_cardtype,
-        "c_cardno": body.c_cardno,
         "c_cardexp": body.c_cardexp,
+        "c_cardno": body.c_cardno,
         "b_cost": body.b_cost,
         "b_outstanding": body.b_outstanding,
         "b_notes": "",
@@ -113,7 +126,29 @@ app.post('/payment/confirmed', jsonParser, (req, res) => {
         "sup_t": body.sup_t,
         "sup_d": body.sup_d
     }
-    res.send(JSON.stringify(req_data));
+
+    try {
+        let results;
+        const pool = new pg.Pool(config);
+        const client = await pool.connect();
+        const q = `insert into customer values (${req_data.c_no}, ${req_data.c_name}, ${req_data.c_email}, ${req_data.c_address}, 
+            ${req_data.c_cardtype}, ${req_data.c_cardexp}, ${req_data.c_cardno}); 
+            insert into booking (${req_data.b_ref}, ${req_data.c_no}, ${req_data.b_cost}, ${req_data.b_outstanding}, ${req_data.b_notes}); 
+            insert into roombooking ()`
+        await client.query(q, (err, results) => {
+            if (err) {
+                console.log(err.stack);
+                errors = err.stack.split(" at ");
+                res.json({ result: 'fail', message: 'Sorry something went wrong. price ' + errors[0] });
+            } else {
+                client.release();
+                console.log(results);
+                res.send(JSON.stringify(req_data));
+            }
+        });
+    } catch (e) {
+        console.log(`${e} error found`)
+    }
 });
 
 
@@ -201,6 +236,9 @@ app.post('/available/rooms', jsonParser, async function (req, res) {
     console.log(req.body);
     const checkInDate = body.checkInDate;
     const checkOutDate = body.checkOutDate;
+
+    console.log(`Here is the check in ${checkInDate}`)
+    console.log(`Here is the check out ${checkOutDate}`)
     try {
         let results;
         const pool = new pg.Pool(config);
@@ -222,8 +260,12 @@ app.post('/available/rooms', jsonParser, async function (req, res) {
             } else {
                 client.release();
                 console.log(results);
+                date = {
+                    "checkin": checkInDate,
+                    "checkout": checkOutDate
+                }
                 data = results.rows;
-                res.json({  results: data });
+                res.json({  results: data, date: date });
             }
         });
     } catch (e) {

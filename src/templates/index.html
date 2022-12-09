@@ -16,6 +16,7 @@
     <script src="/js/modal.js" defer></script>
     <script src="/js/get_price.js" defer></script>
     <script src="/js/email.js" defer></script>
+    <script src="/js/for_book_query.js" defer></script>
   </head>
 
   <body>
@@ -93,12 +94,14 @@
                 <i class="fa-solid fa-calendar-days"></i>
                 <input
                 type="text"
+                id="checkin"
                 placeholder="Check in"
                 onfocus="(this.type='date')"
                 onblur="(this.type='text')" />
                 -
                 <input
                 type="text"
+                id="checkout"
                 placeholder="Check out"
                 onfocus="(this.type='date')"
                 onblur="(this.type='text')" />

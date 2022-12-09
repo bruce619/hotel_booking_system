@@ -244,6 +244,14 @@ text-align: center;
     background-color: lightgray;
 }
 
+.recep_jump {
+    padding: 10px;
+    /* width: fit-content; */
+    border: none;
+    border-radius: 30px;
+    background-color: goldenrod;
+}
+
 /* for reception-result page - nodata */
 .recep-nodata p, .recep-nodata a{
     margin: 20px auto 0 auto;
@@ -299,8 +307,8 @@ text-align: center;
 }
 
 
- /* for "mybookings" unavailable page */ 
-.mybook-unavailable {
+ /* for "mybookings" unavailable page */ /* for "available rooms" unavailable case"*/
+.mybook-unavailable, .search_unavailable {
     border: none;
     color: firebrick;
     font-size: larger;

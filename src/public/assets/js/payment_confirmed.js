@@ -74,3 +74,5 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 // end of event
 })
+
+// code referenced from : https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
