@@ -38,5 +38,70 @@ app.get('/housekeeping', (req, res) => {
     res.sendFile(__dirname + '/src/templates/housekeeping.html')
 })
 
+// declare env 
+const env = process.env.NODE_ENV || 'development';
+
+// import database configurations 
+const config = require('./config.js')[env];
+
+/// load PG library
+const pg = require('pg');
+
+/* GET data from database */
+app.get('/housekeeping/update', async (req,res) => {
+	try{
+		let results;
+		const pool = new pg.Pool(config);
+		const client = await pool.connect();
+		const q = "select r_no, r_status from room WHERE r_status = 'C' ORDER BY r_no;"
+		await client.query(q, (err, results) => {
+		  if (err) {
+		    console.log(err.stack)
+			errors = err.stack.split(" at ");
+		    res.json({ message:'Sorry something went wrong! The data has not been processed ' + errors[0]});
+		  } else {
+			client.release();
+		   console.log(results); //
+	   		data = results.rows;
+	   		count = results.rows.length;
+            res.json({ results:data, rows:count });
+		  }
+		});
+
+	}catch(e){
+		console.log(e);
+	}	
+});
+
+// Update room status to A
+app.post('/housekeeping/clean', async (req, res) =>{
+    const body = req.body;
+    const roomNum = body.roomNum;
+
+	try{
+		let results;
+		const pool = new pg.Pool(config);
+		const client = await pool.connect();
+		const q = `insert into users values ((SELECT COALESCE(MAX(id),0) FROM users) + 1, '${name.trim()}', '${email.trim()}', '${message.trim()}'); select * from users; `;
+		await client.query(q, (err, results) => {
+		  if (err) {
+		    console.log(err.stack)
+			errors = err.stack.split(" at ");
+		    res.json({ message:'Sorry something went wrong! The data has not been processed ' + errors[0]});
+		  } else {
+			client.release();
+		   // console.log(results); //
+	   		data = results[1].rows;
+	   		count = results[1].rows.length;
+            res.json({ results:data, rows:count });
+		  }
+		});
+
+	}catch(e){
+		console.log(e);
+	}	
+
+});
+
 // Listen to port 3000
 app.listen(port, () => console.info(`hotel booking app listening on port ${port}`))

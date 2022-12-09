@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
     <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/62765ee528.js" crossorigin="anonymous"></script>
+    <script src="js/housekeeping.js" defer></script>
     <title>Earlham Park Hotel - Payment Form</title>
   </head>
   <body>
@@ -126,16 +127,10 @@
             <br />
             
             <!-- table for rooms to clean  -->
-            <div class="table">
-                <h3>Cleaning Roster</h3>
-                <br>
-                <table class="roster">
-                    <tr>
-                      <th class="roomID">Room</th>
-                      <th>Status</th>
-                      <th>Update</th>
-                    </tr>
-                    <tr>
+            <div id="roster" class="table">
+                <button id="refresher" class="btn">Refresh</button>
+
+                    <!-- <tr>
                       <td class="roomID">101</td>
                       <td>Checked Out</td>
                       <td class="buttonUpdate"><button class="tableButton" onclick="alert('Room Status Updated!')">Complete</button></td>
@@ -294,7 +289,7 @@
                     <td>408</td>
                     <td>Checked Out</td>
                     <td><button class="tableButton" onclick="alert('Room Status Updated!')">Complete</button></td>
-                  </tr>
+                  </tr> -->
                   </table>
             </div>
         </div>

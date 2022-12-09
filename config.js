@@ -1,22 +1,17 @@
 const config = {
-	development: {
-			  user: 'postgres', // env var: PGUSER YOUR UEA username
-			  database: 'postgres', // env var: PGDATABASE YOUR UEA username
-			  password: '', // env var: PGPASSWORD YOUR UEA password
-			  host: 'localhost', // Server hosting the postgres database
-			  port: 5432, // env var: PGPORT
-			  
-	},
-	production: {
-			  user: '', // env var: PGUSER  - YOUR UEA username
-			  database: '', // env var: PGDATABASE  - YOUR UEA username
-			  password: '', // env var: PGPASSWORD  - YOUR UEA password
-			  host: 'cmpstudb-01.cmp.uea.ac.uk', // Server hosting the postgres database
-			  port: 5432, // env var: PGPORT
-			
-	},
-	
+    development: {
+        user: 'postgres',
+        database: 'postgres',
+        password: 'h1m1tsubi',
+        host: 'localhost',
+        port: 5432,
+    },
+    production: {
+        user: '',
+        database: '',
+        password: '',
+        host: 'localhost',
+        port: 5432,
+    },
 };
-module.exports = config;
-
-// export const Config = config;
+module.exports = config
