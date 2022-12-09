@@ -145,11 +145,11 @@
               <p><i class="fa-solid fa-key"></i> Selected date and room</p>
               <div class="form__group">
                 <p>Check in date</p>
-                <input disabled class="form__input" value="" type="date" />
+                <input disabled class="form__input" value="" id="checkin" type="date" />
               </div>
               <div class="form__group">
                 <p>Check out date</p>
-                <input disabled class="form__input" value="" type="date" />
+                <input disabled class="form__input" value="" id="checkout" type="date" />
               </div>
               <div class="form__header">
                 <p>Selected room</p>
@@ -180,16 +180,16 @@
             <div class="payment__info">
               <p><i class="fa-solid fa-credit-card"></i> Payment information</p>
               <div class="form__group">
-                <input class="form__input" type="text" name="name" id="name" placeholder="Name" required/>
+                <input class="form__input" type="text" name="name" id="name" placeholder="Name" disabled required/>
               </div>
               <div class="form__group">
-                <input class="form__input" type="email" name="email" id="email" placeholder="Email" required/>
+                <input class="form__input" type="email" name="email" id="email" placeholder="Email" disabled required/>
               </div>
               <div class="form__group">
-                <input class="form__input" type="text" name="address" id="address" placeholder="Address" required/>
+                <input class="form__input" type="text" name="address" id="address" disabled placeholder="Address" required/>
               </div>
               <div class="form__group">
-                <select class="form__input" name="card-type" id="card-type" required>
+                <select class="form__input" name="card-type" id="card_type" disabled required>
                   <option class="" value="" disabled selected>
                     Select your card type
                   </option>
@@ -207,6 +207,7 @@
                 name="card_number" 
                 id="card_number" 
                 placeholder="XXXX XXXX XXXX XXXX" 
+                disabled
                 required />
               </div>
               <div class="form__group">
@@ -217,7 +218,8 @@
                 maxlength="5"
                 name="expiry" 
                 id="expiry" 
-                placeholder="MM/YYYY" 
+                placeholder="MM/YY"
+                disabled 
                 required />
               </div>
             </div>

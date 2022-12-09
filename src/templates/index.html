@@ -15,6 +15,7 @@
     <script src="/js/slideshow.js" defer></script>
     <script src="/js/modal.js" defer></script>
     <script src="/js/get_price.js" defer></script>
+    <script src="/js/email.js" defer></script>
   </head>
 
   <body>
@@ -441,13 +442,14 @@
     <footer class="footer">
       <!-- footer left -->
       <div class="footer__left footer__col">
-        <form action="#" id="contactus" class="footer__form">
+        <form action="/" id="contactus" class="footer__form" method="POST">
           <h4>Contact Us</h4>
           <div class="footer__form-details">
-            <input type="text" name="name" id="" placeholder="Name" />
-            <input type="email" name="" id="" placeholder="Email" />
+            <input type="text" name="contact_name" id="contact_name" placeholder="Name" />
+            <input type="email" name="contact_email" id="contact_email" placeholder="Email" />
           </div>
           <textarea class="footer__form-message" name="message" id="message" placeholder="Message" cols="30" rows="10"></textarea>
+          <button type="submit" id="contact__submit" class="contact__btn_submit">Send</button>
         </form>
       </div>
       <!-- footer left -->
@@ -472,6 +474,8 @@
           <i class="fa-brands fa-square-twitter"></i>
           <i class="fa-brands fa-pinterest"></i>
         </div>
+        <div id="error"></div>
+        <div id="suc"></div>
       </div>
       <!-- footer center -->
 

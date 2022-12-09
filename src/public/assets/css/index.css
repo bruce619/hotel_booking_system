@@ -24,10 +24,6 @@ main {
   margin: auto;
 }
 
-/* .logo-img {
-max-width: 300px;
-} */
-
 .hero {
   position: relative;
   text-align: center;
@@ -222,7 +218,6 @@ main > .container {
   border-radius: 0.25rem;
   width: 100%;
   max-width: 800px;
-  /* max-height: 90vh; */
   overflow: auto;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   font-size: 16px;
@@ -236,6 +231,8 @@ main > .container {
   animation: fadeInDown 0.3s ease-in-out forwards;
 }
 
+
+
 .modal.modal-hide .modal-content {
   animation: fadeOutUp 0.2s ease-in-out forwards;
 }
@@ -248,6 +245,16 @@ main > .container {
 .modal-content p {
   margin: 1rem 0;
   line-height: 1.5rem;
+}
+
+.contact__btn_submit{
+  background-color: green;
+  color: white;
+  border: 2px solid #4b614c;
+  border-radius: 4px;
+  width: 80px;
+  height: 20px;
+  margin-top: 4px;
 }
 
 .modal-close {

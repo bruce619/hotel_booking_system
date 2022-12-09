@@ -1,141 +1,165 @@
-document.addEventListener('DOMContentLoaded', ()=> {
-
-    // go back to the payment form page with the reset button
+// go back to the payment form page with the reset button
 const button_reset = document.querySelector('#reset');
 
+// check in
+const check_in = document.querySelector('#checkin');
+
+// check out
+const check_out = document.querySelector('#checkout');
+
+// total price
+const total_price = document.querySelector('#price')
+
+// standard twin
+const std_t = document.querySelector('#standard-twin');
+
+// standard double
+const std_d = document.querySelector('#standard-double');
+
+// superior twin
+const sup_t = document.querySelector('#superior-twin');
+
+// superior double
+const sup_d = document.querySelector('#superior-double');
+
+
+// select name
+const c_name = document.querySelector('#name');
+
+// select email
+const c_email = document.querySelector('#email');
+
+// address 
+const c_address = document.querySelector('#address')
+
+// select card-type
+const c_cardtype = document.querySelector('#card_type');
+
+// select card-number
+const c_cardno = document.querySelector('#card_number');
+
+// select expiry
+const c_cardexp = document.querySelector('#expiry');
+
+// grab error div
+const error_msg = document.querySelector("#error");
+
+// submit booking form
+const conformation_form = document.querySelector('#confirmation_form');
+
+
+// reset button handler
 button_reset.addEventListener("click", ()=>{
     window.location.href = '/payment/form';
 });
 
-    // select name
-    const name = document.querySelector('#name');
 
-    // select email
-    const email = document.querySelector('#email');
-
-    // address 
-    const address = document.querySelector('#address')
-
-    // select card-type
-    const card_type = document.querySelector('#card_type');
-
-    // select card-number
-    const card_number = document.querySelector('#card_number');
-
-    // select expiry
-    const card_expiry = document.querySelector('#expiry');
-
-    // grab error div
-    const error_msg = document.querySelector("#error");
-
-    // submit booking form
-    const conformation_form = document.querySelector('#confirmation_form');
+document.addEventListener("DOMContentLoaded", ()=>{
 
     console.log(localStorage.getItem("data"))
     console.log(typeof(localStorage.getItem("data")))
 
     // make sure the getItem store in localstorage isn't undefined
     if (typeof(localStorage.getItem) !== 'undefined'){
-
+        
         const data = JSON.parse(localStorage.getItem("data"));
-
+        
         console.log(data);
-
-        name.value = data.c_name
-        email.value = data.c_email
-        address.value = data.c_address
-        card_type.value = data.c_cardtype
-        card_number.value = data.c_cardno
-        card_expiry.value = data.c_cardexp
-
-    }
-
-
-    console.log(`this is the new name ${name.value}`)
-
-
-    conformation_form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        let messages = []
-
-            if (card_number.value.length !== 16){
-                messages.push("card must be 16 digits");
-            }
-  
-            if (card_expiry.value.length !== 5){
-                messages.push("invalid expiry date. must be in the format mm/yy e.g 02/22")
-            }
-  
-            if (messages.length > 0){
-            e.preventDefault();
-            error_msg.innerHTML = messages.join(', ')
-            };
-
-            function randomUserId(min, max){
-                return Math.floor(Math.random() * (max - min + 1) + min)
-            }
-
-            function RandomFloat(min, max, decimals) {
-                return Math.floor(Math.random() * (max - min) + min).toFixed(decimals);
-            }
-
-            const booking_data = {
-            "c_no": randomUserId(13000, 30000),
-            "c_name": name.value,
-            "c_email": email.value,
-            "c_address": address.value,
-            "c_cardtype": card_type.value,
-            "c_cardexp": card_expiry.value,
-            "c_cardno": card_number.value,
-            "b_cost": RandomFloat(62, 400, 2),
-            "b_outstanding": 0,
-            "b_notes": "",
-            "b_ref": randomUserId(14000, 20000),
-            "checkin": "20Dec2022",
-            "checkout": "25Jan2023"
+        
+        check_in.value = '2022-12-03' // replace
+        check_out.value = '2022-12-09' // replace
+        total_price.textContent = '248' // replace
+        std_t.textContent = '2' // replace
+        std_d.textContent = '0' // replace
+        sup_t.textContent = '0' // replace
+        sup_d.textContent = '2' // replace
+        c_name.value = data.c_name
+        c_email.value = data.c_email
+        c_address.value = data.c_address
+        c_cardtype.value = data.c_cardtype
+        c_cardno.value = data.c_cardno
+        c_cardexp.value = data.c_cardexp
         }
 
-    })
+})
 
 
+function processPaymentConfirmation(e){
 
-  });
-
-
-//   conformation_form.addEventListener("submit", (event) => {
-
-//     console.log(card_number.value)
-//     console.log(card_expiry.value)
+    e.preventDefault();
+    
+    let messages = []
+    
+    if (c_cardno.value.length !== 16){
+        messages.push("card must be 16 digits");
+    }
   
-//     let messages = []
+    if (c_cardexp.value.length !== 5){
+        messages.push("invalid expiry date. must be in the format mm/yy e.g 02/22")
+    }
+
+    if (messages.length > 0){
+        e.preventDefault();
+        error_msg.textContent = messages.join(', ')
+    };
 
 
+    function randomGeneratedNumber(min, max){
+        return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+
+    const booking_data = {
+        "c_no": randomGeneratedNumber(13000, 30000),
+        "c_name": c_name.value,
+        "c_email": c_email.value,
+        "c_address": c_address.value,
+        "c_cardtype": c_cardtype.value,
+        "c_cardexp": c_cardexp.value,
+        "c_cardno": c_cardno.value,
+        "b_cost": '248', // replace
+        "b_outstanding": '0',
+        "b_notes": "",
+        "b_ref": randomGeneratedNumber(14000, 30000),
+        "checkin": "2022-12-03", // replace
+        "checkout": "2022-12-09", // replace
+        "std_t": '2', // replace
+        "std_d": '0', // replace
+        "sup_t": '0', // replace
+        "sup_d": '2' // replace
+    }
+
+    function onTextReady(text){
+        console.log(text);
+        console.log(typeof(text));
+        // pass data to payment/confirmation
+        localStorage.setItem("booking_data", text)
+        window.location.href = '/payment/confirmed';   
+    }
     
-//     function onTextReady(text){
-//         console.log(text);
-//     }
-    
-//     function onResponse(res){
-//         return res.text();
-//     }
+    function onResponse(res){
+        return res.text();
+    }
 
-    
-//     const serializedMessage = JSON.stringify(booking_data);
-    
-//     const fetchOptions = {
-//         method: 'POST',
-//         headers: {
-//             'Accept': 'application/json',
-//             'Content-Type': 'application/json'
-//         },
-
-//         body: serializedMessage
-//     }
+    const serializedBookingData = JSON.stringify(booking_data);
 
 
-//     fetch('/payment/confirmed', fetchOptions)
-//     .then(onResponse)
-//     .then(onTextReady);
+    fetch('/payment/confirmed', {
+        method: 'POST',
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: serializedBookingData
+    })
+    .then(onResponse)
+    .then(onTextReady)
+    .catch((error) => {
+        console.error('Error:', error);
+      });
+  
 
-// });
+// end function
+}
+
+
+conformation_form.addEventListener("submit", processPaymentConfirmation)

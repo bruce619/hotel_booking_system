@@ -78,6 +78,19 @@ function processPaymentForm(e){
       error_msg.innerHTML = messages.join(', ')
     }
 
+
+    function onTextReady(text){
+      console.log(text);
+      console.log(typeof(text));
+      // pass data to payment/confirmation
+      localStorage.setItem("data", text)
+      window.location.href = '/payment/confirmation';
+    }
+  
+  function onResponse(res){
+      return res.text()
+  }
+
     data = {
       "c_name": user_name.value,
       "c_email": email.value,
@@ -87,26 +100,27 @@ function processPaymentForm(e){
       "c_cardexp": card_expiry.value
     }
 
-  
+  // serialize the data
   const serializedData = JSON.stringify(data) 
 
-  fetch('/payment/confirmation', {
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-  },
-  body: serializedData
-})
-.then((response) => response.json())
-.then((data) => {
-  console.log('Success:', data);
-  localStorage.setItem("data", serializedData);
-  window.location = '/payment/confirmation' // redirect
+
+    fetch('/payment/confirmation', {
+      method: 'POST',
+      headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: serializedData
   })
+  .then(onResponse)
+  .then(onTextReady)
   .catch((error) => {
-    console.error('Error:', error);
-  });
+      console.error('Error:', error);
+    });
+
+
+
+// end
 }
 
 payment_form.addEventListener("submit", processPaymentForm);

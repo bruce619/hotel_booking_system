@@ -117,6 +117,10 @@ main {
   color: red;
 }
 
+#suc {
+  color: green;
+}
+
 @media (max-width: 960px) {
   html {
     font-size: 60%;

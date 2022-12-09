@@ -39,6 +39,15 @@ app.get('/', (req, res) => {
     })
 });
 
+app.post('/', jsonParser, (req, res)=>{
+    const body = req.body
+    const name = body.name
+    const email = body.email
+    const message = body.message
+
+    res.send(`POST: Name: ' + ${name} + ', Email: ' + ${email} + ', message: ' + ${message}`)
+});
+
 
 app.get('/payment/form', (req, res) => {
     res.sendFile(__dirname + '/src/templates/payment_form.html', (err)=>{
@@ -50,7 +59,6 @@ app.get('/payment/form', (req, res) => {
 
 
 app.get('/payment/confirmation', (req, res) => {
-
        res.sendFile(__dirname + '/src/templates/payment_confirmation.html', (err)=>{
         if (err){
             console.log(err);
@@ -61,7 +69,16 @@ app.get('/payment/confirmation', (req, res) => {
 app.post('/payment/confirmation', jsonParser, (req, res) => {
     console.log(`Confirmation POST ${req.body.c_name}`);
     console.log(`Confirmation POST Typeof ${typeof(req.body)}`);
-    res.json({ result: res.body });
+    const body = req.body;
+    req_data = {
+        "c_name": body.c_name,
+        "c_email": body.c_email,
+        "c_address": body.c_address,
+        "c_cardtype": body.c_cardtype,
+        "c_cardno": body.c_cardno,
+        "c_cardexp": body.c_cardexp
+    }
+    res.send(JSON.stringify(req_data));
 });
 
 app.get('/payment/confirmed', jsonParser, (req, res) => {
@@ -75,12 +92,28 @@ app.get('/payment/confirmed', jsonParser, (req, res) => {
 
 
 app.post('/payment/confirmed', jsonParser, (req, res) => {
-    console.log("POST confirmed: " + req.body);
-    res.sendFile(__dirname + '/src/templates/payment_confirmed.html', (err)=>{
-        if (err){
-            console.log(err);
-        }
-    })
+    console.log(`Confirmation POST ${req.body.c_name}`);
+    console.log(`Confirmation POST Typeof ${typeof(req.body)}`);
+    const body = req.body;
+    req_data = {
+        "c_name": body.c_name,
+        "c_email": body.c_email,
+        "c_address": body.c_address,
+        "c_cardtype": body.c_cardtype,
+        "c_cardno": body.c_cardno,
+        "c_cardexp": body.c_cardexp,
+        "b_cost": body.b_cost,
+        "b_outstanding": body.b_outstanding,
+        "b_notes": "",
+        "b_ref": body.b_ref,
+        "checkin": body.checkin,
+        "checkout": body.checkout,
+        "std_t": body.std_t,
+        "std_d": body.std_d,
+        "sup_t": body.sup_t,
+        "sup_d": body.sup_d
+    }
+    res.send(JSON.stringify(req_data));
 });
 
 
