@@ -47,13 +47,13 @@ const config = require('./config.js')[env];
 /// load PG library
 const pg = require('pg');
 
-/* GET data from database */
+/* GET data from database || HOUSEKEEPING */
 app.get('/housekeeping/update', async (req,res) => {
 	try{
 		let results;
 		const pool = new pg.Pool(config);
 		const client = await pool.connect();
-		const q = "select r_no, r_status from room WHERE r_status = 'C' ORDER BY r_no;"
+		const q = "select r_no, r_status from hotelbooking.room WHERE r_status = 'C' ORDER BY r_no;"
 		await client.query(q, (err, results) => {
 		  if (err) {
 		    console.log(err.stack)
@@ -73,7 +73,7 @@ app.get('/housekeeping/update', async (req,res) => {
 	}	
 });
 
-// Update room status to A
+// Update room status to A || HOUSEKEEPING 
 app.post('/clean', async (req, res) =>{
     console.log('post running');
     const body = req.body;
@@ -86,7 +86,7 @@ app.post('/clean', async (req, res) =>{
 		let results;
 		const pool = new pg.Pool(config);
 		const client = await pool.connect();
-		const q = `UPDATE room SET r_status = 'A' WHERE r_no = ${roomNum}`;
+		const q = `UPDATE hotelbooking.room SET r_status = 'A' WHERE r_no = ${roomNum}`;
 		await client.query(q, (err, results) => {
 		  if (err) {
 		    console.log(err.stack)
