@@ -100,18 +100,30 @@ app.post('/available/rooms', jsonParser, async function (req, res) {
         const pool = new pg.Pool(config);
         const client = await pool.connect();
             //--modified
-        const q = `select r.r_class, count(*)
-                    from hotelbooking.room r
-                    where r.r_no
-                    not in (
-                        select rb.r_no
-                        from hotelbooking.roombooking rb
-                        where 
-                        rb.b_ref not in (select rb.b_ref
-                            from hotelbooking.roombooking
-                            where '${checkInDate}' <= rb.checkout and '${checkOutDate}' <= rb.checkin))
-                    group by r.r_class
-                    order by r.r_class;`
+
+        const q = `select r.r_class, r.r_no
+        from hotelbooking.room r
+        where r.r_no
+        not in (
+            select rb.r_no
+            from hotelbooking.roombooking rb
+            where 
+            rb.b_ref not in (select rb.b_ref
+                from hotelbooking.roombooking
+                where '${checkInDate}' <= rb.checkout and '${checkOutDate}' <= rb.checkin))
+            order by r.r_class;`
+        // const q = `select r.r_class, count(*)
+        //             from hotelbooking.room r
+        //             where r.r_no
+        //             not in (
+        //                 select rb.r_no
+        //                 from hotelbooking.roombooking rb
+        //                 where 
+        //                 rb.b_ref not in (select rb.b_ref
+        //                     from hotelbooking.roombooking
+        //                     where '${checkInDate}' <= rb.checkout and '${checkOutDate}' <= rb.checkin))
+        //             group by r.r_class
+        //             order by r.r_class;`
             //modified--
         await client.query(q, (err, results) => {
             if (err) {
@@ -120,7 +132,8 @@ app.post('/available/rooms', jsonParser, async function (req, res) {
                 res.json({ result: 'fail', message: 'Sorry something went wrong.search ' + errors[0] });
             } else {
                 client.release();
-                console.log(results);
+                console.log(`Here is the result of my query  ${results.rows[0].r_class}`)
+                // console.log(results);
                 data = results.rows;
                 res.json({  results: data });
             }
@@ -327,7 +340,140 @@ app.get('/housekeeping/search', jsonParser, async function (req, res) {
 }) ;
 
 
+app.post('/payment/form', jsonParser, async function (req, res) {
+    console.log("POSTrequest room no");
+    const body = req.body;
+    console.log(req.body);
+    const bookRef = body.bookRef;
+    try {
+        let results;
+        const pool = new pg.Pool(config);
+        const client = await pool.connect();
+        let q;
+        console.log(bookRef)
+        q = `select r.r_class, r.r_no
+        from hotelbooking.room r
+        where r.r_no
+        not in (
+            select rb.r_no
+            from hotelbooking.roombooking rb
+            where 
+            rb.b_ref not in (select rb.b_ref
+                from hotelbooking.roombooking
+                where '${checkInDate}' <= rb.checkout and '${checkOutDate}' <= rb.checkin))
+            order by r.r_class;`;
+        await client.query(q, (err, results) => {
+            if (err) {
+                console.log(err.stack);
+                errors = err.stack.split(" at ");
+                res.json({ message: 'Sorry something went wrong. ' + errors[0] });
+            } else {
+                client.release();
+                console.log(results);
+                data = results.rows;
+                res.json({ results: data });
+            }
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}) ;
+
+
+
+
+
+
+
+
+
+
+
+// fetch clean data housekeeping
+app.get('/housekeeping/update', async (req,res) => {
+	try{
+
+		let results;
+		const pool = new pg.Pool(config);
+		const client = await pool.connect();
+		const q = "select r_no, r_status from hotelbooking.room WHERE r_status = 'C' ORDER BY r_no;"
+		await client.query(q, (err, results) => {
+		  if (err) {
+		    console.log(err.stack)
+			errors = err.stack.split(" at ");
+		    res.json({ message:'Sorry something went wrong! The data has not been processed ' + errors[0]});
+		  } else {
+			client.release();
+		   console.log(results); //
+	   		data = results.rows;
+	   		count = results.rows.length;
+            res.json({ results:data, rows:count });
+		  }
+		});
+
+	}catch(e){
+		console.log(e);
+	}	
+});
+
+// update room status to A HOUSEKEEPING
+app.post('/clean', jsonParser, async function (req, res) {
+    console.log("POSTrequest CLEAN");
+    const body = req.body;
+    console.log(req.body);
+    const roomNum = body.roomNum;
+    try {
+        let results;
+        const pool = new pg.Pool(config);
+        const client = await pool.connect();
+        const q = `UPDATE hotelbooking.room SET r_status = 'A' WHERE r_no = ${roomNum}`;
+        await client.query(q, (err, results) => {
+            if (err) {
+                console.log(err.stack);
+                errors = err.stack.split(" at ");
+                res.json({ result: 'fail', message: 'Sorry something went wrong.checkout ' + errors[0] });
+            } else {
+                client.release();
+                console.log(results);
+                res.json({  result: 'success', message: 'successfully updated' });
+            }
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}) ;
+
+// Update room status to A housekeeping
+// app.post('/clean', async (req, res) =>{
+//     console.log('post running');
+//     const body = req.body;
+//     console.log(body);
+//     const roomNum = body.roomNum;
+//     console.log(`variable received ${roomNum} in app.js`);
+    
+
+// 	try{
+// 		let results;
+// 		const pool = new pg.Pool(config);
+// 		const client = await pool.connect();
+// 		const q = `UPDATE hotelbooking.room SET r_status = 'A' WHERE r_no = ${roomNum}`;
+// 		await client.query(q, (err, results) => {
+// 		  if (err) {
+// 		    console.log(err.stack)
+// 			errors = err.stack.split(" at ");
+// 		    res.json({ message:'Sorry something went wrong! The data has not been processed ' + errors[0]});
+// 		  } else {
+// 			client.release();
+// 		    console.log(results); //;
+// 		  }
+// 		});
+
+// 	}catch(e){
+// 		console.log(e);
+// 	}	
+
+// });
+
+
 // Listen to port 3000
 app.listen(port, () => console.info(`hotel booking app listening on port ${port}`))
-
-
