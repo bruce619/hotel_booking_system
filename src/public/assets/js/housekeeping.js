@@ -1,16 +1,34 @@
-// getting room id 
-// let rowrowindex;
+// wrap data 
+function createData(roomNum) {
+    const data = {
+        roomNum: roomNum,
+    };
+    console.log(`JSONifying ${roomNum}`);
+    return JSON.stringify(data);
+    
+}
 
-// function getRoomID(i) {
-//     console.log("Row index is: " + i.rowIndex);
-//     rowrowindex = i.rowIndex;
-//   }
+function createOptions(data){
+    const fetchOptions ={
+        method: 'POST',
+        headers:{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: data
+    }
+    console.log(fetchOptions);
+    return fetchOptions;
+}
 
-function updateButton(x) {
-    console.log("Button test also says Row Index is: " + x.parentNode.rowIndex);
-    const roomNum = document.getElementById('#cleanRoster').rows[rowrowIndex].cell[0];
+function handleCompleteClick(roomNum){
     console.log(roomNum);
-
+    const data = createData(roomNum);
+    const fetchOptions = createOptions(data)
+    fetch('http://localhost:3000/clean' , fetchOptions)
+    console.log('fetch sent');
+    // .then(onResponse)
+    // .then(onTextReady);
 }
 
 function onTextReady(text){
@@ -27,9 +45,9 @@ function onTextReady(text){
         
 
         // console.log(element);
-        output +=   `<tr onclick="getRoomID(this)"><td> ${element.r_no} </td>
+        output +=   `<tr><td> ${element.r_no} </td>
                     <td> ${ element.r_status}hecked Out </td>
-                    <td id=btn${element.r_no} class="buttonUpdate"><button class="tableButton" onclick="updateButton(this)">Complete</button></td></tr>`;
+                    <td class="buttonUpdate"><button class="tableButton" onClick={handleCompleteClick(${element.r_no})}>Complete</button></td></tr>`;
     }) 
     // output += '</tr>'
  
@@ -82,7 +100,13 @@ function showRooms(e){
 
 }
 
+function loadPage(){
+    console.log('page loaded')
+    showRooms();
+    
+}
 
+// const showrooms = document.querySelector('#refresher');
+// showrooms.addEventListener('click', showRooms);
 
-const showrooms = document.querySelector('#refresher');
-showrooms.addEventListener('click', showRooms);
+window.onload = loadPage

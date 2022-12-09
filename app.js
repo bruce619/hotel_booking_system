@@ -74,15 +74,19 @@ app.get('/housekeeping/update', async (req,res) => {
 });
 
 // Update room status to A
-app.post('/housekeeping/clean', async (req, res) =>{
+app.post('/clean', async (req, res) =>{
+    console.log('post running');
     const body = req.body;
+    console.log(body);
     const roomNum = body.roomNum;
+    console.log(`variable received ${roomNum} in app.js`);
+    
 
 	try{
 		let results;
 		const pool = new pg.Pool(config);
 		const client = await pool.connect();
-		const q = `insert into users values ((SELECT COALESCE(MAX(id),0) FROM users) + 1, '${name.trim()}', '${email.trim()}', '${message.trim()}'); select * from users; `;
+		const q = `UPDATE room SET r_status = 'A' WHERE r_no = ${roomNum}`;
 		await client.query(q, (err, results) => {
 		  if (err) {
 		    console.log(err.stack)
@@ -90,10 +94,7 @@ app.post('/housekeeping/clean', async (req, res) =>{
 		    res.json({ message:'Sorry something went wrong! The data has not been processed ' + errors[0]});
 		  } else {
 			client.release();
-		   // console.log(results); //
-	   		data = results[1].rows;
-	   		count = results[1].rows.length;
-            res.json({ results:data, rows:count });
+		    console.log(results); //;
 		  }
 		});
 
@@ -102,6 +103,7 @@ app.post('/housekeeping/clean', async (req, res) =>{
 	}	
 
 });
+
 
 // Listen to port 3000
 app.listen(port, () => console.info(`hotel booking app listening on port ${port}`))
