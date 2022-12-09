@@ -23,6 +23,10 @@ const sup_t = document.querySelector('#superior-twin');
 const sup_d = document.querySelector('#superior-double');
 
 
+// total_cost
+// const total_cost = document.querySelector('#price')
+
+
 // select name
 const c_name = document.querySelector('#name');
 
@@ -158,7 +162,7 @@ function processPaymentConfirmation(e){
             const r_sup_d = req_data.sup_d
 
 
-            // push
+            // push into array
             for(let i = 0; i < db_results.length; i++){
                 if (db_results[i].r_class == 'std_t'){
                     r_nos_std_t.push(db_results[i].r_no)
@@ -173,14 +177,26 @@ function processPaymentConfirmation(e){
                 }
             }
 
+            
+            console.log(`std_t ${r_nos_std_t}`);
+            console.log(`std_d ${r_nos_std_d}`);
+            console.log(`sup_t ${r_nos_sup_t}`);
+            console.log(`sup_d ${r_nos_sup_d}`);
 
-            if (r_std_t > 0){
-                
-            }
+            // if (r_std_t > 0 && r_){
+            //     const std_t_ = r_std_t[0];
+            // }
+            // if (r_std_d > 0){
+            //     const std_d_ = r_std_d[0];
+            // }
+            // if (r_nos_sup_t > 0){
+            //     const sup_t_ = r_nos_sup_t[0];
+            // }
+            // if (r_nos_sup_d > 0){
+            //     const sup_d_ = r_nos_sup_d[0]
+            // }
 
-
-
-
+            const std_d_ = r_nos_std_d[3];
         
             let messages = []
 
@@ -217,10 +233,11 @@ function processPaymentConfirmation(e){
                 "c_cardtype": c_cardtype.value,
                 "c_cardexp": c_cardexp.value,
                 "c_cardno": c_cardno.value,
-                "b_cost": total_cost.textContent,
+                "b_cost": total_price.textContent,
                 "b_outstanding": 0,
                 "b_notes": "",
                 "b_ref": randomGeneratedNumber(14000, 30000),
+                "r_no": std_d_,
                 "checkin": check_in.value, 
                 "checkout": check_out.value,
                 "std_t": std_t.textContent, 

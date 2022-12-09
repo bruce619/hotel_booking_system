@@ -271,9 +271,10 @@ app.post('/payment/confirmed', jsonParser, async function (req, res) {
         "c_cardtype": body.c_cardtype,
         "c_cardexp": body.c_cardexp,
         "c_cardno": body.c_cardno,
-        "b_cost": body.b_cost,
+        "b_cost": parseInt(body.b_cost),
         "b_outstanding": body.b_outstanding,
         "b_notes": "",
+        "r_no": parseInt(body.r_no),
         "b_ref": body.b_ref,
         "checkin": body.checkin,
         "checkout": body.checkout,
@@ -283,23 +284,27 @@ app.post('/payment/confirmed', jsonParser, async function (req, res) {
         "sup_d": body.sup_d
     }
 
+    console.log(req_data)
+
     try {
         let results;
         const pool = new pg.Pool(config);
         const client = await pool.connect();
-        const q = `insert into customer values (${req_data.c_no}, ${req_data.c_name}, ${req_data.c_email}, ${req_data.c_address}, 
-            ${req_data.c_cardtype}, ${req_data.c_cardexp}, ${req_data.c_cardno}); 
-            insert into booking (${req_data.b_ref}, ${req_data.c_no}, ${req_data.b_cost}, ${req_data.b_outstanding}, ${req_data.b_notes}); 
-            insert into roombooking ('', ${req_data.b_ref}, ${req_data.checkin}, ${req_data.checkout})`
+        let q = `
+            insert into hotelbooking.customer values (${req_data.c_no}, '${req_data.c_name}', '${req_data.c_email}', '${req_data.c_address}', 
+            '${req_data.c_cardtype}', '${req_data.c_cardexp}', '${req_data.c_cardno}'); 
+            insert into hotelbooking.booking values (${req_data.b_ref}, ${req_data.c_no}, ${req_data.b_cost}, ${req_data.b_outstanding}, '${req_data.b_notes}'); 
+            insert into hotelbooking.roombooking values (${req_data.r_no}, ${req_data.b_ref}, '${req_data.checkin}', '${req_data.checkout}');
+        `
         await client.query(q, (err, results) => {
-            if (err) {
-                console.log(err.stack);
-                errors = err.stack.split(" at ");
-                res.json({ result: 'fail', message: 'Sorry something went wrong. price ' + errors[0] });
-            } else {
-                client.release();
-                console.log(results);
-                res.send(JSON.stringify(req_data));
+        if (err) {
+            console.log(err.stack);
+            errors = err.stack.split(" at ");
+            res.json({ result: 'fail', message: 'Sorry something went wrong. price ' + errors[0] });
+        } else {
+            client.release();
+            console.log(results);
+            res.send(JSON.stringify(req_data));
             }
         });
     } catch (e) {

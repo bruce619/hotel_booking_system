@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Earlham Park Hotel - My Booking </title>
+    <title>Earlham Park Hotel</title>
     <link rel="stylesheet" href="/css/booking.css">
     <link rel="stylesheet" href="/css/styles.css">
     <script src="/js/mybookings.js" defer></script>
+    <!-- <script src="/js/booking_query.js" defer></script> -->
 </head>
 <body>
     <!-- nav -->
@@ -16,11 +17,11 @@
         <!-- nav container -->
         <div class="container">
 
-          <!-- nav logo -->
-          <div class="navigation__logo">
-            <a href="/"><img src="/img/Earlham_logo2-nav.png" alt="earlham-logo"></a>
-          </div>
-          <!-- nav log -->
+        <!-- nav logo -->
+        <div class="navigation__logo">
+            <img src="/img/Earlham_logo2-nav.png" alt="earlham-logo">
+        </div>
+        <!-- nav log -->
 
         <!-- colapssible navbar using checkbox hack -->
         <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
@@ -43,6 +44,7 @@
             <div class="navigation__links">
             <ul>
                 <li class="navigation__item">
+                    <!-- aaded -->
                 <a href="/" class="navigation__link">Home</a>
                 </li>
                 <li class="navigation__item">
@@ -83,14 +85,12 @@
                 <i class="fa-solid fa-calendar-days"></i>
                 <input
                 type="text"
-                id="checkout"
                 placeholder="Check in"
                 onfocus="(this.type='date')"
                 onblur="(this.type='text')" />
                 -
                 <input
                 type="text"
-                id="checkout"
                 placeholder="Check out"
                 onfocus="(this.type='date')"
                 onblur="(this.type='text')" />
@@ -117,6 +117,7 @@
             <h2>My Booking Reference</h2>
             <p class="mybook-indication">Please input your booking reference number.</p>
             <article class="mybook">
+                <p class="mybook-unavailable"></p>
                 <form action="" method="POST" class="mybook-form" id="form">
                     <p class="mybook-form-p">
                         Booking Reference No. <br>
