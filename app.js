@@ -15,6 +15,7 @@ const jsonParser = bodyParser.json();
 
 // load PG library
 const pg = require('pg');
+const format = require('pg-format');
 
 // use static files: css, js, img
 app.use(express.static('/src/public/assets'));
@@ -274,7 +275,7 @@ app.post('/payment/confirmed', jsonParser, async function (req, res) {
         "b_cost": parseInt(body.b_cost),
         "b_outstanding": body.b_outstanding,
         "b_notes": "",
-        "r_no": parseInt(body.r_no),
+        "r_no": JSON.parse(body.r_nos),
         "b_ref": body.b_ref,
         "checkin": body.checkin,
         "checkout": body.checkout,
@@ -285,18 +286,41 @@ app.post('/payment/confirmed', jsonParser, async function (req, res) {
     }
 
     console.log(req_data)
+    console.log(req_data.r_no)
+    console.log(typeof(req_data.r_no))
+
+    const r_nos_all = req_data.r_no
+
+    const val = []
+
+    for (let i =0, len = r_nos_all.length; i < len; i++){
+        console.log(`I am in the loop`)
+        console.log(`i ${i}`)
+        let v = [r_nos_all[i], req_data.b_ref, req_data.checkin, req_data.checkout]
+        val.push(v)
+    }
+
+    console.log(`I am here ${JSON.stringify(val)}`)
+    console.log(`I am here ${val}`)
 
     try {
         let results;
         const pool = new pg.Pool(config);
         const client = await pool.connect();
-        let q = `
-            insert into hotelbooking.customer values (${req_data.c_no}, '${req_data.c_name}', '${req_data.c_email}', '${req_data.c_address}', 
-            '${req_data.c_cardtype}', '${req_data.c_cardexp}', '${req_data.c_cardno}'); 
-            insert into hotelbooking.booking values (${req_data.b_ref}, ${req_data.c_no}, ${req_data.b_cost}, ${req_data.b_outstanding}, '${req_data.b_notes}'); 
-            insert into hotelbooking.roombooking values (${req_data.r_no}, ${req_data.b_ref}, '${req_data.checkin}', '${req_data.checkout}');
-        `
-        await client.query(q, (err, results) => {
+ 
+        let q_1 = `insert into hotelbooking.customer (c_no, c_name, c_email, c_address, c_cardtype, c_cardexp, c_cardno) 
+        values (${req_data.c_no}, '${req_data.c_name}', '${req_data.c_email}', '${req_data.c_address}', 
+        '${req_data.c_cardtype}', '${req_data.c_cardexp}', '${req_data.c_cardno}');`
+        
+        let q_2 = `insert into hotelbooking.booking (b_ref, c_no, b_cost, b_outstanding, b_notes)
+        values(${req_data.b_ref}, ${req_data.c_no}, ${req_data.b_cost}, ${req_data.b_outstanding}, 
+            '${req_data.b_notes}'); `
+
+        let q_3 = format('insert into hotelbooking.roombooking (r_no, b_ref, checkin, checkout) values %L', val)
+
+        console.log("I executed well ")
+        
+        await client.query(q_1 + q_2 + q_3, (err, results) => {
         if (err) {
             console.log(err.stack);
             errors = err.stack.split(" at ");
@@ -310,6 +334,9 @@ app.post('/payment/confirmed', jsonParser, async function (req, res) {
     } catch (e) {
         console.log(`${e} error found`)
     }
+
+
+    // end of function
 });
 
 

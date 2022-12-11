@@ -140,7 +140,10 @@ function processPaymentConfirmation(e){
             const data = JSON.parse(localStorage.getItem("data"));
         
             console.log(`I am in the payment confirmation page ${data}`);
-
+            
+            
+            // the main room numbers
+            const r_nos = []
 
             const r_nos_std_t = []
             const r_nos_std_d = []
@@ -162,42 +165,6 @@ function processPaymentConfirmation(e){
             const r_sup_d = req_data.sup_d
 
 
-            // push into array
-            for(let i = 0; i < db_results.length; i++){
-                if (db_results[i].r_class == 'std_t'){
-                    r_nos_std_t.push(db_results[i].r_no)
-                } else if (db_results[i].r_class == 'std_d'){
-                    r_nos_std_d.push(db_results[i].r_no)
-                } else if (db_results[i].r_class == 'sup_t'){
-                    r_nos_sup_t.push(db_results[i].r_no)
-                } else if (db_results[i].r_class == 'sup_d'){
-                    r_nos_sup_d.push(db_results[i].r_no)
-                } else {
-                        // do not push to any array
-                }
-            }
-
-            
-            console.log(`std_t ${r_nos_std_t}`);
-            console.log(`std_d ${r_nos_std_d}`);
-            console.log(`sup_t ${r_nos_sup_t}`);
-            console.log(`sup_d ${r_nos_sup_d}`);
-
-            // if (r_std_t > 0 && r_){
-            //     const std_t_ = r_std_t[0];
-            // }
-            // if (r_std_d > 0){
-            //     const std_d_ = r_std_d[0];
-            // }
-            // if (r_nos_sup_t > 0){
-            //     const sup_t_ = r_nos_sup_t[0];
-            // }
-            // if (r_nos_sup_d > 0){
-            //     const sup_d_ = r_nos_sup_d[0]
-            // }
-
-            const std_d_ = r_nos_std_d[3];
-        
             let messages = []
 
             
@@ -225,6 +192,61 @@ function processPaymentConfirmation(e){
                 return Math.floor(Math.random() * (max - min + 1) + min)
             }
 
+
+            // push into array
+            for(let i = 0; i < db_results.length; i++){
+                if (db_results[i].r_class == 'std_t'){
+                    r_nos_std_t.push(db_results[i].r_no)
+                } else if (db_results[i].r_class == 'std_d'){
+                    r_nos_std_d.push(db_results[i].r_no)
+                } else if (db_results[i].r_class == 'sup_t'){
+                    r_nos_sup_t.push(db_results[i].r_no)
+                } else if (db_results[i].r_class == 'sup_d'){
+                    r_nos_sup_d.push(db_results[i].r_no)
+                } else {
+                        // do not push to any array
+                }
+            }
+
+            
+            console.log(`std_t ${r_nos_std_t}`);
+            console.log(`std_d ${r_nos_std_d}`);
+            console.log(`sup_t ${r_nos_sup_t}`);
+            console.log(`sup_d ${r_nos_sup_d}`);
+
+            // push the number of rooms selected into the main r_nos based on how many rooms
+            // the user chose
+
+            for(let i = 0, len = r_std_t; i < r_std_t; i++){
+                r_nos.push(r_nos_std_t[i])
+            }
+
+            for(let i = 0, len = r_std_d; i < r_std_d; i++){
+                r_nos.push(r_nos_std_d[i])
+            }
+
+            for(let i = 0, len = r_sup_t; i < r_sup_t; i++){
+                r_nos.push(r_nos_sup_t[i])
+            }
+
+            for(let i = 0, len = r_sup_d; i < r_sup_d; i++){
+                r_nos.push(r_nos_sup_d[i])
+            }
+
+
+            // const std_d_ = r_nos_std_d[3];
+
+
+            console.log(`main r_nos ${r_nos}`)
+            console.log(`main r_nos type ${typeof(r_nos)}`)
+
+            const r_nos_all = JSON.stringify(r_nos)
+
+            console.log(`main r_nos all ${r_nos_all}`)
+
+            console.log(`main r_nos type ${typeof(r_nos_all)}`)
+
+
             const booking_data = {
                 "c_no": randomGeneratedNumber(13000, 30000),
                 "c_name": c_name.value,
@@ -237,7 +259,7 @@ function processPaymentConfirmation(e){
                 "b_outstanding": 0,
                 "b_notes": "",
                 "b_ref": randomGeneratedNumber(14000, 30000),
-                "r_no": std_d_,
+                "r_nos": r_nos_all,
                 "checkin": check_in.value, 
                 "checkout": check_out.value,
                 "std_t": std_t.textContent, 
