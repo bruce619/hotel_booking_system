@@ -5,6 +5,7 @@ function onTextReady(text) {
     const oldScript = document.querySelector('script');
     oldScript.remove();
 
+    // create new js script in html head
     const script = document.createElement('script');
     script.src ='/js/for_payment_form.js';
     script.setAttribute('defer', true);
