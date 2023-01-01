@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earlham Park Hotel - Reception</title>
+    <link rel="stylesheet" href="/css/booking.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/reception.js" defer></script>
+    <script src="/js/for_book_query.js" defer></script>
+</head>
+<body>
+    <!-- nav -->
+    <div class="navigation">
+
+        <!-- nav container -->
+        <div class="container">
+  
+          <!-- nav logo -->
+          <div class="navigation__logo">
+            <a href="/"><img src="/img/Earlham_logo2-nav.png" alt="earlham-logo"></a>
+          </div>
+          <!-- nav log -->
+  
+          <!-- colapssible navbar using checkbox hack -->
+          <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+          <label for="navi-toggle" class="navigation__button">
+            <span class="navigation__icon">&nbsp;</span>
+          </label>
+          
+          <!-- nav links. collapses in mobile view when clicked -->
+          <div class="navigation__collapse">
+            <div class="navigation__brand">
+              <h2>Earlharm Park Hotel</h2>
+              <span class="address"
+                ><i class="fa-solid fa-location-dot"></i> Earlham Park, Norwich,
+                NR47TQ</span
+              >
+              <span class="contact">
+                <i class="fa-solid fa-phone"></i> + 44 74 0477 3175
+              </span>
+            </div>
+            <div class="navigation__links">
+              <ul>
+                <li class="navigation__item">
+                  <a href="/" class="navigation__link">Home</a>
+                </li>
+                <li class="navigation__item">
+                  <a href="/booking/reference" class="navigation__link">Booking Ref</a>
+                </li>
+                <li class="navigation__item">
+                  <a href="#" class="navigation__link">Facilities</a>
+                </li>
+                <li class="navigation__item">
+                  <a href="#" class="navigation__link">Attractions</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- nav links. -->
+  
+        </div>
+        <!-- nav container -->
+  
+      </div>
+      <!-- nav -->
+  
+      <!-- nav booking -->
+      <div class="check">
+  
+        <!-- nav booking container -->
+        <div class="container">
+          <p>Looking for a place to stay? Enter details to see available rooms</p>
+  
+          <!-- check details -->
+          <div class="check__details">
+  
+            <!-- nav check details form -->
+            <form class="check__details-form">
+  
+              <!-- check date -->
+              <div class="check__date">
+                <i class="fa-solid fa-calendar-days"></i>
+                <input
+                  type="text"
+                  id="checkin"
+                  placeholder="Check in"
+                  onfocus="(this.type='date')"
+                  onblur="(this.type='text')" />
+                -
+                <input
+                  type="text"
+                  id="checkout"
+                  placeholder="Check out"
+                  onfocus="(this.type='date')"
+                  onblur="(this.type='text')" />
+              </div>
+              <!-- check date -->
+  
+              <button type="submit" class="btn__check-submit">Search</button>
+            </form>
+            <!-- nav check details form -->
+  
+          </div>
+          <!-- check details -->
+  
+        </div>
+        <!-- nav booking container -->
+  
+      </div>
+      <!-- nav booking -->
+
+        <main>
+            <section class="recep">
+                <h1>Reception page</h1>
+                <h2>Search Form for Booking details</h2>
+                <p class="recep-indication">Input search infomation in below and click search icon.</p>
+                <article class="recep">
+                    <form action="" method="POST" class="recep-form" id="form">
+                        <p class="recep-form-p">
+                            Booking Reference No. <br>
+                            <input type="text" inputmode="numeric" pattern="[0-9]{5}" name="booking-ref" id="booking-ref">
+                        </p>
+                        <p class="recep-form-p">
+                            Customer Name <br>
+                            <input type="text" name="customer-name" id="name">
+                        </p>
+                        <p class="recep-form-p">
+                            Customer Email Adress <br>
+                            <input type="email" name="customer-email" id="email">
+                        </p>
+                        <p class="recep-form-p">
+                            Room No. <br>
+                            <input type="text" inputmode="numeric" pattern="[0-9]{3}" name="room-no" id="room-no">
+                        </p>
+                        <label>
+                            <p class="recep-form-p-submit">
+                                <input type="submit" value="Search">
+                            </p>
+                        </label>
+                    </form>
+                </article>
+            </section>
+        </main>
+
+    <footer class="footer">
+        <!-- footer left -->
+        <div class="footer__left footer__col">
+          <form action="#" id="contactus" class="footer__form">
+            <h4>Contact Us</h4>
+            <div class="footer__form-details">
+              <input type="text" name="name" id="" placeholder="Name" />
+              <input type="email" name="" id="" placeholder="Email" />
+            </div>
+            <textarea class="footer__form-message" name="message" id="message" placeholder="Message" cols="30" rows="10"></textarea>
+          </form>
+        </div>
+        <!-- footer left -->
+  
+        <!-- footer center -->
+        <div class="footer__center footer__col">
+          <div class="footer__center-top">
+            <p class="copyright">
+              &copy; 2022 Earlharm Park Hotel All Rights Reserved
+            </p>
+            <ul class="footer__links">
+              <li class="footer__link">About</li>
+              <li class="footer__link">Privacy</li>
+              <li class="footer__link">Cookies</li>
+              <li class="footer__link">Terms</li>
+              <li class="footer__link">Accessibility</li>
+            </ul>
+          </div>
+          <div class="footer__center-icons">
+            <i class="fa-brands fa-square-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-square-twitter"></i>
+            <i class="fa-brands fa-pinterest"></i>
+          </div>
+        </div>
+        <!-- footer center -->
+  
+        <!-- footer right -->
+        <div class="footer__right footer__col">
+          <div class="mapouter">
+            <div class="gmap_canvas">
+              <iframe
+                width="600"
+                height="500"
+                id="gmap_canvas"
+                src="https://maps.google.com/maps?q=Earlham%20Park,%20Norwich&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0">
+              </iframe>
+                <a href="#">divi discount</a>
+                <br/>
+            </div>
+          </div>
+        </div>
+        <!-- footer right -->
+  
+      </footer>
+</body>
+</html>

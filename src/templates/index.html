@@ -1,53 +1,508 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Earlham Park Hotel - Home</title>
-    <link rel="stylesheet" href="css/index.css">
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/62765ee528.js" crossorigin="anonymous"></script>
+    <script src="/js/slideshow.js" defer></script>
+    <script src="/js/modal.js" defer></script>
+    <script src="/js/get_price.js" defer></script>
+    <script src="/js/email.js" defer></script>
+    <script src="/js/for_book_query.js" defer></script>
+  </head>
 
-    <!-- header -->
-    <header>
+  <body>
 
-        <img src="img/logo.jpeg" alt="site-logo">
-        <p id="logo-title">Earlham Park Hotel</p>
+    <!-- nav -->
+    <div class="navigation">
 
-        <nav>
-            
-        </nav>
-        
-    </header>
-    <!-- header -->
-
-    <!-- main -->
+        <!-- nav container -->
+        <div class="container">
+  
+          <!-- nav logo -->
+          <div class="navigation__logo">
+            <a href="/"><img src="/img/Earlham_logo2-nav.png" alt="earlham-logo"></a>
+          </div>
+          <!-- nav log -->
+  
+          <!-- colapssible navbar using checkbox hack -->
+          <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+          <label for="navi-toggle" class="navigation__button">
+            <span class="navigation__icon">&nbsp;</span>
+          </label>
+          
+          <!-- nav links. collapses in mobile view when clicked -->
+          <div class="navigation__collapse">
+            <div class="navigation__brand">
+              <h2>Earlharm Park Hotel</h2>
+              <span class="address"
+                ><i class="fa-solid fa-location-dot"></i> Earlham Park, Norwich,
+                NR47TQ</span
+              >
+              <span class="contact">
+                <i class="fa-solid fa-phone"></i> + 44 74 0477 3200
+              </span>
+            </div>
+            <div class="navigation__links">
+              <ul>
+                <li class="navigation__item">
+                  <a href="/" class="navigation__link">Home</a>
+                </li>
+                <li class="navigation__item">
+                  <a href="/booking/reference" class="navigation__link">Booking Ref</a>
+                </li>
+                <li class="navigation__item">
+                  <a href="#" class="navigation__link">Facilities</a>
+                </li>
+                <li class="navigation__item">
+                  <a href="#" class="navigation__link">Attractions</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- nav links. -->
+  
+        </div>
+        <!-- nav container -->
+  
+      </div>
+      <!-- nav -->
+  
+      <!-- nav booking -->
+      <div class="check">
+  
+        <!-- nav booking container -->
+        <div class="container">
+          <p>Looking for a place to stay? Enter details to see available rooms</p>
+  
+          <!-- check details -->
+          <div class="check__details">
+  
+            <!-- nav check details form -->
+            <form class="check__details-form">
+  
+              <!-- check date -->
+              <div class="check__date">
+                <i class="fa-solid fa-calendar-days"></i>
+                <input
+                type="text"
+                id="checkin"
+                placeholder="Check in"
+                onfocus="(this.type='date')"
+                onblur="(this.type='text')" />
+                -
+                <input
+                type="text"
+                id="checkout"
+                placeholder="Check out"
+                onfocus="(this.type='date')"
+                onblur="(this.type='text')" />
+              </div>
+              <!-- check date -->
+  
+              <button type="submit" class="btn__check-submit">Search</button>
+            </form>
+            <!-- nav check details form -->
+  
+          </div>
+          <!-- check details -->
+  
+        </div>
+        <!-- nav booking container -->
+  
+      </div>
+      <!-- nav booking -->
+      
     <main>
-        <!-- room type section -->
+      <div class="hero">
+        <img id="hero_img" src="/img/index_hero.jpg">
+        <h2 id="hero_text">At Earlham Park Hotel every stay is an experience</h2>
+      </div>
+      <!-- Section for Room Types Slideshow -->
+      <section> 
+      <h3 class="SecTitle">Room Types</h3>
+      <div class="container">
+        <div id="room1" class="room_slides">
+          <div class="roomtext">1. Standard Double</div>
+          <img class="room-img" src="/img/room_standard_double.jpg">
+        </div>
+
+        <div class="room_slides">
+          <div class="roomtext">2. Standard Twin</div>
+          <img id="room2" class="room-img" src="/img/room_standard_twin.jpg">
+        </div>
+
+        <div class="room_slides">
+          <div class="roomtext">3. Superior Double</div>
+          <img id="room3" class="room-img" src="/img/room_superior_double.jpg">
+        </div>
+
+        <div class="room_slides">
+          <div class="roomtext">4. Superior Twin</div>
+          <img id="room4" class="room-img" src="/img/room_superior_twin.jpg">
+        </div>
+        
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="room_plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="room_plusSlides(1)">&#10095;</a>
+
+        <!-- Image captions -->
+        <div class="caption-container">
+          <p id="room_caption"></p>
+        </div>
+
+        <!-- Thumbnail images -->
+        <div class="row">
+          <div class="column">
+            <img class="room_demo cursor" src="/img/room_standard_double.jpg" onclick="room_currentSlide(1)" alt="Standard Double Room">
+          </div>
+          <div class="column">
+            <img class="room_demo cursor" src="/img/room_standard_twin.jpg" onclick="room_currentSlide(2)" alt="Standard Twin Room">
+          </div>
+          <div class="column">
+            <img class="room_demo cursor" src="/img/room_superior_double.jpg" onclick="room_currentSlide(3)" alt="Superior Double Room">
+          </div>
+          <div class="column">
+            <img class="room_demo cursor" src="/img/room_superior_twin.jpg" onclick="room_currentSlide(4)" alt="Superior Twin Room">
+          </div>
+        </div>
+      </div>
+    </section>
+        <!-- Section for Facilities Slideshow -->
         <section>
+        <h3 class="SecTitle">Facilities</h3>
+        <div class="container">
+          <div id="fac1" class="fac_slides">
+            <div class="factext">Gym Fitness</div>
+            <img class="room-img" src="/img/fac_gym.jpg">
+          </div>
+  
+          <div id="fac2" class="fac_slides">
+            <div class="factext">Restaurant</div>
+            <img class="room-img" src="/img/fac_restaurant.jpg">
+          </div>
+  
+          <div id="fac3" class="fac_slides">
+            <div class="factext">Bar</div>
+            <img class="room-img" src="/img/fac_bar.jpg">
+          </div>
+  
+          <div id="fac4" class="fac_slides">
+            <div class="factext">Conference Rooms</div>
+            <img class="room-img" src="/img/fac_conf.jpg">
+          </div>
+          
+          <!-- Next and previous buttons -->
+          <a class="prev" onclick="fac_plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="fac_plusSlides(1)">&#10095;</a>
+  
+          <!-- Image captions -->
+          <div class="caption-container">
+            <p id="fac_caption"></p>
+          </div>
+  
+          <!-- Thumbnail images -->
+          <div class="row">
+            <div class="column">
+              <img class="fac_demo cursor" src="/img/fac_gym.jpg" onclick="fac_currentSlide(1)" alt="Gym & Fitness">
+            </div>
+            <div class="column">
+              <img class="fac_demo cursor" src="/img/fac_restaurant.jpg" onclick="fac_currentSlide(2)" alt="Restaurant">
+            </div>
+            <div class="column">
+              <img class="fac_demo cursor" src="/img/fac_bar.jpg" onclick="fac_currentSlide(3)" alt="Bar">
+            </div>
+            <div class="column">
+              <img class="fac_demo cursor" src="/img/fac_conf.jpg" onclick="fac_currentSlide(4)" alt="Conference Rooms">
+            </div>
+          </div>
+        </div>
+      </section>
 
-        </section>
-        <!-- room type section -->
-
-        <!-- facilities section -->
+        <!-- Section for Attractions Slideshow -->
         <section>
+        <h3 class="SecTitle">Attractions</h3>
+        <div class="container">
+          <div class="att_slides">
+            <div class="atttext">Norwich Cathedral</div>
+            <img class="room-img" src="/img/att_cathedral_s.jpg">
+          </div>
+  
+          <div class="att_slides">
+            <div class="atttext">Muckleburgh Miliatry School Collection</div>
+            <img class="room-img" src="/img/att_military_s.jpg">
+          </div>
+  
+          <div class="att_slides">
+            <div class="atttext">Blickling Hall</div>
+            <img class="room-img" src="/img/att_hall.jpg">
+          </div>
+  
+          <div class="att_slides">
+            <div class="atttext">How Hill Trust</div>
+            <img class="room-img" src="/img/att_hill.jpg">
+          </div>
+          
+          <!-- Next and previous buttons -->
+          <a class="prev" onclick="att_plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="att_plusSlides(1)">&#10095;</a>
+  
+          <!-- Image captions -->
+          <div class="caption-container">
+            <p id="att_caption"></p>
+          </div>
+  
+          <!-- Thumbnail images -->
+          <div class="row">
+            <div class="column">
+              <img class="att_demo cursor" src="/img/att_cathedral_s.jpg" onclick="att_currentSlide(1)" alt="Norwich Cathedral">
+            </div>
+            <div class="column">
+              <img class="att_demo cursor" src="/img/att_military_s.jpg" onclick="att_currentSlide(2)" alt="Muckleburgh Miliatry School Collection">
+            </div>
+            <div class="column">
+              <img class="att_demo cursor" src="/img/att_hall.jpg" onclick="att_currentSlide(3)" alt="Blickling Hall">
+            </div>
+            <div class="column">
+              <img class="att_demo cursor" src="/img/att_hill.jpg" onclick="att_currentSlide(4)" alt="The Howl Hill Trust">
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Modals -->
+      <div class="modal" id="modal1"> 
+        <div class="modal-content"> 
+          <span class="modal-close">&times;</span>
+          <h1>Superior Double</h1>
+          <img class="modalimages" src="/img/room_standard_double.jpg">
+          <figcaption> Our premium offering for when you want to spoil yourself and your special people</figcaption> 
+          <div class="container"> 
+          <div class="column">
+            <br>
+          
+            <ul>
+            <li> 550 Sq feet </li>
+            <li> Premium Double Bed </li>
+            <li> Mini Fridge </li>
+            
+            </div>
+            <div class="column">
+              <h2>  </h2>
+              <ul><br> 
+              <li> Luxurious & Modern Bathroom </li>
+              <li> 50 inch LED TV </li>
+              </div>
+              <div class="column">
+                <h2>  <br> Price <br> <span id="std_d_price">£ per night</span></h2>
+                
+                </div>
+          </div>
+          </div>
+      </div>
 
-        </section>
-        <!-- facilities section -->
+      <div class="modal" id="modal2"> 
+        <div class="modal-content"> 
+          <span class="modal-close">&times;</span>
+          <h1>Standard Twin</h1>
+          <img class="modalimages" src="/img/room_standard_twin.jpg"> 
+          <div class="container"> 
+            <div class="column">
+              <br>
+                <ul>
+                <li> 520 Sq feet </li>
+                <li> Classic Double Bed </li>
+                <li> Mini Fridge </li>
+            </div>
+            <div class="column">
+              <h2>  </h2>
+              <ul><br> 
+              <li> Spacious Bathroom </li>
+              <li> 45 inch LED TV </li>
+            </div>
+            <div class="column">
+              <h2> <br> Price <br> <span id="std_t_price">£ per night</span></h2>
+                </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal" id="modal3"> 
+      <div class="modal-content"> 
+        <span class="modal-close">&times;</span>
+        <h1>Superior Twin</h1>
+        <img class="modalimages" src="/img/room_superior_double.jpg"> 
+        <div class="container"> 
+        <div class="column">
+          <br>
+            
+          <ul>
+          <li> 450 Sq feet </li>
+          <li> Classic Twin Beds </li>
+          <li> Mini Fridge </li>
+          
+          </div>
+          <div class="column">
+            <h2>  </h2>
+            <ul><br> 
+            <li> Luxurious & Modern Bathroom </li>
+            <li> 42 inch LED TV </li>
+            </div>
+            <div class="column">
+              <h2> <br> Price <br> <span id="sup_t_price">£ per night </span> </h2>
+              
+              </div>
+      </div>
+    </div>
+    </div>
+    
+       
+    <div class="modal" id="modal4"> 
+    <div class="modal-content"> 
+      <span class="modal-close">&times;</span>
+      <h1>Superior Double</h1>
+      <img class="modalimages" src="img/room_superior_twin.jpg"> 
+      <div class="container"> 
+      <div class="column">
+        <br>
+            
+          <ul>
+          <li> 420 Sq feet </li>
+          <li> Classic Twin Beds </li>
+          <li> Mini Fridge </li>
+          
+          </div>
+          <div class="column">
+            <h2>  </h2>
+            <ul><br> 
+            <li> Luxurious & Modern Bathroom </li>
+            <li> 40 inch LED TV </li>
+            </div>
+            <div class="column">
+              <h2> <br> Price <br> <span id="sup_d_price">£ per night </span></h2>
+              
+              </div>
+    </div>
+    </div>
+    </div>
+    
+    
+        </div>
+        <div class="modal" id="modal5"> 
+          <div class="modal-content"> 
+            <span class="modal-close">&times;</span>
+            <h1>Gym</h1>
+            <img class="modalimages" src="/img/fac_gym.jpg"> 
+            <br>
+            <figcaption> <br> Our state-of-the-art gym comes with the latest cardio machines and a full 50 piece weight set to help you keep in shape on your travels. <br> After your session, cleanse your spirit in our sauna room!</figcaption>
+            <div class="container"> 
+          </div>
+        </div>
+      </div>
+      <div class="modal" id="modal6"> 
+        <div class="modal-content"> 
+          <span class="modal-close">&times;</span>
+          <h1>Bar</h1>
+          <img class="modalimages" src="/img/fac_bar.jpg"> 
+          <br>
+          <figcaption> <br> Wind down after a long day with tailor made cocktails courtesy of our exceptional bartenders</figcaption>
+          
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="modal" id="modal7"> 
+      <div class="modal-content"> 
+        <span class="modal-close">&times;</span>
+        <h1>Restaurant</h1>
+        <img class="modalimages" src="/img/fac_restaurant.jpg">
+        <figcaption> <br> Our restaurant offers the finest cuisne from around the world. A different menu for every night means you will always have new things to try.</figcaption> 
+        
+      </div>
+    </div>
+    </div>
+      </div>
+      <div class="modal" id="modal8">
+        <div class="modal-content">
+          <span class="modal-close">&times;</span>
+          <h1>Conference Hall</h1>
+          <img class="modalimages" src="/img/fac_conf.jpg">
+          <figcaption> <br> Your event deserves the very best. Our 500 seater hall room , complete with a premium sound system, is perfect for annual dinners, award ceremonies or large-scale meetings and conferences.</figcaption>
 
-        <!-- attraction section -->
-        <section>
-
-        </section>
-        <!-- attraction section -->
     </main>
     <!-- main -->
 
     <!-- footer -->
-    <footer>
+    <footer class="footer">
+      <!-- footer left -->
+      <div class="footer__left footer__col">
+        <form action="/" id="contactus" class="footer__form" method="POST">
+          <h4>Contact Us</h4>
+          <div class="footer__form-details">
+            <input type="text" name="contact_name" id="contact_name" placeholder="Name" />
+            <input type="email" name="contact_email" id="contact_email" placeholder="Email" />
+          </div>
+          <textarea class="footer__form-message" name="message" id="message" placeholder="Message" cols="30" rows="10"></textarea>
+          <button type="submit" id="contact__submit" class="contact__btn_submit">Send</button>
+        </form>
+      </div>
+      <!-- footer left -->
+
+      <!-- footer center -->
+      <div class="footer__center footer__col">
+        <div class="footer__center-top">
+          <p class="copyright">
+            &copy; 2022 Earlharm Park Hotel All Rights Reserved
+          </p>
+          <ul class="footer__links">
+            <li class="footer__link">About</li>
+            <li class="footer__link">Privacy</li>
+            <li class="footer__link">Cookies</li>
+            <li class="footer__link">Terms</li>
+            <li class="footer__link">Accessibility</li>
+          </ul>
+        </div>
+        <div class="footer__center-icons">
+          <i class="fa-brands fa-square-facebook"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-square-twitter"></i>
+          <i class="fa-brands fa-pinterest"></i>
+        </div>
+        <div id="error"></div>
+        <div id="suc"></div>
+      </div>
+      <!-- footer center -->
+
+      <!-- footer right -->
+      <div class="footer__right footer__col">
+        <div class="mapouter">
+          <div class="gmap_canvas">
+            <iframe
+              width="600"
+              height="500"
+              id="gmap_canvas"
+              src="https://maps.google.com/maps?q=Earlham%20Park,%20Norwich&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              frameborder="0"
+              scrolling="no"
+              marginheight="0"
+              marginwidth="0">
+            </iframe>
+              <a href="#">divi discount</a>
+              <br/>
+          </div>
+        </div>
+      </div>
+      <!-- footer right -->
 
     </footer>
-    <!-- footer -->
-</body>
+  </body>
 </html>

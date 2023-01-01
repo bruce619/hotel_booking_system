@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earlham Park Hotel - Home</title>
+    <link rel="stylesheet" href="/css/booking.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/get_price.js" defer id="price"></script>    
+    <script src="/js/book_query.js" defer></script>    
+    <script src="/js/for_payment_form.js" defer></script>
+</head>
+<body>
+    <!-- nav -->
+    <div class="navigation">
+
+        <!-- nav container -->
+        <div class="container">
+  
+          <!-- nav logo -->
+          <div class="navigation__logo">
+            <a href="/"><img src="/img/Earlham_logo2-nav.png" alt="earlham-logo"></a>
+          </div>
+          <!-- nav log -->
+  
+          <!-- colapssible navbar using checkbox hack -->
+          <input type="checkbox" class="navigation__checkbox" id="navi-toggle" />
+          <label for="navi-toggle" class="navigation__button">
+            <span class="navigation__icon">&nbsp;</span>
+          </label>
+          
+          <!-- nav links. collapses in mobile view when clicked -->
+          <div class="navigation__collapse">
+            <div class="navigation__brand">
+              <h2>Earlharm Park Hotel</h2>
+              <span class="address"
+                ><i class="fa-solid fa-location-dot"></i> Earlham Park, Norwich,
+                NR47TQ</span
+              >
+              <span class="contact">
+                <i class="fa-solid fa-phone"></i> + 44 74 0477 3175
+              </span>
+            </div>
+            <div class="navigation__links">
+              <ul>
+                <li class="navigation__item">
+                  <a href="/" class="navigation__link">Home</a>
+                </li>
+                <li class="navigation__item">
+                  <a href="/booking/reference" class="navigation__link">Booking Ref</a>
+                </li>
+                <li class="navigation__item">
+                  <a href="#" class="navigation__link">Facilities</a>
+                </li>
+                <li class="navigation__item">
+                  <a href="#" class="navigation__link">Attractions</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- nav links. -->
+  
+        </div>
+        <!-- nav container -->
+  
+      </div>
+      <!-- nav -->
+  
+      <!-- nav booking -->
+      <div class="check">
+  
+        <!-- nav booking container -->
+        <div class="container">
+          <p>Looking for a place to stay? Enter details to see available rooms</p>
+  
+          <!-- check details -->
+          <div class="check__details">
+  
+            <!-- nav check details form -->
+            <form class="check__details-form">
+  
+              <!-- check date -->
+              <div class="check__date">
+                <i class="fa-solid fa-calendar-days"></i>
+                <input
+                  type="text"
+                  id="checkin"
+                  placeholder="Check in"
+                  onfocus="(this.type='date')"
+                  onblur="(this.type='text')" />
+                -
+                <input
+                  type="text"
+                  id="checkout"
+                  placeholder="Check out"
+                  onfocus="(this.type='date')"
+                  onblur="(this.type='text')" />
+              </div>
+              <!-- check date -->
+              <button type="submit" class="btn__check-submit">Search</button>
+            </form>
+            <!-- nav check details form -->
+  
+          </div>
+          <!-- check details -->
+  
+        </div>
+        <!-- nav booking container -->
+  
+      </div>
+      <!-- nav booking -->
+
+    <!-- <p>This is the booking query result page</p> -->
+
+     <main>
+        <section>
+          <p class="search_unavailable"></p>
+        <!-- query results for each room type -->
+        <!-- Standard Twin -->
+            <article class="booking-flex-box">
+                <p class="notavailable" id="std_t">Available Rooms: 0</p>
+                <h2 class="roomtype">Standard Twin</h2>
+                <div class="contents">
+                    <!-- img referenced to  -->
+
+                    <img src="/img/room_standard_twin.jpg" alt="room image" class="cover">
+                    <div class="room-detail">
+                        <div class="room-detail-child">
+                            <!-- grid 1 -->
+                            <div class="capacity">
+                                <h3>Capacity</h3>
+                                <ul><li>Max 2 people</li></ul>
+                            </div>
+                            <!-- grid 2 -->
+                            <div class="price">
+                                <h3>Price</h3>
+                                <ul>
+                                <!-- price is query results -->
+                                    <li id="std_t_price">£ per night</li> 
+                                </ul>
+                            </div>
+                            <!-- grid 3 -->
+                            <div class="facility1"><h3>Room Facilities</h3></div>
+                            <!-- grid 4 -->
+                            <div class="facility2">
+                                <ul>
+                                    <li>Room size: 194 sq ft</li>
+                                    <li>Regular size bed</li>
+                                    <li>Ensuite bathroom</li>
+                                    <li>Wi-Fi</li>
+                                    <li>43 inch flat screen TV</li>
+                                </ul>
+                            </div>
+                            <!-- grid 5 -->
+                            <div class="facility3">
+                                <ul>
+                                    <li>Towels</li>
+                                    <li>Hairdryer</li>
+                                    <li>Soaps</li>
+                                    <li>Toothbrush & Toothpaste</li>
+                                    <li>Toilet roll</li>
+                                </ul>
+                            </div>                        
+                        </div>
+                        <label>
+                            <div class="room-number-flexbox">
+                                <p class="room-number-1">number of rooms you want</p>
+                                <form action=" " class="room-number-2" id="form_std_t">
+                                        <!-- please put query results to "()" -->
+                                        <input type="number" name="number_of_rooms" value="0" min="0" class="room-number-3" id="std_t_no"  disabled>
+                                        rooms
+                                </form>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </article>
+        <!-- /Standard Twin -->
+        <!-- Standard Double -->
+            <article class="booking-flex-box">
+                <p class="notavailable" id="std_d">Available Rooms: 0</p>
+                <h2 class="roomtype">Standard Double</h2>
+                <div class="contents">
+                    <!-- img referenced to https://unsplash.com/photos/67-sOi7mVIk -->
+                    <img src="/img/room_standard_double.jpg" alt="room image" class="cover">
+                    <div class="room-detail">
+                        <div class="room-detail-child">
+                            <!-- grid 1 -->
+                            <div class="capacity">
+                                <h3>Capacity</h3>
+                                <ul><li>Max 2 people</li></ul>
+                            </div>
+                            <!-- grid 2 -->
+                            <div class="price">
+                                <h3>Price</h3>
+                                <ul>
+                                <!-- price is query results -->
+                                    <li id="std_d_price">£ per night</li> 
+                                </ul>
+                            </div>
+                            <!-- grid 3 -->
+                            <div class="facility1"><h3>Room Facilities</h3></div>
+                            <!-- grid 4 -->
+                            <div class="facility2">
+                                <ul>
+                                    <li>Room size: 194 sq ft</li>
+                                    <li>Regular size bed</li>
+                                    <li>Ensuite bathroom</li>
+                                    <li>Wi-Fi</li>
+                                    <li>43 inch flat screen TV</li>
+                                </ul>
+                            </div>
+                            <!-- grid 5 -->
+                            <div class="facility3">
+                                <ul>
+                                    <li>Towels</li>
+                                    <li>Hairdryer</li>
+                                    <li>Soaps</li>
+                                    <li>Toothbrush & Toothpaste</li>
+                                    <li>Toilet roll</li>
+                                </ul>
+                            </div>                        
+                        </div>
+                        <label>
+                            <div class="room-number-flexbox">
+                                <p class="room-number-1">number of rooms you want</p>
+                                <form action=" " class="room-number-2" id="form_std_d">
+                                        <!-- please put query results to "()" -->
+                                        <input type="number" name="number_of_rooms" value="0" min="0" class="room-number-3" id="std_d_no" disabled>
+                                        rooms
+                                </form>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </article>
+        <!-- /Standard Double -->
+        <!-- Superior Twin-->
+            <article class="booking-flex-box">
+                <p class="notavailable" id="sup_t">Available Rooms: 0</p>
+                <h2 class="roomtype">Superior Twin</h2>
+                <div class="contents">
+                    <!-- img referenced to -->
+                    
+                    <img src="/img/room_superior_twin.jpg" alt="room image" class="cover">
+                    <div class="room-detail">
+                        <div class="room-detail-child">
+                            <!-- grid 1 -->
+                            <div class="capacity">
+                                <h3>Capacity</h3>
+                                <ul><li>Max 2 people</li></ul>
+                            </div>
+                            <!-- grid 2 -->
+                            <div class="price">
+                                <h3>Price</h3>
+                                <ul>
+                                <!-- price is query results -->
+                                    <li id="sup_t_price">£ per night</li> 
+                                </ul>
+                            </div>
+                            <!-- grid 3 -->
+                            <div class="facility1"><h3>Room Facilities</h3></div>
+                            <!-- grid 4 -->
+                            <div class="facility2">
+                                <ul>
+                                    <li>Room size: 301 sq ft</li>
+                                    <li>Premium size bed</li>
+                                    <li>Ensuite bathroom</li>
+                                    <li>Wi-Fi</li>
+                                    <li>43 inch flat screen TV</li>
+                                    <li>Mini fridge</li>
+                                </ul>
+                            </div>
+                            <!-- grid 5 -->
+                            <div class="facility3">
+                                <ul>
+                                    <li>Towels</li>
+                                    <li>Hairdryer</li>
+                                    <li>Soaps</li>
+                                    <li>Toothbrush & Toothpaste</li>
+                                    <li>Toilet roll</li>
+                                </ul>
+                            </div>                        
+                        </div>
+                        <label>
+                            <div class="room-number-flexbox">
+                                <p class="room-number-1">number of rooms you want</p>
+                                <form action=" " class="room-number-2" id="form_sup_t">
+                                        <!-- please put query results to "()" -->
+                                        <input type="number" name="number_of_rooms" value="0" min="0" class="room-number-3" id="sup_t_no"disabled>
+                                        rooms
+                                </form>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </article>
+        <!-- /Superior Twin-->
+        <!-- Superior Double-->
+            <article class="booking-flex-box">
+                <p class="notavailable" id="sup_d">Available Rooms: 0</p>
+                <h2 class="roomtype">Superior Double</h2>
+                <div class="contents">
+                    <!-- img referenced to https://www.pexels.com/photo/bedroom-interior-setup-271624/-->
+                    <img src="/img/room_superior_double.jpg" alt="room image" class="cover">
+                    <div class="room-detail">
+                        <div class="room-detail-child">
+                            <!-- grid 1 -->
+                            <div class="capacity">
+                                <h3>Capacity</h3>
+                                <ul><li>Max 2 people</li></ul>
+                            </div>
+                            <!-- grid 2 -->
+                            <div class="price">
+                                <h3>Price</h3>
+                                <ul>
+                                <!-- price is query results -->
+                                    <li id="sup_d_price">£ per night</li> 
+                                </ul>
+                            </div>
+                            <!-- grid 3 -->
+                            <div class="facility1"><h3>Room Facilities</h3></div>
+                            <!-- grid 4 -->
+                            <div class="facility2">
+                                <ul>
+                                    <li>Room size: 452 sq ft</li>
+                                    <li>King size bed</li>
+                                    <li>Ensuite bathroom</li>
+                                    <li>Wi-Fi</li>
+                                    <li>43 inch flat screen TV</li>
+                                    <li>Mini fridge</li>
+                                </ul>
+                            </div>
+                            <!-- grid 5 -->
+                            <div class="facility3">
+                                <ul>
+                                    <li>Towels</li>
+                                    <li>Hairdryer</li>
+                                    <li>Soaps</li>
+                                    <li>Toothbrush & Toothpaste</li>
+                                    <li>Toilet roll</li>
+                                </ul>
+                            </div>                        
+                        </div>
+                        <label>
+                            <div class="room-number-flexbox">
+                                <p class="room-number-1">number of rooms you want</p>
+                                <form action=" " class="room-number-2" id="form_sup_d">
+                                        <!-- please put query results to "()" -->
+                                        <input type="number" name="number_of_rooms" value="0" min="0" class="room-number-3" id="sup_d_no" disabled>
+                                        rooms
+                                </form>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </article>
+            <!-- /Superior Double-->
+
+            <!-- error -->
+            <div id="error"></div><br />
+            <!-- error -->
+
+            <!-- please put link to the page of payment form -->
+            <label>
+                <form action="/payment/form" method="POST" id="form_available">
+                    <p class="submit">
+                        <input type="submit" value="Payment form">
+                        <!-- <a href="/payment/form">Payment Form</a> -->
+                    </p>
+                </form>
+            </label>
+        </section>
+     </main>
+     <!-- main -->
+
+     <!-- footer -->
+     <footer class="footer">
+        <!-- footer left -->
+        <div class="footer__left footer__col">
+          <form action="#" id="contactus" class="footer__form">
+            <h4>Contact Us</h4>
+            <div class="footer__form-details">
+              <input type="text" name="name" id="" placeholder="Name" />
+              <input type="email" name="" id="" placeholder="Email" />
+            </div>
+            <textarea class="footer__form-message" name="message" id="message" placeholder="Message" cols="30" rows="10"></textarea>
+          </form>
+        </div>
+        <!-- footer left -->
+  
+        <!-- footer center -->
+        <div class="footer__center footer__col">
+          <div class="footer__center-top">
+            <p class="copyright">
+              &copy; 2022 Earlharm Park Hotel All Rights Reserved
+            </p>
+            <ul class="footer__links">
+              <li class="footer__link">About</li>
+              <li class="footer__link">Privacy</li>
+              <li class="footer__link">Cookies</li>
+              <li class="footer__link">Terms</li>
+              <li class="footer__link">Accessibility</li>
+            </ul>
+          </div>
+          <div class="footer__center-icons">
+            <i class="fa-brands fa-square-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-square-twitter"></i>
+            <i class="fa-brands fa-pinterest"></i>
+          </div>
+        </div>
+        <!-- footer center -->
+  
+        <!-- footer right -->
+        <div class="footer__right footer__col">
+          <div class="mapouter">
+            <div class="gmap_canvas">
+              <iframe
+                width="600"
+                height="500"
+                id="gmap_canvas"
+                src="https://maps.google.com/maps?q=Earlham%20Park,%20Norwich&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0">
+              </iframe>
+                <a href="#">divi discount</a>
+                <br/>
+            </div>
+          </div>
+        </div>
+        <!-- footer right -->
+      </footer>
+      <!-- footer -->
+</body>
+</html>
